@@ -1,0 +1,32 @@
+<div class="container">
+
+    <div class="">
+        <div class="col">
+            <div ass="card h-100">
+                <img src="http://placeimg.com/400/200/animals" alt="" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{challenge.titulo}}</h5>
+                    <p class="card-text"> {{challenge.contenido}}</p>
+                </div>
+
+                <div *ngIf=!challenge.inscrito>
+                    <button (click)="registraReto()">REGISTRARSE</button>
+                </div>
+
+                <div *ngIf=challenge.inscrito>
+                    <button (click)="realizarEntrega()">REALIZAR ENTREGA</button>
+                </div>
+
+                <div *ngIf=madeChef>
+                    <button [routerLink]="['../update/', id]">EDITAR</button>
+                    <button>BORRAR</button>
+                </div>
+
+                <div class="card-footer ">
+                    <small class="text-muted ">Published: June 18th, 2015
+                        </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

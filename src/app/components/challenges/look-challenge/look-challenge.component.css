@@ -1,0 +1,29 @@
+.cards {
+    background-color: aqua;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    padding: auto;
+    margin: auto;
+    text-align: centre;
+    max-width: 60%;
+}
+
+.container-cards {
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    ;
+    grid-auto-rows: 1fr;
+    gap: 2rem;
+}
+
+span {
+    display: block;
+}

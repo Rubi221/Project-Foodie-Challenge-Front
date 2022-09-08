@@ -1,0 +1,40 @@
+.navbarNB {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo {
+    font-size: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+    text-decoration: none;
+    color: red;
+}
+
+.titulo a:visited {
+    color: red;
+}
+
+.navbar-navNB {
+    display: flex;
+    gap: 2rem;
+}
+
+.navbarNB ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+ul li a {
+    display: block;
+    color: #000000;
+    padding: 8px 16px;
+    text-decoration: none;
+}

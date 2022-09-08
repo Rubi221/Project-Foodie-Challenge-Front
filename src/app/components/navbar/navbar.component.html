@@ -1,0 +1,27 @@
+<nav class="navbarNB">
+    <a class="titulo" [routerLink]="['/home']" href=" # ">FoddieChallenge</a>
+
+    <div class="" id="navbarNavNB ">
+        <ul class="navbar-navNB ">
+            <li class="nav-itemNB " routerLinkActive="active">
+                <a class="nav-link " [routerLink]="['/home/challenges']">RETOS</a>
+            </li>
+            <li class="nav-itemNB " routerLinkActive="active">
+                <a class="nav-link " [routerLink]="['/home/challenges']">MIS RETOS</a>
+            </li>
+            <li class="nav-itemNB " routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/home/learning']">ENSEÑANZA</a>
+            </li>
+            <li class="nav-itemNB " routerLinkActive="active">
+                <a class="nav-link " [routerLink]="['/home/fabricantes']">FORO</a>
+            </li>
+            <li class="nav-itemNB " routerLinkActive="active">
+                <a class="nav-link " [routerLink]="['/home/fabricantes']">PERFIL</a>
+            </li>
+            <li class="nav-itemNB ">
+                <a class="nav-link cerrar" (click)="signOut()" href="">CERRAR SESION</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<router-outlet class="bg-light"></router-outlet>
