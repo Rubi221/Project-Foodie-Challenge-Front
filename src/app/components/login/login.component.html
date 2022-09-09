@@ -1,17 +1,32 @@
 <div class="login-page">
-    <div>
-        <h1 class="font-weight-bold text-center">{{title}}</h1>
-    </div>
-    <div class="form">
-        <form class="login-form" (submit)="login()">
+  <div>
+    <h1 class="font-weight-bold text-center">{{ title }}</h1>
+  </div>
+  <div class="form">
+    <form class="login-form" (submit)="login()" appearance="fill" fxFlexFill>
+        <div>
+            <h1 class="font-weight-bold text-center">{{ title }}</h1>
+          </div>
+      <input
+        class="form-control"
+        type="text"
+        placeholder="username"
+        [(ngModel)]="actualCredentials.username"
+        name="username"
+      />
+      <input
+        class="form-control"
+        type="password"
+        placeholder="password"
+        [(ngModel)]="actualCredentials.password"
+        name="password"
+      />
 
-            <input type="text" placeholder="username" [(ngModel)]="actualCredentials.username" name="username" />
-            <input type="password" placeholder="password" [(ngModel)]="actualCredentials.password" name="password" />
-            <button type="submit" role="button">login</button>
+      <button class="btn btn-primary" type="submit" role="button">Login</button>
 
-            <!-- <input type="text" placeholder="username" />
+      <!-- <input type="text" placeholder="username" />
             <input type="password" placeholder="password" />
             <button type="submit" role="button">login</button> -->
-        </form>
-    </div>
+    </form>
+  </div>
 </div>
