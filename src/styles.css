@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 .container-index{
-    --bs-body-bg: red;
+    /* --bs-body-bg: red; */
+    background-image: url("./Fondo.png");
+    background-size:cover;
 }

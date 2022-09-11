@@ -10,11 +10,12 @@
 .login-form {
   margin: 20px;
   border-radius: 15px;
-  border: solid red;
-  background-color: rgba(223, 14, 14, 0.801);
+  background-color: whitesmoke;
   padding: 20px;
 }
-
+.title{
+  color: aliceblue;
+}
 .form-control {
   margin: 10px;
   width: 80%;

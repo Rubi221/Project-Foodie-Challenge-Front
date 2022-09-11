@@ -14,6 +14,8 @@ import { LookChallengeComponent } from './components/challenges/look-challenge/l
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ChallengeFormComponent } from './components/challenge-form/challenge-form.component';
 import { MatIconModule } from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { MatIconModule } from '@angular/material/icon';
     AppRoutingModule,
     FormsModule,
     NgxPaginationModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
