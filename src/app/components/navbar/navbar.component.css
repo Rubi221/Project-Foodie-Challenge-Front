@@ -1,19 +1,19 @@
 .navbarNB {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-    border-radius: 15px;
-    border: solid red;
-    background-color: rgba(223, 14, 14, 0.801) ;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  border-radius: 15px;
+  border: solid red;
+  background-color: whitesmoke;
 }
 
 .titulo {
-    font-size: 2rem;
-    padding-top: 1rem;
-    padding-bottom: 1.5rem;
-    text-decoration: none;
-    color:whitesmoke;
+  font-size: 2rem;
+  font-family: "Combo", sans-serif;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+  text-decoration: none;
+  color: red;
 }
 
 .titulo a:visited {
@@ -21,24 +21,39 @@
 }
 
 .navbar-navNB {
-    display: flex;
-    gap: 2rem;
+  display: flex;
+  gap: 2rem;
 }
 
 .navbarNB ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
-
 li {
-    float: left;
+  display: flex;
+  align-items:center;
 }
 
 ul li a {
-    display: block;
-    color: whitesmoke;
-    padding: 8px 16px;
-    text-decoration: none;
+  display: flex;
+  color: red;
+  padding: 8px 16px;
+  text-decoration: none;
+  align-items:flex-end;
+}
+.img {
+  width: 20%;
+}
+.imgD {
+  height: 15%;
+}
+
+#lup {
+  color: white;
+  background-color: green;
+  width: 50px;
+  height: 50px;
+  border-color: transparent;
 }

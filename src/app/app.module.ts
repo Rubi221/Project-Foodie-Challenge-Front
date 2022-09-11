@@ -13,8 +13,7 @@ import { ChallengesComponent } from './components/challenges/challenges.componen
 import { LookChallengeComponent } from './components/challenges/look-challenge/look-challenge.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ChallengeFormComponent } from './components/challenge-form/challenge-form.component';
-
-
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -25,15 +24,16 @@ import { ChallengeFormComponent } from './components/challenge-form/challenge-fo
     LearningComponent,
     ChallengesComponent,
     LookChallengeComponent,
-    ChallengeFormComponent
+    ChallengeFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatIconModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
