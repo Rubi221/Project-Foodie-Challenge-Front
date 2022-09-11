@@ -1,5 +1,5 @@
 .navbarNB {
-  display: flex;
+  display:flex;
   flex-direction: column;
   margin: 20px;
   border-radius: 15px;
@@ -41,7 +41,7 @@ ul li a {
   color: red;
   padding: 8px 16px;
   text-decoration: none;
-  align-items:flex-end;
+  font-size: large;
 }
 .img {
   width: 20%;
@@ -50,10 +50,21 @@ ul li a {
   height: 15%;
 }
 
-#lup {
+#but{
   color: white;
-  background-color: green;
+  background-color: red;
   width: 50px;
   height: 50px;
   border-color: transparent;
+  display: flex;
+  align-items:center;
+}
+.libut{
+  padding-left: 200px;
+}
+mat-icon{
+  color: whitesmoke;
+}
+.mat-iconR{
+  color: red;
 }

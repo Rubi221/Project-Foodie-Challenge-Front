@@ -2,33 +2,36 @@
   <div class="" id="navbarNavNB ">
     <ul class="navbar-navNB">
       <div class="imgD">
-        <img src="../../../favicon.ico" alt="Logo" class="img" />
+        <img src="../../../favicon.ico" alt="LogoFC" class="img" />
         <a class="titulo" [routerLink]="['/home']" href=" # "
           >Foddie Challenge</a
         >
       </div>
       <li class="nav-itemNB" routerLinkActive="active">
+        <mat-icon class="mat-iconR">fastfood</mat-icon>
         <a class="nav-link" [routerLink]="['/home/challenges']">RETOS</a>
       </li>
       <li class="nav-itemNB" routerLinkActive="active">
+        <mat-icon class="mat-iconR">local_dining</mat-icon>
         <a class="nav-link" [routerLink]="['/home/challenges']">MIS RETOS</a>
       </li>
       <li class="nav-itemNB" routerLinkActive="active">
+        <mat-icon class="mat-iconR"> local_library</mat-icon>
         <a class="nav-link" [routerLink]="['/home/learning']">ENSEÑANZA</a>
       </li>
       <li class="nav-itemNB" routerLinkActive="active">
+        <mat-icon class="mat-iconR">mode_comment</mat-icon>
         <a class="nav-link" [routerLink]="['/home/fabricantes']">FORO</a>
       </li>
-      <li class="nav-itemNB" routerLinkActive="active">
+      <!-- <li class="nav-itemNB" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/home/fabricantes']">PERFIL</a>
       </li>
       <li class="nav-itemNB">
-        <!-- <mat-icon>home</mat-icon> -->
         <a class="nav-link cerrar" (click)="signOut()" href="">CERRAR SESION</a>
-      </li>
-      <li>
-        <button id="lup" class="btn btn-primary" type="button">
-          <i class="fas fa-search"></i>
+      </li> -->
+      <li class="libut">
+        <button id="but" class="btn btn-primary" type="button">
+          <mat-icon>reorder</mat-icon>
         </button>
       </li>
     </ul>
