@@ -13,7 +13,6 @@ export class LookChallengeComponent implements OnInit {
   public madeChef: Boolean;
   id: String = '';
   fechaInicio: String = '21/09/2022';
-  title: String = 'Reto #';
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.challenge.inscrito = false;

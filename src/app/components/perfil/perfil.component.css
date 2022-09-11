@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  max-width: 60%;
+  border: solid red;
+  border-radius: 15px;
+  background-color: whitesmoke;
+  padding: 1%;
+}
+.title {
+  color: red;
+  text-align: center;
+}
+.img {
+  max-width: 30%;
+}
+.imgP {
+  max-width: 90%;
+  border-radius: 100px;
+}
+.content {
+  min-width: 70%;
+}
+.btnC {
+  margin: 5px;
+  display: flex;
+}
+.but{
+    margin-top: 10%;
+}

@@ -55,13 +55,4 @@ export class LoginComponent implements OnInit {
       return false;
     }
   }
-
-  public signOut(){
-    sessionStorage.clear()
-    setTimeout(() => {
-      this.router.navigate(['register']);
-    },
-    1000);
-
-  }
 }

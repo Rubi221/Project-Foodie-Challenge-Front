@@ -18,6 +18,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatCardModule } from '@angular/material/card';
 import { RegisterComponent } from './components/register/register.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { RegisterComponent } from './components/register/register.component';
     LookChallengeComponent,
     ChallengeFormComponent,
     RegisterComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,

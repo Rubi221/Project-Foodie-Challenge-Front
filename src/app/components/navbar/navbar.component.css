@@ -1,7 +1,7 @@
 .navbarNB {
   display:flex;
   flex-direction: column;
-  margin: 20px;
+  margin: 0.7%;
   border-radius: 15px;
   border: solid red;
   background-color: whitesmoke;
@@ -47,7 +47,8 @@ ul li a {
   width: 20%;
 }
 .imgD {
-  height: 15%;
+  height: 30%;
+  width: 40%;
 }
 
 #but{
@@ -58,9 +59,7 @@ ul li a {
   border-color: transparent;
   display: flex;
   align-items:center;
-}
-.libut{
-  padding-left: 200px;
+  margin: 10%;
 }
 mat-icon{
   color: whitesmoke;

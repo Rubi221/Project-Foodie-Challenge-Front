@@ -7,9 +7,11 @@ import { HomeComponent } from './components/home/home.component';
 import { LearningComponent } from './components/learning/learning.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
+  
   {
     path: 'register', component: RegisterComponent
   },
@@ -26,6 +28,12 @@ const routes: Routes = [
     path: 'home', component: NavbarComponent,
     children: 
     [
+      {
+        path: 'perfil', component: PerfilComponent
+      },
+      {
+        path: '', redirectTo: '/perfil', pathMatch: 'full'
+      },
       {
         path: '', component: HomeComponent
       },

@@ -1,6 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
   <div>
+    <h1 class="font-weight-bold text-center title">Retos</h1>
+  </div>
+  <div>
     <button
       class="btn btn-success btnC"
       *ngIf="checkUser()"
@@ -11,7 +14,7 @@
     </button>
   </div>
 
-  <div class="row row-cols-1 row-cols-md-3 g-4 retosdiv">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
     <div
       class="col"
       *ngFor="
@@ -76,6 +79,10 @@
         </div> -->
       </div>
     </div>
+  </div>
+
+  <div>
+    <button class="btn btn-light btnC">Crear Reto</button>
   </div>
 
   <!--Including the pagination control.-->

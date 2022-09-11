@@ -29,7 +29,7 @@
       <li class="nav-itemNB">
         <a class="nav-link cerrar" (click)="signOut()" href="">CERRAR SESION</a>
       </li> -->
-      <li class="libut">
+      <li>
         <button
           mat-button
           [matMenuTriggerFor]="belowMenu"
@@ -40,7 +40,7 @@
           <mat-icon>reorder</mat-icon>
         </button>
         <mat-menu #belowMenu="matMenu" yPosition="below">
-          <button mat-menu-item [routerLink]="['/home/fabricantes']">
+          <button mat-menu-item [routerLink]="['/home/perfil']">
             PERFIL
           </button>
           <button
