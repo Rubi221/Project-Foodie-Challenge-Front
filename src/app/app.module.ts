@@ -19,6 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatCardModule } from '@angular/material/card';
 import { RegisterComponent } from './components/register/register.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { MatPaginatorModule } from '@angular/material/paginator'; 
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     MatIconModule,
     MatMenuModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatPaginatorModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
