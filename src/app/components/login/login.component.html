@@ -1,11 +1,11 @@
 <div class="login-page">
-  <div>
-    <h1 class="font-weight-bold text-center title">{{ title }}</h1>
-  </div>
   <div class="form">
     <form class="login-form" (submit)="login()" appearance="fill" fxFlexFill>
       <div>
-        <img src="../../../favicon.ico" alt="Logo" class="img"/>
+        <img src="../../../favicon.ico" alt="FoddieChallenge" class="img" />
+      </div>
+      <div>
+        <h1 class="font-weight-bold text-center title">{{ title }}</h1>
       </div>
       <input
         class="form-control"
@@ -23,6 +23,11 @@
       />
 
       <button class="btn btn-primary" type="submit" role="button">Login</button>
+
+      <div>
+        <p>¿Aún no tienes una cuenta? Registrate aqui:</p>
+        <a class="nav-link" (click)="signOut()">Registrarse</a>
+      </div>
 
       <!-- <input type="text" placeholder="username" />
             <input type="password" placeholder="password" />

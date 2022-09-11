@@ -14,7 +14,7 @@
   padding: 20px;
 }
 .title{
-  color: aliceblue;
+  color: red;
 }
 .form-control {
   margin: 10px;
@@ -22,4 +22,7 @@
 }
 .img {
   width: 50%;
+}
+a{
+  text-decoration: underline;
 }

@@ -7,8 +7,15 @@ import { HomeComponent } from './components/home/home.component';
 import { LearningComponent } from './components/learning/learning.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
+  {
+    path: 'register', component: RegisterComponent
+  },
+  {
+    path: '', redirectTo: '/register', pathMatch: 'full'
+  },
   {
     path: 'login', component: LoginComponent
   },

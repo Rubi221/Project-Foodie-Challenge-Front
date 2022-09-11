@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  title = 'FoddieChallenge';
+  title = 'Inicia Sesion';
   isLogin: Boolean = false;
   // constructor(private router: Router, private usuarioService:UsuarioService) { }
 
@@ -54,5 +54,14 @@ export class LoginComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  public signOut(){
+    sessionStorage.clear()
+    setTimeout(() => {
+      this.router.navigate(['register']);
+    },
+    1000);
+
   }
 }

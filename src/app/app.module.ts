@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatCardModule } from '@angular/material/card';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MatCardModule } from '@angular/material/card';
     ChallengesComponent,
     LookChallengeComponent,
     ChallengeFormComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

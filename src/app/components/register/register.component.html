@@ -1,0 +1,51 @@
+<div class="register-page">
+  
+    <div class="form">
+      <form class="login-form" appearance="fill" fxFlexFill>
+        <div>
+          <img src="../../../favicon.ico" alt="Logo" class="img"/>
+        </div>
+        <div>
+          <h1 class="font-weight-bold text-center title">{{title}}</h1>
+        </div>
+        <input
+          class="form-control"
+          type="text"
+          placeholder="name"
+          [(ngModel)]="registerData.name"
+          name="username"
+        />
+        <input
+          class="form-control"
+          type="text"
+          placeholder="username"
+          [(ngModel)]="registerData.username"
+          name="username"
+        />
+        <input
+          class="form-control"
+          type="password"
+          placeholder="password"
+          [(ngModel)]="registerData.password"
+          name="password"
+        />
+        <input
+          class="form-control"
+          type="text"
+          placeholder="email"
+          [(ngModel)]="registerData.email"
+          name="username"
+        />
+        <input
+          class="form-control"
+          type="text"
+          placeholder="nationality"
+          [(ngModel)]="registerData.nationality"
+          name="username"
+        />
+  
+        <button class="btn btn-primary" type="submit" role="button">Registrarse</button>
+      </form>
+    </div>
+  </div>
+  
