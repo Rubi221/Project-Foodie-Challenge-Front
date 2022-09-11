@@ -1,5 +1,24 @@
-.container{
-    border: solid red;
-    border-radius: 15px;
-    background-color:whitesmoke;
+.container {
+  border: solid red;
+  border-radius: 15px;
+  background-color: whitesmoke;
+  padding: 20px;
+}
+.retos {
+  margin: 15px;
+  max-height: max-content;
+}
+.retosdiv {
+  min-height: min-content;
+}
+.header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+.btnC {
+  margin: 5px;
+  display: flex;
+}
+a{
+    text-decoration: none;
 }
