@@ -21,6 +21,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { MatPaginatorModule } from '@angular/material/paginator'; 
 import { MatTabsModule } from '@angular/material/tabs';
+import { ForoComponent } from './components/foro/foro.component';
+import {MatDividerModule} from '@angular/material/divider'; 
+import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     ChallengeFormComponent,
     RegisterComponent,
     PerfilComponent,
+    ForoComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     BrowserAnimationsModule,
     MatCardModule,
     MatPaginatorModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDividerModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

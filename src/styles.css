@@ -1,6 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-.container-index{
-    /* --bs-body-bg: red; */
-    background-image: url("./Fondo.png");
-    background-size:cover;
+.container-index {
+  /* --bs-body-bg: red; */
+  background-image: url("./Fondo.png");
+  background-size: cover;
+  font-family: "Combo";
+}
+@font-face {
+  font-family: "Permanent";
+  src: url("PermanentMarker-Regular.ttf");
+}
+@font-face {
+  font-family: "Combo";
+  src: url("Combo-Regular.ttf");
 }

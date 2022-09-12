@@ -1,0 +1,30 @@
+.container {
+  max-width: 60%;
+  border: solid red;
+  border-radius: 15px;
+  background-color: whitesmoke;
+  padding: 1%;
+}
+.header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+.btnC {
+  margin: 5px;
+}
+
+/* active tab */
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  color: red;
+  background-color: rgba(211, 208, 20, 0.418);
+  border-radius: 5px;
+}
+
+::ng-deep .mat-tab-label-content {
+    color: red;
+  }
+
+/* ink bar */
+::ng-deep .mat-ink-bar {
+  background-color: red !important;
+}

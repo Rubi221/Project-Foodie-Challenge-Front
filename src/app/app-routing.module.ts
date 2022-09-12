@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChallengeFormComponent } from './components/challenge-form/challenge-form.component';
 import { ChallengesComponent } from './components/challenges/challenges.component';
 import { LookChallengeComponent } from './components/challenges/look-challenge/look-challenge.component';
+import { ForoComponent } from './components/foro/foro.component';
 import { HomeComponent } from './components/home/home.component';
 import { LearningComponent } from './components/learning/learning.component';
 import { LoginComponent } from './components/login/login.component';
@@ -28,6 +29,12 @@ const routes: Routes = [
     path: 'home', component: NavbarComponent,
     children: 
     [
+      {
+        path: 'foro', component: ForoComponent
+      },
+      {
+        path: '', redirectTo: '/foro', pathMatch: 'full'
+      },
       {
         path: 'perfil', component: PerfilComponent
       },

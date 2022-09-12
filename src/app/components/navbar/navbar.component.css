@@ -3,13 +3,12 @@
   flex-direction: column;
   margin: 0.7%;
   border-radius: 15px;
-  border: solid red;
   background-color: whitesmoke;
 }
 
 .titulo {
   font-size: 2rem;
-  font-family: "Combo", sans-serif;
+  font-family:'Permanent' !important;
   padding-top: 1rem;
   padding-bottom: 1.5rem;
   text-decoration: none;
@@ -45,6 +44,7 @@ ul li a {
 }
 .img {
   width: 20%;
+  margin: 1%;
 }
 .imgD {
   height: 30%;

@@ -1,0 +1,42 @@
+<div class="container">
+  <mat-tab-group disableRipple mat-align-tabs="center">
+    <mat-tab label="SeccionForo1">
+      <div
+        class="col"
+        *ngFor="
+          let e of publicaciones
+            | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                }
+        "
+      >
+        <div>
+          <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="header-image"></div>
+              <mat-card-subtitle>nombre usuario</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{ e.contenido }}</p>
+              <small class="text-muted">Publicado:{{ e.fecha }}</small>
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+            <mat-card-actions>
+              <button class="btn btn-danger btnC" mat-button>
+                <mat-icon>thumb_up</mat-icon>Like
+              </button>
+              <button class="btn btn-danger btnC" mat-button>
+                <mat-icon>thumb_up</mat-icon>Comentar
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="SeccionForo2">Content 2</mat-tab>
+    <mat-tab label="SeccionForo3">Content 3</mat-tab>
+  </mat-tab-group>
+</div>

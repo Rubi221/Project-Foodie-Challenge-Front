@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
 import { Challenge } from 'src/app/models/challenge';
 
 @Component({
@@ -8,14 +7,7 @@ import { Challenge } from 'src/app/models/challenge';
   styleUrls: ['./challenges.component.css'],
 })
 export class ChallengesComponent implements OnInit {
-  // MatPaginator Inputs
-  length = 100;
-  pageSize = 3;
-  pageSizeOptions: number[] = [3, 6, 9, 12, 15];
   page = 1;
-  // MatPaginator Output
-  pageEvent: PageEvent = new PageEvent();
-
   count = 0;
   tableSize = 6;
   tableSizes = [3, 6, 9, 12];
