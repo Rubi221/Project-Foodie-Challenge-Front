@@ -1,6 +1,13 @@
 <div class="container">
   <mat-tab-group disableRipple mat-align-tabs="center">
     <mat-tab label="SeccionForo1">
+      <div>
+        <button class="btn btn-success btnC" [routerLink]="['create']">
+          <mat-icon>queue</mat-icon>
+          Crear Publicacion
+        </button>
+      </div>
+      <mat-divider inset></mat-divider>
       <div
         class="col"
         *ngFor="
@@ -23,17 +30,26 @@
               <p>{{ e.contenido }}</p>
               <small class="text-muted">Publicado:{{ e.fecha }}</small>
             </mat-card-content>
-            <mat-divider inset></mat-divider>
+
             <mat-card-actions>
               <button class="btn btn-danger btnC" mat-button>
                 <mat-icon>thumb_up</mat-icon>Like
               </button>
               <button class="btn btn-danger btnC" mat-button>
-                <mat-icon>thumb_up</mat-icon>Comentar
+                <mat-icon>sms</mat-icon>Comentar
               </button>
             </mat-card-actions>
+            <mat-divider inset></mat-divider>
           </mat-card>
         </div>
+      </div>
+      <div class=" ">
+        <pagination-controls
+          previousLabel="Prev "
+          nextLabel="Next "
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
       </div>
     </mat-tab>
     <mat-tab label="SeccionForo2">Content 2</mat-tab>

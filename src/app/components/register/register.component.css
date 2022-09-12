@@ -8,17 +8,16 @@
     border-radius: 15px;
   }
   .login-form {
-    margin: 20px;
     border-radius: 15px;
     background-color: whitesmoke;
-    padding: 20px;
+    padding: 8%;
   }
   .title{
     color: red;
   }
   .form-control {
-    margin: 10px;
-    width: 80%;
+    margin: 2%;
+    width: 70%;
   }
   .img {
     width: 50%;

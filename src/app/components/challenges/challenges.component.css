@@ -3,7 +3,9 @@
   border-radius: 15px;
   background-color: whitesmoke;
   padding: 1%;
+  margin-top: 8% !important;
   min-height: max-content;
+  max-width: 70%;
 }
 .retos {
   margin: 15px;
@@ -18,7 +20,13 @@
 }
 a{
     text-decoration: none;
+    color: black;
 }
 .title {
   color: red;
+}
+
+::ng-deep .ngx-pagination .current {
+  background: red !important;
+  border-radius: 15px;
 }

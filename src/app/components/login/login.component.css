@@ -4,25 +4,25 @@
   align-items: center;
 }
 .form {
-  margin: 20px;
+  margin-top: 2%;
+  margin-bottom: 5%;
   border-radius: 15px;
 }
 .login-form {
-  margin: 20px;
   border-radius: 15px;
   background-color: whitesmoke;
-  padding: 20px;
+  padding: 8%;
 }
-.title{
+.title {
   color: red;
 }
 .form-control {
-  margin: 10px;
-  width: 80%;
+  margin: 2%;
+  width: 70%;
 }
 .img {
   width: 50%;
 }
-a{
+a {
   text-decoration: underline;
 }

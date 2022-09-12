@@ -2,7 +2,7 @@
 .container-index {
   /* --bs-body-bg: red; */
   background-image: url("./Fondo.png");
-  background-size: cover;
+  background-size: 100%;
   font-family: "Combo";
 }
 @font-face {

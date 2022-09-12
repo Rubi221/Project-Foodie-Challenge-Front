@@ -1,7 +1,8 @@
 .container {
-    max-width: 60%;
-    border: solid red;
-    border-radius: 15px;
-    background-color: whitesmoke;
-    padding: 1%;
+  max-width: 70%;
+  border: solid red;
+  border-radius: 15px;
+  background-color: whitesmoke;
+  padding: 1%;
+  margin-top: 8% !important;
 }
