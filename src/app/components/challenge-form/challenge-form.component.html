@@ -32,9 +32,7 @@
           </div>
 
           <div class="form-group row mb-1">
-            <label for="video" class="col-sm-2 col-form-label"
-              >Video</label
-            >
+            <label for="video" class="col-sm-2 col-form-label">Video</label>
             <div class="col-sm-6">
               <input
                 type="text"
@@ -67,16 +65,9 @@
             >
             <div class="col-sm-6">
               <input
-              type="text"
-              class="form-control"
-              required
-              name="fechaInicio"
-              [matDatepicker]="dp1"
-              [(ngModel)]="challenge.fechaInicio"
+                type="date"
+                name="fechaInicio"
               />
-              <mat-datepicker-toggle matSuffix [for]="dp1">
-              </mat-datepicker-toggle>
-              <mat-datepicker #dp1></mat-datepicker>
             </div>
           </div>
 
@@ -86,20 +77,11 @@
             >
             <div class="col-sm-6">
               <input
-              type="text"
-              class="form-control"
-              required
-              name="fechaFin"
-              [matDatepicker]="dp2"
-              [(ngModel)]="challenge.fechaFin"
+                type="date"
+                name="fechaFin"
               />
-              <mat-datepicker-toggle matSuffix [for]="dp2">
-              </mat-datepicker-toggle>
-              <mat-datepicker #dp2></mat-datepicker>
             </div>
           </div>
-
-          
 
           <div>
             <button

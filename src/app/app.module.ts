@@ -30,6 +30,7 @@ import { ComentarioComponent } from './components/comentario/comentario.componen
 import { EntregasComponent } from './components/entregas/entregas.component'; 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     HttpClientModule,
     MatDialogModule,
     MatSidenavModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent],
