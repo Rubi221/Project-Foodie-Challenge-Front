@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Challenge } from 'src/app/models/challenge';
+import { ChallengeInscrito } from 'src/app/models/challenge-inscrito';
+import { ChallengeService } from 'src/app/services/challenge.service';
 import swal from 'sweetalert2';
 
 @Component({
@@ -9,12 +11,12 @@ import swal from 'sweetalert2';
   styleUrls: ['./look-challenge.component.css'],
 })
 export class LookChallengeComponent implements OnInit {
-  challenge: Challenge = new Challenge();
+  challenge: ChallengeInscrito = new ChallengeInscrito();
   public madeChef: Boolean;
-  id: String = '';
+  id: string = '';
   fechaInicio: String = '21/09/2022';
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private challengeService: ChallengeService) {
     this.challenge.titulo = 'Reto #';
     this.challenge.contenido =
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi amet consequuntur tempora deleniti iure libero in quidem labore voluptatibus esse. Architecto, ducimus? Voluptatibus aliquid incidunt provident vitae atque numquam nobis! ';
@@ -22,14 +24,13 @@ export class LookChallengeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.challenge);
     this.activatedRoute.params.subscribe((params) => {
       this.id = params['id'];
-      // if (this.id) {
-      //   this.articuloService.getById(this.id).subscribe(response =>{
-      //     this.articulo = response;
-      //   });
-    });
+      if (this.id) { 
+        this.challengeService.getChallengeById(parseInt(this.id), parseInt(sessionStorage.getItem('idUsuario')!)).subscribe(response =>{
+        this.challenge = response;
+      });
+    }});
   }
 
   public inscribeReto(): void {
