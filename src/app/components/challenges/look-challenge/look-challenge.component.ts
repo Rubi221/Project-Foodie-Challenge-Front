@@ -8,6 +8,7 @@ import { InscripcionchallengeService } from 'src/app/services/inscripcionchallen
 import swal from 'sweetalert2';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EntregasComponent } from '../../entregas/entregas.component';
+import { EntregaReto } from 'src/app/models/entrega';
 
 @Component({
   selector: 'app-look-challenge',
@@ -15,18 +16,41 @@ import { EntregasComponent } from '../../entregas/entregas.component';
   styleUrls: ['./look-challenge.component.css'],
 })
 export class LookChallengeComponent implements OnInit {
+  page = 1;
+  count = 0;
+  tableSize = 6;
+  tableSizes = [3, 6, 9, 12];
+
+  public entregas: EntregaReto[] = [
+    {
+      id: 1,
+      idInscripcionReto: 1,
+      calificacionFinal: 3,
+      video: '',
+      adjunto: '',
+    },
+    {
+      id: 1,
+      idInscripcionReto: 1,
+      calificacionFinal: 5,
+      video: '',
+      adjunto: '',
+    },
+  ];
+
   challenge: ChallengeInscrito = new ChallengeInscrito();
   public madeChef!: Boolean;
   public esChef!: Boolean;
   public clickEntrega: Boolean = false;
-  public inscripcion!: InscripcionChallenge
+  public inscripcion!: InscripcionChallenge;
 
   id: string = '';
   fechaInicio: String = '21/09/2022';
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private challengeService: ChallengeService, private inscripcionService: InscripcionchallengeService,
+    private challengeService: ChallengeService,
+    private inscripcionService: InscripcionchallengeService,
     public dialog: MatDialog
   ) {}
 
@@ -70,32 +94,53 @@ export class LookChallengeComponent implements OnInit {
       .then((result) => {
         //LLAMAR AL SERVICIO ESE
         if (result.isConfirmed) {
+          this.inscripcionService
+            .createInscripcion(
+              parseInt(this.id),
+              parseInt(sessionStorage.getItem('idUsuario')!)
+            )
+            .subscribe((response) => {
+              this.inscripcion = response;
+              if (this.inscripcion.idReto === parseInt(this.id)) {
+                swal.fire(
+                  'Excelente!',
+                  'Tu inscripcion ha sido satisfactoria.',
+                  'success'
+                );
 
-          this.inscripcionService.createInscripcion(parseInt(this.id), parseInt(sessionStorage.getItem('idUsuario')!)).subscribe(response => {
-            this.inscripcion = response;
-            if(this.inscripcion.idReto === parseInt(this.id)){
-
-              swal.fire(
-                'Excelente!',
-                'Tu inscripcion ha sido satisfactoria.',
-                'success'
-              );
-
-              window.location.reload();
-            }
-          })
-
+                window.location.reload();
+              }
+            });
+        }
+      });
+  }
+  public realizarEntrega(): void {
+    swal
+      .fire({
+        title: 'Seguro deseas inscribirte?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, inscribirme!',
+        cancelButtonText: 'Cancelar',
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swal.fire(
+            'Excelente!',
+            'Tu inscripcion ha sido satisfactoria.',
+            'success'
+          );
         }
       });
   }
 
-  public realizarEntrega(): void {
-    this.clickEntrega=true;
-   
+  public openDialog(): void {
+    this.clickEntrega = true;
   }
-  public cancelaEntrega(): void {
-    this.clickEntrega=false;
-   
+  public closeDialog(): void {
+    this.clickEntrega = false;
   }
 
   public validaChef(): void {
@@ -118,37 +163,34 @@ export class LookChallengeComponent implements OnInit {
     }
   }
 
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-
-    const dialogRef = this.dialog.open(EntregasComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+  enviaEntrega(): void {
+    swal
+      .fire({
+        title: 'Seguro deseas realizar tu entrega?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, seguro!',
+        cancelButtonText: 'Cancelar',
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swal.fire(
+            'Excelente!',
+            'Tu entrega ha sido satisfactoria.',
+            'success'
+          );
+        }
+      });
   }
 
-  enviaEntrega(): void{
-    swal
-    .fire({
-      title: 'Seguro deseas realizar tu entrega?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, seguro!',
-      cancelButtonText: 'Cancelar',
-    })
-    .then((result) => {
-      if (result.isConfirmed) {
-        swal.fire(
-          'Excelente!',
-          'Tu entrega ha sido satisfactoria.',
-          'success'
-        );
-      }
-    });
+  onTableDataChange(event: number) {
+    this.page = event;
+  }
+
+  onTableSizeChange(event: { target: { value: number } }): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
   }
 }
