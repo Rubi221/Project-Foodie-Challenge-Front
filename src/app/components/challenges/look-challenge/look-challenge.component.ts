@@ -18,6 +18,7 @@ export class LookChallengeComponent implements OnInit {
   challenge: ChallengeInscrito = new ChallengeInscrito();
   public madeChef!: Boolean;
   public esChef!: Boolean;
+  public clickEntrega: Boolean = false;
   public inscripcion!: InscripcionChallenge
 
   id: string = '';
@@ -89,25 +90,12 @@ export class LookChallengeComponent implements OnInit {
   }
 
   public realizarEntrega(): void {
-    swal
-      .fire({
-        title: 'Seguro deseas inscribirte?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, inscribirme!',
-        cancelButtonText: 'Cancelar',
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          swal.fire(
-            'Excelente!',
-            'Tu inscripcion ha sido satisfactoria.',
-            'success'
-          );
-        }
-      });
+    this.clickEntrega=true;
+   
+  }
+  public cancelaEntrega(): void {
+    this.clickEntrega=false;
+   
   }
 
   public validaChef(): void {
@@ -139,6 +127,28 @@ export class LookChallengeComponent implements OnInit {
     const dialogRef = this.dialog.open(EntregasComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  enviaEntrega(): void{
+    swal
+    .fire({
+      title: 'Seguro deseas realizar tu entrega?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, seguro!',
+      cancelButtonText: 'Cancelar',
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        swal.fire(
+          'Excelente!',
+          'Tu entrega ha sido satisfactoria.',
+          'success'
+        );
+      }
     });
   }
 }

@@ -5,6 +5,8 @@ export class ChallengeInscrito {
     public contenido!: String;
     public dificultad!: number;
     public video!: String;
+    public adjunto!: String;
+
 
     public idUsuario!: number;
     public nombreChef!: String;

@@ -1,22 +1,26 @@
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .title {
-  color: red;
+    color: red;
 }
+
 .container {
-  border-radius: 15px;
-  background-color: whitesmoke;
-  padding: 1%;
-  margin-top: 8% !important;
-  min-height: max-content;
-  max-width: 60%;
+    border-radius: 15px;
+    background-color: whitesmoke;
+    padding: 1%;
+    margin-top: 8% !important;
+    min-height: max-content;
+    max-width: 60%;
 }
-.content{
+
+.content {
     text-align: justify !important;
 }
+
 
 /* .container-cards {
   align-items: center;
@@ -25,10 +29,24 @@
   grid-auto-rows: 1fr;
   gap: 2rem;
 } */
+
 span {
-  display: block;
+    display: block;
 }
+
 .btnC {
-  margin: 5px;
-  display: flex;
+    margin: 5px;
+    display: flex;
+}
+
+.container {
+    position: relative;
+}
+
+.container-entrega {
+    background-color: antiquewhite;
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    margin: 0 auto;
 }
