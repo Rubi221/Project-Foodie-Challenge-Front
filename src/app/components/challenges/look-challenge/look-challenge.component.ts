@@ -131,6 +131,9 @@ export class LookChallengeComponent implements OnInit {
   }
 
   enviaEntrega(): void{
+
+    
+
     swal
     .fire({
       title: 'Seguro deseas realizar tu entrega?',
