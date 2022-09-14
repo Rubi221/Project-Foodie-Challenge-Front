@@ -5,7 +5,6 @@ export class Challenge {
     public contenido!: String;
     public dificultad!: number;
     public video!: String;
-
     public idChef!: number;
     public idCategoria!: number;
     public fechaInicio!: String;

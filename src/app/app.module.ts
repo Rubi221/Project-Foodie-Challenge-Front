@@ -29,6 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ComentarioComponent } from './components/comentario/comentario.component';
 import { EntregasComponent } from './components/entregas/entregas.component'; 
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatProgressBarModule,
     HttpClientModule,
     MatDialogModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
