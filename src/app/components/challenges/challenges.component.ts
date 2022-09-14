@@ -8,6 +8,8 @@ import { ChallengeService } from 'src/app/services/challenge.service';
   styleUrls: ['./challenges.component.css'],
 })
 export class ChallengesComponent implements OnInit {
+  
+  showFiller = false;
   page = 1;
   count = 0;
   tableSize = 6;

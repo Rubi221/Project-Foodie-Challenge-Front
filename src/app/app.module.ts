@@ -27,7 +27,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ComentarioComponent } from './components/comentario/comentario.component';
-import {OverlayModule} from '@angular/cdk/overlay'; 
+import { EntregasComponent } from './components/entregas/entregas.component'; 
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
     PerfilComponent,
     ForoComponent,
     ComentarioComponent,
+    EntregasComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MatProgressBarModule,
     HttpClientModule,
     MatDialogModule,
-    OverlayModule
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent],

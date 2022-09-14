@@ -6,6 +6,7 @@
   background-color: whitesmoke;
   padding: 1%;
   margin-top: 8% !important;
+  position: static;
 }
 .header-image {
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
