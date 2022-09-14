@@ -9,7 +9,7 @@ import { Receta } from 'src/app/models/receta';
 export class LearningComponent implements OnInit {
   page = 1;
   count = 0;
-  tableSize = 6;
+  tableSize = 3;
   tableSizes = [3, 6, 9, 12];
 
   public recetas: Receta[] = [

@@ -1,0 +1,8 @@
+.container {
+    border-radius: 15px;
+    background-color: whitesmoke;
+    padding: 1%;
+    margin-top: 8% !important;
+    min-height: max-content;
+    max-width: 70%;
+}

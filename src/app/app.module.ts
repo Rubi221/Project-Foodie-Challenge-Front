@@ -15,17 +15,18 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ChallengeFormComponent } from './components/challenge-form/challenge-form.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { RegisterComponent } from './components/register/register.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
-import { MatPaginatorModule } from '@angular/material/paginator'; 
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ForoComponent } from './components/foro/foro.component';
-import {MatDividerModule} from '@angular/material/divider'; 
-import {MatProgressBarModule} from '@angular/material/progress-bar'; 
+import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { ComentarioComponent } from './components/comentario/comentario.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     PerfilComponent,
     ForoComponent,
+    ComentarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,8 +56,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatTabsModule,
     MatDividerModule,
     MatProgressBarModule,
-    HttpClientModule
-
+    HttpClientModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

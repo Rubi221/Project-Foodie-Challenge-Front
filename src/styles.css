@@ -13,3 +13,6 @@
   font-family: "Combo";
   src: url("Combo-Regular.ttf");
 }
+.cdk-global-overlay-wrapper{
+  display: flex !important;
+}
