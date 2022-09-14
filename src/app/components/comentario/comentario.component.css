@@ -6,6 +6,7 @@
   background-color: whitesmoke;
   padding: 1%;
   margin-top: 8% !important;
+  position: static;
 }
 .header-image {
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
@@ -18,10 +19,15 @@
 .closeBtn {
     background-color: transparent;
     border-style: hidden;
+    color: red;
+}
+.close{
+    padding-left: 90%;
+    padding-right: 5%;
+    display: flex;
 }
 .title {
   color: red;
-  display: flex;
 }
 ::ng-deep .ngx-pagination .current {
   background: red !important;

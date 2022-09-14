@@ -69,3 +69,6 @@ mat-icon{
 .mat-iconR{
   color: red;
 }
+.mat-menu {
+  position: absolute;
+}

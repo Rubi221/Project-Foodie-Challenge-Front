@@ -27,6 +27,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ComentarioComponent } from './components/comentario/comentario.component';
+import { EntregasComponent } from './components/entregas/entregas.component'; 
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { ComentarioComponent } from './components/comentario/comentario.componen
     PerfilComponent,
     ForoComponent,
     ComentarioComponent,
+    EntregasComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +61,7 @@ import { ComentarioComponent } from './components/comentario/comentario.componen
     MatProgressBarModule,
     HttpClientModule,
     MatDialogModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent],
