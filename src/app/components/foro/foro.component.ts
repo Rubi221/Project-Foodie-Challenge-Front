@@ -8,7 +8,6 @@ import { Publicacion } from 'src/app/models/publicacion';
   styleUrls: ['./foro.component.css'],
 })
 export class ForoComponent implements OnInit {
-  public clickComentario: Boolean = false;
   page = 1;
   count = 0;
   tableSize = 6;
@@ -59,14 +58,6 @@ export class ForoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-
-  public openDialog(): void {
-    this.clickComentario = true;
-  }
-  public closeDialog(): void {
-    console.log(234)
-    this.clickComentario = false;
-  }
 
   onTableDataChange(event: number) {
     this.page = event;

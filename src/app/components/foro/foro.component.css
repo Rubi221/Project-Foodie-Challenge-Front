@@ -16,6 +16,9 @@
   margin: 5px;
   align-self: center !important;
 }
+.btnS {
+  align-self: center !important;
+}
 
 ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
   color: red;
@@ -39,15 +42,10 @@
 ::ng-deep .mat-divider.mat-divider-inset {
   margin: 1% !important;
 }
-.closeBtn {
-  background-color: transparent;
-  border-style: hidden;
-  color: red;
+.cont{
+  width: 100%;
 }
-.close {
-  padding-left: 90%;
-  padding-right: 5%;
-  display: flex;
+.mb-3{
 }
 .title {
   color: red;
@@ -60,15 +58,12 @@
   margin: 1% !important;
 }
 .container-entrega {
-  position: absolute !important;
-  left: 5%;
-  top: 0%;
-  max-width: 90%;
-  max-height: 90%;
   border-radius: 15px;
-  background-color: rgb(201, 201, 201);
+  background-color: whitesmoke;
   padding: 1%;
   margin-top: 8% !important;
-  overflow: scroll;
-  z-index: 1 !important;
+  min-height: max-content;
+  max-width: 100%;
+  position: relative !important;
+  z-index: auto !important;
 }

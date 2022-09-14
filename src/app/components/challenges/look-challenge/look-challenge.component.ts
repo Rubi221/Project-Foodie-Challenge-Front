@@ -39,7 +39,6 @@ export class LookChallengeComponent implements OnInit {
   challenge: ChallengeInscrito = new ChallengeInscrito();
   public madeChef!: Boolean;
   public esChef!: Boolean;
-  public clickEntrega: Boolean = false;
   public inscripcion!: InscripcionChallenge;
 
   id: string = '';
@@ -110,13 +109,6 @@ export class LookChallengeComponent implements OnInit {
             });
         }
       });
-  }
-
-  public openDialog(): void {
-    this.clickEntrega = true;
-  }
-  public closeDialog(): void {
-    this.clickEntrega = false;
   }
 
   public validaChef(): void {

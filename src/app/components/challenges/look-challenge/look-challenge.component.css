@@ -43,25 +43,6 @@
 span {
   display: block;
 }
-.container-entrega {
-  position: absolute;
-  left: 5%;
-  top: 0%;
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 15px;
-  background-color: rgb(201, 201, 201);
-  padding: 1%;
-  margin-top: 8% !important;
-  overflow: scroll;
-}
-.closeBtn {
-    background-color: transparent;
-    border-style: hidden;
-    color: red;
-}
-.close{
-    margin-left: 92%;
-    margin-right: 10%;
-    display: flex;
+.mat{
+  background-color: rgb(172, 172, 172);
 }

@@ -37,10 +37,10 @@
                   <mat-icon>thumb_up</mat-icon>Like
                 </button>
                 <button
-                  mat-raised-button
-                  (click)="openDialog()"
+                  type="button"
                   class="btn btn-danger btnC"
-                  mat-button
+                  data-bs-toggle="modal"
+                  data-bs-target="#commentModal"
                 >
                   <mat-icon>sms</mat-icon>Comentar
                 </button>
@@ -62,42 +62,53 @@
       <mat-tab label="SeccionForo3">Content 3</mat-tab>
     </mat-tab-group>
   </div>
+</div>
 
-  <div *ngIf="clickComentario">
-    <div class="container-entrega">
-      <div class="close">
-        <button
-          class="closeBtn"
-          mat-raised-button
-          (click)="closeDialog()"
-          mat-button
-        >
-          <mat-icon>clear</mat-icon>
-        </button>
-      </div>
-      <div>
+<div
+  class="modal fade"
+  id="commentModal"
+  tabindex="-1"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
         <h3 class="font-weight-bold text-center title">Comentarios</h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <div class="col" *ngFor="let e of comentarios">
-        <div>
-          <mat-card>
-            <mat-card-header>
-              <div mat-card-avatar class="header-image"></div>
-              <mat-card-subtitle>nombre usuario</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <p>{{ e.contenido }}</p>
-              <small class="text-muted">Publicado:{{ e.fecha }}</small>
-            </mat-card-content>
+      <div class="modal-body">
+        <div class="col" *ngFor="let e of comentarios">
+          <div>
+            <mat-card>
+              <mat-card-header>
+                <div mat-card-avatar class="header-image"></div>
+                <mat-card-subtitle>nombre usuario</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>{{ e.contenido }}</p>
+                <small class="text-muted">Publicado:{{ e.fecha }}</small>
+              </mat-card-content>
 
-            <mat-card-actions>
-              <button class="btn btn-danger btnC" mat-button>
-                <mat-icon>reply</mat-icon>Responder
-              </button>
-            </mat-card-actions>
-            <mat-divider inset></mat-divider>
-          </mat-card>
+              <mat-card-actions>
+                <button class="btn btn-danger btnC" mat-button>
+                  <mat-icon>reply</mat-icon>Responder
+                </button>
+              </mat-card-actions>
+              <mat-divider inset></mat-divider>
+            </mat-card>
+          </div>
         </div>
+      </div>
+      <div class="modal-footer input-group mb-3">
+        <input type="text" class="form-control" placeholder="comment" />
+        <button class="btn btn-danger btnS" type="button" id="button-addon2">
+          <mat-icon>send</mat-icon>
+        </button>
       </div>
     </div>
   </div>
