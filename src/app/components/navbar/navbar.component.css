@@ -52,7 +52,10 @@ ul li a {
   height: 30%;
   width: 40%;
 }
-
+.btnC{
+  border-color: transparent;
+  background-color: white;
+}
 #but{
   color: white;
   background-color: red;
@@ -69,6 +72,19 @@ mat-icon{
 .mat-iconR{
   color: red;
 }
-.mat-menu {
+.dropbtn {
+  cursor: pointer;
+}
+.dropdown {
   position: absolute;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
 }

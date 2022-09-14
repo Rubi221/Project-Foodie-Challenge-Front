@@ -111,27 +111,6 @@ export class LookChallengeComponent implements OnInit {
         }
       });
   }
-  public realizarEntrega(): void {
-    swal
-      .fire({
-        title: 'Seguro deseas inscribirte?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, inscribirme!',
-        cancelButtonText: 'Cancelar',
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          swal.fire(
-            'Excelente!',
-            'Tu inscripcion ha sido satisfactoria.',
-            'success'
-          );
-        }
-      });
-  }
 
   public openDialog(): void {
     this.clickEntrega = true;
@@ -184,36 +163,5 @@ export class LookChallengeComponent implements OnInit {
 
   onTableDataChange(event: number) {
     this.page = event;
-  }
-
-<<<<<<< HEAD
-  enviaEntrega(): void{
-
-    
-
-    swal
-    .fire({
-      title: 'Seguro deseas realizar tu entrega?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, seguro!',
-      cancelButtonText: 'Cancelar',
-    })
-    .then((result) => {
-      if (result.isConfirmed) {
-        swal.fire(
-          'Excelente!',
-          'Tu entrega ha sido satisfactoria.',
-          'success'
-        );
-      }
-    });
-=======
-  onTableSizeChange(event: { target: { value: number } }): void {
-    this.tableSize = event.target.value;
-    this.page = 1;
->>>>>>> cb6a4c0807ba8bbf13900aa566df25adb40b3f6b
   }
 }

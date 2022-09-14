@@ -30,28 +30,19 @@
         <a class="nav-link cerrar" (click)="signOut()" href="">CERRAR SESION</a>
       </li> -->
       <li>
-        <button
-          mat-button
-          [matMenuTriggerFor]="belowMenu"
-          id="but"
-          class="btn btn-primary"
-          type="button"
-        >
-          <mat-icon>reorder</mat-icon>
-        </button>
-        <mat-menu #belowMenu="matMenu" yPosition="below">
-          <button mat-menu-item [routerLink]="['/home/perfil']">
-            PERFIL
+        <div class="dropdown">
+          <button class="btn" id="but" type="button">
+            <mat-icon>reorder</mat-icon>
           </button>
-          <button
-            mat-menu-item
-            class="nav-link cerrar"
-            (click)="signOut()"
-            href=""
-          >
-            CERRAR SESION
-          </button>
-        </mat-menu>
+          <div class="dropdown-content">
+            <button mat-menu-item class="btnC" [routerLink]="['/home/perfil']">
+              PERFIL
+            </button>
+            <button mat-menu-item class="btnC" (click)="signOut()" href="">
+              CERRAR SESION
+            </button>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
