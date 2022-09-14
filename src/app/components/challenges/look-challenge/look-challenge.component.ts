@@ -7,6 +7,7 @@ import { ChallengeService } from 'src/app/services/challenge.service';
 import { InscripcionchallengeService } from 'src/app/services/inscripcionchallenge.service';
 import swal from 'sweetalert2';
 import { EntregaReto } from 'src/app/models/entrega';
+import { EntregasService } from 'src/app/services/entregas.service';
 
 @Component({
   selector: 'app-look-challenge',
@@ -19,24 +20,9 @@ export class LookChallengeComponent implements OnInit {
   tableSize = 6;
   tableSizes = [3, 6, 9, 12];
 
-  public entregas: EntregaReto[] = [
-    {
-      id: 1,
-      idInscripcionReto: 1,
-      calificacionFinal: 3,
-      video: '',
-      adjunto: '',
-    },
-    {
-      id: 1,
-      idInscripcionReto: 1,
-      calificacionFinal: 5,
-      video: '',
-      adjunto: '',
-    },
-  ];
+  public entregas: EntregaReto[] = [];
 
-  challenge: ChallengeInscrito = new ChallengeInscrito();
+  public challenge: ChallengeInscrito = new ChallengeInscrito();
   public madeChef!: Boolean;
   public esChef!: Boolean;
   public inscripcion!: InscripcionChallenge;
@@ -47,10 +33,12 @@ export class LookChallengeComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private challengeService: ChallengeService,
-    private inscripcionService: InscripcionchallengeService
+    private inscripcionService: InscripcionchallengeService,
+    private entregaService: EntregasService
   ) {}
 
   ngOnInit(): void {
+
     this.activatedRoute.params.subscribe((params) => {
       this.id = params['id'];
       if (this.id) {
@@ -72,8 +60,16 @@ export class LookChallengeComponent implements OnInit {
               this.esChef = true;
             }
           });
+
+          this.entregaService.getEntregasById(parseInt(this.id)).subscribe((response) => {
+            this.entregas = response;
+          });
       }
     });
+
+
+
+
   }
 
   public inscribeReto(): void {

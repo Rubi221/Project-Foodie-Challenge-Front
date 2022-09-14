@@ -1,24 +1,17 @@
 <div class="container">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-body">
-        <form>
-          <div class="form-group row mb-1">
-            <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>
-            <div class="col-sm-6">
-              <input
-                type="text"
-                class="form-control"
-                required
-                name="titulo"
-                [(ngModel)]="challenge.titulo"
-              />
-            </div>
-          </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-body">
+                <form>
+                    <div class="form-group row mb-1">
+                        <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" required name="titulo" [(ngModel)]="challenge.titulo" />
+                        </div>
+                    </div>
 
-          <div class="form-group row mb-1">
-            <label for="contenido" class="col-sm-2 col-form-label"
-              >Contenido</label
+                    <div class="form-group row mb-1">
+                        <label for="contenido" class="col-sm-2 col-form-label">Contenido</label
             >
             <div class="col-sm-6">
               <input
@@ -33,20 +26,13 @@
 
           <div class="form-group row mb-1">
             <label for="video" class="col-sm-2 col-form-label">Video</label>
-            <div class="col-sm-6">
-              <input
-                type="text"
-                class="form-control"
-                required
-                name="video"
-                [(ngModel)]="challenge.video"
-              />
-            </div>
-          </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" required name="video" [(ngModel)]="challenge.video" />
+                        </div>
+                    </div>
 
-          <div class="form-group row mb-1">
-            <label for="dificultad" class="col-sm-2 col-form-label"
-              >Dificultad</label
+                    <div class="form-group row mb-1">
+                        <label for="dificultad" class="col-sm-2 col-form-label">Dificultad</label
             >
             <div class="col-sm-6">
               <input
@@ -65,8 +51,12 @@
             >
             <div class="col-sm-6">
               <input
-                type="date"
+              type="date" name="begin" 
+              value="challengeId.fechaInicio"
+                
                 name="fechaInicio"
+                [(ngModel)]="challenge.fechaInicio"
+
               />
             </div>
           </div>
@@ -79,6 +69,9 @@
               <input
                 type="date"
                 name="fechaFin"
+                value="challengeId.fechaFin"
+                [(ngModel)]="challenge.fechaFin"
+
               />
             </div>
           </div>
@@ -88,6 +81,7 @@
               class="btn btn-primary"
               role="button"
               *ngIf="!(id != undefined); else elseBlock"
+              (click)="crearChallenge()"
             >
               Crear
             </button>
