@@ -27,6 +27,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ComentarioComponent } from './components/comentario/comentario.component';
+import {OverlayModule} from '@angular/cdk/overlay'; 
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { ComentarioComponent } from './components/comentario/comentario.componen
     MatProgressBarModule,
     HttpClientModule,
     MatDialogModule,
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent],
