@@ -6,8 +6,6 @@ import { InscripcionChallenge } from 'src/app/models/inscripcion-challenge';
 import { ChallengeService } from 'src/app/services/challenge.service';
 import { InscripcionchallengeService } from 'src/app/services/inscripcionchallenge.service';
 import swal from 'sweetalert2';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { EntregasComponent } from '../../entregas/entregas.component';
 import { EntregaReto } from 'src/app/models/entrega';
 
 @Component({
@@ -50,8 +48,7 @@ export class LookChallengeComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private challengeService: ChallengeService,
-    private inscripcionService: InscripcionchallengeService,
-    public dialog: MatDialog
+    private inscripcionService: InscripcionchallengeService
   ) {}
 
   ngOnInit(): void {

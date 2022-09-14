@@ -7,18 +7,7 @@
   <div>
     <h3 class="font-weight-bold text-center title">{{ titulo }}</h3>
   </div>
-  <div
-    class="col"
-    *ngFor="
-      let e of comentarios
-        | paginate
-          : {
-              itemsPerPage: tableSize,
-              currentPage: page,
-              totalItems: count
-            }
-    "
-  >
+  <div class="col" *ngFor="let e of comentarios">
     <div>
       <mat-card>
         <mat-card-header>
@@ -38,13 +27,5 @@
         <mat-divider inset></mat-divider>
       </mat-card>
     </div>
-  </div>
-  <div class=" ">
-    <pagination-controls
-      previousLabel="Prev "
-      nextLabel="Next "
-      (pageChange)="onTableDataChange($event)"
-    >
-    </pagination-controls>
   </div>
 </div>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Comentario } from 'src/app/models/comentario';
 import { Publicacion } from 'src/app/models/publicacion';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ComentarioComponent } from '../comentario/comentario.component';
 
 @Component({
   selector: 'app-foro',
@@ -9,10 +8,34 @@ import { ComentarioComponent } from '../comentario/comentario.component';
   styleUrls: ['./foro.component.css'],
 })
 export class ForoComponent implements OnInit {
+  public clickComentario: Boolean = false;
   page = 1;
   count = 0;
   tableSize = 6;
   tableSizes = [3, 6, 9, 12];
+
+  public comentarios: Comentario[] = [
+    {
+      id: 1,
+      contenido:
+        'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
+      idUsuario: 1,
+      idPadre: 1,
+      idPubliacion: 1,
+      idReto: 1,
+      fecha: '21/09/2022',
+    },
+    {
+      id: 2,
+      contenido:
+        'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
+      idUsuario: 1,
+      idPadre: 1,
+      idPubliacion: 1,
+      idReto: 1,
+      fecha: '21/09/2022',
+    },
+  ];
 
   public publicaciones: Publicacion[] = [
     {
@@ -33,21 +56,15 @@ export class ForoComponent implements OnInit {
     },
   ];
   constructor(
-    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {}
 
-  openDialog() {
-    const dialogConfig = new MatDialogConfig();
-
-        dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-        
-    const dialogRef = this.dialog.open(ComentarioComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+  public openDialog(): void {
+    this.clickComentario = true;
+  }
+  public closeDialog(): void {
+    this.clickComentario = false;
   }
 
   onTableDataChange(event: number) {

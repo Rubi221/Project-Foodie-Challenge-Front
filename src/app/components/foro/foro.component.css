@@ -1,9 +1,11 @@
 .container {
-  max-width: 70%;
   border-radius: 15px;
   background-color: whitesmoke;
   padding: 1%;
   margin-top: 8% !important;
+  min-height: max-content;
+  max-width: 60%;
+  position: relative !important;
 }
 .header-image {
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
@@ -14,7 +16,6 @@
   align-self: center !important;
 }
 
-/* active tab */
 ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
   color: red;
   background-color: rgba(211, 208, 20, 0.418);
@@ -22,10 +23,9 @@
 }
 
 ::ng-deep .mat-tab-label-content {
-    color: red;
-  }
+  color: red;
+}
 
-/* ink bar */
 ::ng-deep .mat-ink-bar {
   background-color: red !important;
 }
@@ -35,6 +35,38 @@
   border-radius: 15px;
 }
 
-::ng-deep .mat-divider.mat-divider-inset{
+::ng-deep .mat-divider.mat-divider-inset {
   margin: 1% !important;
+}
+.closeBtn {
+  background-color: transparent;
+  border-style: hidden;
+  color: red;
+}
+.close {
+  padding-left: 90%;
+  padding-right: 5%;
+  display: flex;
+}
+.title {
+  color: red;
+}
+::ng-deep .ngx-pagination .current {
+  background: red !important;
+  border-radius: 15px;
+}
+::ng-deep .mat-divider.mat-divider-inset {
+  margin: 1% !important;
+}
+.container-entrega {
+  position: absolute !important;
+  left: 5%;
+  top: 0%;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 15px;
+  background-color: white;
+  padding: 1%;
+  margin-top: 8% !important;
+  overflow: scroll;
 }
