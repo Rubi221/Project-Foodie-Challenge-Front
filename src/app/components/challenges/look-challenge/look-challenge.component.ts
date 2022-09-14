@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Challenge } from 'src/app/models/challenge';
 import { ChallengeInscrito } from 'src/app/models/challenge-inscrito';
+import { InscripcionChallenge } from 'src/app/models/inscripcion-challenge';
 import { ChallengeService } from 'src/app/services/challenge.service';
+import { InscripcionchallengeService } from 'src/app/services/inscripcionchallenge.service';
 import swal from 'sweetalert2';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EntregasComponent } from '../../entregas/entregas.component';
@@ -16,13 +18,14 @@ export class LookChallengeComponent implements OnInit {
   challenge: ChallengeInscrito = new ChallengeInscrito();
   public madeChef!: Boolean;
   public esChef!: Boolean;
+  public inscripcion!: InscripcionChallenge
 
   id: string = '';
   fechaInicio: String = '21/09/2022';
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private challengeService: ChallengeService,
+    private challengeService: ChallengeService, private inscripcionService: InscripcionchallengeService,
     public dialog: MatDialog
   ) {}
 
@@ -66,11 +69,21 @@ export class LookChallengeComponent implements OnInit {
       .then((result) => {
         //LLAMAR AL SERVICIO ESE
         if (result.isConfirmed) {
-          swal.fire(
-            'Excelente!',
-            'Tu inscripcion ha sido satisfactoria.',
-            'success'
-          );
+
+          this.inscripcionService.createInscripcion(parseInt(this.id), parseInt(sessionStorage.getItem('idUsuario')!)).subscribe(response => {
+            this.inscripcion = response;
+            if(this.inscripcion.idReto === parseInt(this.id)){
+
+              swal.fire(
+                'Excelente!',
+                'Tu inscripcion ha sido satisfactoria.',
+                'success'
+              );
+
+              window.location.reload();
+            }
+          })
+
         }
       });
   }
