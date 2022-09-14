@@ -4,6 +4,8 @@ import { Challenge } from 'src/app/models/challenge';
 import { ChallengeInscrito } from 'src/app/models/challenge-inscrito';
 import { ChallengeService } from 'src/app/services/challenge.service';
 import swal from 'sweetalert2';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { EntregasComponent } from '../../entregas/entregas.component';
 
 @Component({
   selector: 'app-look-challenge',
@@ -18,31 +20,36 @@ export class LookChallengeComponent implements OnInit {
   id: string = '';
   fechaInicio: String = '21/09/2022';
 
-  constructor(private activatedRoute: ActivatedRoute, private challengeService: ChallengeService) {
-  }
-
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private challengeService: ChallengeService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.id = params['id'];
       if (this.id) {
-        this.challengeService.getChallengeById(parseInt(this.id), parseInt(sessionStorage.getItem('idUsuario')!)).subscribe(response => {
-          this.challenge = response;
+        this.challengeService
+          .getChallengeById(
+            parseInt(this.id),
+            parseInt(sessionStorage.getItem('idUsuario')!)
+          )
+          .subscribe((response) => {
+            this.challenge = response;
 
-          this.validaChef()
+            this.validaChef();
 
-          console.log(this.challenge)
+            console.log(this.challenge);
 
-          console.log(this.challenge.idUsuario);
+            console.log(this.challenge.idUsuario);
 
-          if (parseInt(sessionStorage.getItem('tipo')!) === 1) {
-            this.esChef = true;
-          }
-        });
+            if (parseInt(sessionStorage.getItem('tipo')!) === 1) {
+              this.esChef = true;
+            }
+          });
       }
     });
-
-    
   }
 
   public inscribeReto(): void {
@@ -91,14 +98,16 @@ export class LookChallengeComponent implements OnInit {
   }
 
   public validaChef(): void {
-    console.log(this.challenge)
+    console.log(this.challenge);
 
     console.log(this.challenge.idUsuario);
     console.log(parseInt(sessionStorage.getItem('idUsuario')!));
 
-
     if (parseInt(sessionStorage.getItem('tipo')!) === 1) {
-      if (this.challenge.idUsuario === parseInt(sessionStorage.getItem('idUsuario')!)) {
+      if (
+        this.challenge.idUsuario ===
+        parseInt(sessionStorage.getItem('idUsuario')!)
+      ) {
         this.madeChef = true;
       } else {
         this.madeChef = false;
@@ -106,5 +115,17 @@ export class LookChallengeComponent implements OnInit {
     } else {
       this.madeChef = false;
     }
+  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    const dialogRef = this.dialog.open(EntregasComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

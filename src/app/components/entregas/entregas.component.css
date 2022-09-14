@@ -1,0 +1,25 @@
+.container {
+  max-width: 70%;
+  border-radius: 15px;
+  background-color: whitesmoke;
+  padding: 1%;
+  margin-top: 8% !important;
+}
+.header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+.mat-card-header{
+  margin: 2% !important;
+}
+.btnC {
+margin: 5px;
+display: flex;
+}
+.title {
+  color: red;
+}
+
+.checked {
+  color: orange;
+}
