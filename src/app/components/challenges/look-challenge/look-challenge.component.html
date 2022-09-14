@@ -10,13 +10,13 @@
                     <p class="content">{{ challenge.contenido }}</p>
                 </div>
 
-                <div>
+                <div *ngIf="!challenge.inscrito && !esChef">
                     <button (click)="inscribeReto()" class="btn btn-danger btnC">
             <mat-icon>playlist_add</mat-icon>INSCRIBIRSE
           </button>
                 </div>
 
-                <div>
+                <div *ngIf="challenge.inscrito && !esChef">
                     <button (click)="realizarEntrega()" class="btn btn-danger btnC">
             <mat-icon>playlist_add</mat-icon>REALIZAR ENTREGA
           </button>

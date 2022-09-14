@@ -12,25 +12,37 @@ import swal from 'sweetalert2';
 })
 export class LookChallengeComponent implements OnInit {
   challenge: ChallengeInscrito = new ChallengeInscrito();
-  public madeChef: Boolean;
+  public madeChef!: Boolean;
+  public esChef!: Boolean;
+
   id: string = '';
   fechaInicio: String = '21/09/2022';
 
   constructor(private activatedRoute: ActivatedRoute, private challengeService: ChallengeService) {
-    this.challenge.titulo = 'Reto #';
-    this.challenge.contenido =
-      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi amet consequuntur tempora deleniti iure libero in quidem labore voluptatibus esse. Architecto, ducimus? Voluptatibus aliquid incidunt provident vitae atque numquam nobis! ';
-    this.madeChef = true;
   }
+
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.id = params['id'];
-      if (this.id) { 
-        this.challengeService.getChallengeById(parseInt(this.id), parseInt(sessionStorage.getItem('idUsuario')!)).subscribe(response =>{
-        this.challenge = response;
-      });
-    }});
+      if (this.id) {
+        this.challengeService.getChallengeById(parseInt(this.id), parseInt(sessionStorage.getItem('idUsuario')!)).subscribe(response => {
+          this.challenge = response;
+
+          this.validaChef()
+
+          console.log(this.challenge)
+
+          console.log(this.challenge.idUsuario);
+
+          if (parseInt(sessionStorage.getItem('tipo')!) === 1) {
+            this.esChef = true;
+          }
+        });
+      }
+    });
+
+    
   }
 
   public inscribeReto(): void {
@@ -76,5 +88,23 @@ export class LookChallengeComponent implements OnInit {
           );
         }
       });
+  }
+
+  public validaChef(): void {
+    console.log(this.challenge)
+
+    console.log(this.challenge.idUsuario);
+    console.log(parseInt(sessionStorage.getItem('idUsuario')!));
+
+
+    if (parseInt(sessionStorage.getItem('tipo')!) === 1) {
+      if (this.challenge.idUsuario === parseInt(sessionStorage.getItem('idUsuario')!)) {
+        this.madeChef = true;
+      } else {
+        this.madeChef = false;
+      }
+    } else {
+      this.madeChef = false;
+    }
   }
 }
