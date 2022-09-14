@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Challenge } from '../models/challenge';
 import { ChallengeInscrito } from '../models/challenge-inscrito';
+import { CreateChallenge } from '../models/create-challenge';
 import { User } from '../models/user';
 
 @Injectable({
@@ -27,6 +28,12 @@ export class ChallengeService {
     params = params.append('idUsuario', idUsuario);
 
     return this.http.get<ChallengeInscrito>(this.url+'/inscrito',{headers:this.httpHeaders, params:params});
+
+  }
+
+  createChallenge(challenge: CreateChallenge):Observable<Challenge>{
+    
+    return this.http.post<Challenge>(this.url,challenge,{headers:this.httpHeaders});
 
   }
 

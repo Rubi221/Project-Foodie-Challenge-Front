@@ -1,57 +1,68 @@
 <div class="container">
-  <div class="">
-    <div class="col">
-      <div ass="card h-100">
-        <div>
-          <h1 class="font-weight-bold text-center title">
-            {{ challenge.titulo }}
-          </h1>
-        </div>
-        <img
-          src="http://placeimg.com/400/200/animals"
-          alt=""
-          class="card-img-top"
-        />
-        <div>
-          <p class="content">{{ challenge.contenido }}</p>
-        </div>
+    <div class="">
+        <div class="col">
+            <div ass="card h-100">
+                <div>
+                    <h1 class="font-weight-bold text-center title">
+                        {{ challenge.titulo }}
+                    </h1>
+                </div>
+                <img src="http://placeimg.com/400/200/animals" alt="" class="card-img-top" />
+                <div>
+                    <p class="content">{{ challenge.contenido }}</p>
+                </div>
 
-        <div *ngIf="!challenge.inscrito && !esChef">
-          <button (click)="inscribeReto()" class="btn btn-danger btnC">
+                <div *ngIf="!challenge.inscrito && !esChef">
+                    <button (click)="inscribeReto()" class="btn btn-danger btnC">
             <mat-icon>playlist_add</mat-icon>INSCRIBIRSE
           </button>
-        </div>
+                </div>
 
-        <div *ngIf="challenge.inscrito && !esChef">
-          <button (click)="realizarEntrega()" class="btn btn-danger btnC">
+                <div *ngIf="challenge.inscrito && !esChef">
+                    <button (click)="realizarEntrega()" class="btn btn-danger btnC">
             <mat-icon>playlist_add</mat-icon>REALIZAR ENTREGA
           </button>
-        </div>
+                </div>
 
-        <div>
-          <button
-            mat-raised-button
-            (click)="openDialog()"
-            class="btn btn-danger btnC"
-            mat-button
-          >
+                <div>
+                    <button mat-raised-button (click)="openDialog()" class="btn btn-danger btnC" mat-button>
             <mat-icon>visibility</mat-icon>VER ENTREGAS
           </button>
-        </div>
+                </div>
 
-        <div *ngIf="madeChef">
-          <button [routerLink]="['../update/', id]" class="btn btn-danger btnC">
+                <div *ngIf="madeChef">
+                    <button [routerLink]="['../update/', id]" class="btn btn-danger btnC">
             <mat-icon>create</mat-icon>EDITAR
           </button>
-          <button class="btn btn-danger btnC">
+                    <button class="btn btn-danger btnC">
             <mat-icon>delete</mat-icon>BORRAR
           </button>
-        </div>
+                </div>
 
-        <div class="card-footer">
-          <small class="text-muted">Publicado: {{ fechaInicio }}</small>
+                <div class="card-footer">
+                    <small class="text-muted">Publicado: {{ fechaInicio }}</small>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+
+    <div *ngIf="clickEntrega">
+        <div class="container-entrega">
+            <h1>
+                ENTREGA ENTREGABLE
+            </h1>
+            <h2>
+                Agrega el link de tu ENTREGA
+            </h2>
+            <input type="text" name="" id="">
+
+            <button (click)="enviaEntrega()">
+              ENTREGAR
+            </button>
+            <button (click)="cancelaEntrega()">
+              CANCELAR
+            </button>
+        </div>
+    </div>
+
 </div>
