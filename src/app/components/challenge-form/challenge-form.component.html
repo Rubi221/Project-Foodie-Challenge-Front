@@ -4,104 +4,102 @@
       <div class="card-body">
         <form>
           <div class="form-group row mb-1">
-            <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+            <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>
             <div class="col-sm-6">
               <input
                 type="text"
                 class="form-control"
                 required
-                name="name"
+                name="titulo"
                 [(ngModel)]="challenge.titulo"
               />
             </div>
           </div>
-          <!-- 
-                <div class="form-group row mb-1">
-                    <label for="primerApellido" class="col-sm-2 col-form-label">Descripcion</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="Descripcion" id="" [(ngModel)]="articulo.description">
-                    </div>
-                </div>
 
-                <div class="form-group row mb-1">
-                    <label for="segundoApellido" class="col-sm-2 col-form-label">Url Imagen</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="imagen" id="" [(ngModel)]="articulo.imagen">
-                    </div>
-                </div>
+          <div class="form-group row mb-1">
+            <label for="contenido" class="col-sm-2 col-form-label"
+              >Contenido</label
+            >
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                required
+                name="contenido"
+                [(ngModel)]="challenge.contenido"
+              />
+            </div>
+          </div>
 
-                <div class="form-group row mb-1">
-                    <label for="documento" class="col-sm-2 col-form-label">Precio</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="Precio" id="" [(ngModel)]="articulo.precio">
-                    </div>
-                </div>
+          <div class="form-group row mb-1">
+            <label for="video" class="col-sm-2 col-form-label"
+              >Video</label
+            >
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                required
+                name="video"
+                [(ngModel)]="challenge.video"
+              />
+            </div>
+          </div>
 
-                <div class="form-group row mb-1">
-                    <label for="documento" class="col-sm-2 col-form-label">Cantidad</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="Cantidad" id="" [(ngModel)]="articulo.cantidad">
-                    </div>
-                </div>
+          <div class="form-group row mb-1">
+            <label for="dificultad" class="col-sm-2 col-form-label"
+              >Dificultad</label
+            >
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                required
+                name="dificultad"
+                [(ngModel)]="challenge.dificultad"
+              />
+            </div>
+          </div>
 
-                <div class="form-group row mb-1">
-                    <label for="documento" class="col-sm-2 col-form-label">Costo Envio</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="CostoEnvio" id="" [(ngModel)]="articulo.costoEnvio">
-                    </div>
-                </div>
+          <div class="form-group row mb-1">
+            <label for="fechaInicio" class="col-sm-2 col-form-label"
+              >Fecha Inicio</label
+            >
+            <div class="col-sm-6">
+              <input
+              type="text"
+              class="form-control"
+              required
+              name="fechaInicio"
+              [matDatepicker]="dp1"
+              [(ngModel)]="challenge.fechaInicio"
+              />
+              <mat-datepicker-toggle matSuffix [for]="dp1">
+              </mat-datepicker-toggle>
+              <mat-datepicker #dp1></mat-datepicker>
+            </div>
+          </div>
 
-                <div class="form-group d-flex  mb-1">
-                    <label for="documento" class="col-sm-2 col-form-label">Disponible Fisico</label>
+          <div class="form-group row mb-1">
+            <label for="fechaFin" class="col-sm-2 col-form-label"
+              >Fecha Fin</label
+            >
+            <div class="col-sm-6">
+              <input
+              type="text"
+              class="form-control"
+              required
+              name="fechaFin"
+              [matDatepicker]="dp2"
+              [(ngModel)]="challenge.fechaFin"
+              />
+              <mat-datepicker-toggle matSuffix [for]="dp2">
+              </mat-datepicker-toggle>
+              <mat-datepicker #dp2></mat-datepicker>
+            </div>
+          </div>
 
-                    <div class="col-sm-6 d-flex justify-content-start ">
-                        <div class="radio " *ngFor="let option of options">
-                            <input type="radio" name="radio" id="radio-{{option.id}}" [(ngModel)]="articulo.disponibleFisico" [value]="option.value" />
-
-                            <label for="radio-{{option.id}}">{{ option.nombre}}
-                        </label>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group d-flex  mb-1">
-                    <label for="documento" class="col-sm-2 col-form-label">Disponible Virtual</label>
-
-                    <div class="col-sm-6 d-flex justify-content-start ">
-                        <div class="radio " *ngFor="let option of options">
-                            <input type="radio" name="DisponibleVirtual" id="radio-{{option.id}}" [(ngModel)]="articulo.disponibleVirtual" [value]="option.value" />
-
-                            <label for="radio-{{option.id}}">{{ option.nombre}}
-                        </label>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group row mb-1">
-                    <label for="ciudades" class="col-sm-2 col-form-label">Categoria</label>
-                    <div class="col-sm-6">
-
-                        <select id="DropdownOptions1" [(ngModel)]="articulo.idCategoria" [ngModelOptions]="{standalone: true}" required>
-                            <option *ngFor=" let opt of categorias" [value]="opt.id " >
-                                {{ opt.name }}
-                            </option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group row mb-1">
-                    <label for="fabricantes" class="col-sm-2 col-form-label">Fabricante</label>
-                    <div class="col-sm-6">
-
-                        <select id="DropdownOptions1" [(ngModel)]="articulo.idFabricante" [ngModelOptions]="{standalone: true}" required>
-                            <option *ngFor=" let opt of fabricantes" [value]="opt.id " >
-                                {{ opt.name }}
-                            </option>
-                        </select>
-                    </div>
-                </div> -->
+          
 
           <div>
             <button
