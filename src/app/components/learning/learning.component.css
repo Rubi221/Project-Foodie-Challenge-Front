@@ -1,8 +1,29 @@
 .container {
   max-width: 70%;
-  border: solid red;
   border-radius: 15px;
   background-color: whitesmoke;
   padding: 1%;
   margin-top: 8% !important;
+}
+.header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+.card{
+  border-color: red;
+  border-radius: 15px;
+  margin: 1% !important;
+}
+.btnC {
+  margin: 5px;
+  align-self: center !important;
+}
+
+::ng-deep .ngx-pagination .current {
+  background: red !important;
+  border-radius: 15px;
+}
+
+::ng-deep .mat-divider.mat-divider-inset {
+  margin: 1% !important;
 }
