@@ -6,6 +6,7 @@
   min-height: max-content;
   max-width: 60%;
   position: relative !important;
+  z-index: auto !important;
 }
 .header-image {
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
@@ -65,8 +66,9 @@
   max-width: 90%;
   max-height: 90%;
   border-radius: 15px;
-  background-color: white;
+  background-color: rgb(201, 201, 201);
   padding: 1%;
   margin-top: 8% !important;
   overflow: scroll;
+  z-index: 1 !important;
 }

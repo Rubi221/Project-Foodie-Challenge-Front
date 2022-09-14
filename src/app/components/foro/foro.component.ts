@@ -64,6 +64,7 @@ export class ForoComponent implements OnInit {
     this.clickComentario = true;
   }
   public closeDialog(): void {
+    console.log(234)
     this.clickComentario = false;
   }
 
