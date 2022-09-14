@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit {
       return false;
     }else if (this.actualCredentials.username === userInfo.username && this.actualCredentials.contrasena === userInfo.contrasena) {
       sessionStorage.setItem("username", this.actualCredentials.username)
+      sessionStorage.setItem("idUsuario", userInfo.id+"")
       sessionStorage.setItem('tipo',userInfo.idTipoUsuario+"")
       return true;
     } else {

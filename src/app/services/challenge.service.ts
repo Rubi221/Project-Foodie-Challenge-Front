@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Challenge } from '../models/challenge';
+import { ChallengeInscrito } from '../models/challenge-inscrito';
 import { User } from '../models/user';
 
 @Injectable({
@@ -17,6 +18,16 @@ export class ChallengeService {
 
   getOpenChallenges(): Observable<Challenge[]> {
     return this.http.get<Challenge[]>(this.url+'/abiertos', {headers:this.httpHeaders});
+  }
+
+  getChallengeById(idReto: number, idUsuario: number):Observable<ChallengeInscrito>{
+    
+    let params = new HttpParams();
+    params = params.append('idReto', idReto);
+    params = params.append('idUsuario', idUsuario);
+
+    return this.http.get<ChallengeInscrito>(this.url+'/inscrito',{headers:this.httpHeaders, params:params});
+
   }
 
 }
