@@ -15,7 +15,6 @@ export class LookChallengeComponent implements OnInit {
   fechaInicio: String = '21/09/2022';
 
   constructor(private activatedRoute: ActivatedRoute) {
-    this.challenge.inscrito = false;
     this.challenge.titulo = 'Reto #';
     this.challenge.contenido =
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi amet consequuntur tempora deleniti iure libero in quidem labore voluptatibus esse. Architecto, ducimus? Voluptatibus aliquid incidunt provident vitae atque numquam nobis! ';

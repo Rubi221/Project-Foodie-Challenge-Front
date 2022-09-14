@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Challenge } from 'src/app/models/challenge';
+import { ChallengeService } from 'src/app/services/challenge.service';
 
 @Component({
   selector: 'app-challenges',
@@ -12,117 +13,16 @@ export class ChallengesComponent implements OnInit {
   tableSize = 6;
   tableSizes = [3, 6, 9, 12];
 
-  public challenges: Challenge[] = [
-    {
-      id: 1,
-      titulo: 'reto 1',
-      contenido: 'reto contenido',
-      resumen: 'RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN',
-      dificultad: 1,
-      video: '',
-      idChef: 1,
-      nombreChef: 'chef1',
-      idCategoria: 1,
-      nombreCategoria: 'categoria1',
-      fechaInicio: '21/09/2022',
-      fechaFin: '',
-      inscrito: true,
-    },
-    {
-      id: 2,
-      titulo: 'reto 1',
-      contenido: 'reto contenido',
-      resumen: 'RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN',
-      dificultad: 1,
-      video: '',
-      idChef: 1,
-      nombreChef: 'chef1',
-      idCategoria: 1,
-      nombreCategoria: 'categoria1',
-      fechaInicio: '',
-      fechaFin: '',
-      inscrito: true,
-    },
-    {
-      id: 3,
-      titulo: 'reto 3',
-      contenido: 'reto contenido',
-      resumen: 'RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN',
-      dificultad: 1,
-      video: '',
-      idChef: 1,
-      nombreChef: 'chef1',
-      idCategoria: 1,
-      nombreCategoria: 'categoria1',
-      fechaInicio: '',
-      fechaFin: '',
-      inscrito: true,
-    },
-    {
-      id: 4,
-      titulo: 'reto 4',
-      contenido: 'reto contenido',
-      resumen: 'RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN',
-      dificultad: 1,
-      video: '',
-      idChef: 1,
-      nombreChef: 'chef1',
-      idCategoria: 1,
-      nombreCategoria: 'categoria1',
-      fechaInicio: '',
-      fechaFin: '',
-      inscrito: false,
-    },
-    {
-      id: 5,
-      titulo: 'reto 5',
-      contenido: 'reto contenido',
-      resumen: 'RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN',
-      dificultad: 1,
-      video: '',
-      idChef: 1,
-      nombreChef: 'chef1',
-      idCategoria: 1,
-      nombreCategoria: 'categoria1',
-      fechaInicio: '',
-      fechaFin: '',
-      inscrito: false,
-    },
-    {
-      id: 6,
-      titulo: 'reto 6',
-      contenido: 'reto contenido',
-      resumen: 'RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN',
-      dificultad: 1,
-      video: '',
-      idChef: 1,
-      nombreChef: 'chef1',
-      idCategoria: 1,
-      nombreCategoria: 'categoria1',
-      fechaInicio: '',
-      fechaFin: '',
-      inscrito: false,
-    },
-    {
-      id: 7,
-      titulo: 'reto 7',
-      contenido: 'reto contenido',
-      resumen: 'RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN RESUMEN',
-      dificultad: 1,
-      video: '',
-      idChef: 1,
-      nombreChef: 'chef1',
-      idCategoria: 1,
-      nombreCategoria: 'categoria1',
-      fechaInicio: '',
-      fechaFin: '',
-      inscrito: false,
-    },
-  ];
+  public challenges: Challenge[] = [];
 
-  constructor() {}
+  constructor(private challengeService: ChallengeService) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.challengeService.getOpenChallenges().subscribe(response=>{
+      this.challenges = response;
+    })
+  }
 
   onTableDataChange(event: number) {
     this.page = event;
@@ -134,7 +34,7 @@ export class ChallengesComponent implements OnInit {
   }
 
   checkUser(): boolean {
-    if (sessionStorage.getItem('tipo') == '1') {
+    if (sessionStorage.getItem('tipo') === '1') {
       return true;
     } else {
       return false;

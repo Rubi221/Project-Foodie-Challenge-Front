@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert2'
 import { UserCredentials } from 'src/app/models/user-credentials';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +14,12 @@ export class LoginComponent implements OnInit {
 
   title = 'Inicia Sesion';
   isLogin: Boolean = false;
-  // constructor(private router: Router, private usuarioService:UsuarioService) { }
 
-    // constructor(private router: Router, private usuarioService:UsuarioService) { }
-  actualCredentials: UserCredentials = new UserCredentials('','',1);
+  actualCredentials: User = new User();
 
-  constructor(private router: Router){}
+  private user: User = new User();
+
+  constructor(private router: Router, private userService: UserService){}
 
   ngOnInit(): void {
     if(sessionStorage.getItem('tipo')){
@@ -27,29 +29,32 @@ export class LoginComponent implements OnInit {
 
   public login(): void {
 
-    //aqui agregar logica de logeo
-    if (this.validate()) {
-      swal.fire('Bienvenido', "", 'success');
-      setTimeout(() => {
-        this.router.navigate(['home/challenges']);
-      },
-      1000);
-    } else {
-      swal.fire('Credenciales invalidas', "", 'error');
+    this.userService.validateUser(this.actualCredentials).subscribe(response=>{
+      this.user=response
+      if (this.validate(this.user)) {
+        swal.fire('Bienvenido', "", 'success');
+        setTimeout(() => {
+          this.router.navigate(['home/challenges']);
+        },
+        1000);
+      } else {
+        swal.fire('Credenciales invalidas', "", 'error');
+      }
+    });
 
-    }
+    
   }
 
-  private validate(): Boolean {
-    
-    // if (this.actualCredentials.username === this.usuarioService.credentials.username && this.actualCredentials.password === this.usuarioService.credentials.password) {
-    if (this.actualCredentials.username === 'admin' && this.actualCredentials.password === 'admin') {
+  private validate(userInfo : User): Boolean {
+
+    console.log(this.actualCredentials.username)
+    console.log(userInfo)
+
+    if(userInfo === null){
+      return false;
+    }else if (this.actualCredentials.username === userInfo.username && this.actualCredentials.contrasena === userInfo.contrasena) {
       sessionStorage.setItem("username", this.actualCredentials.username)
-      sessionStorage.setItem('tipo',"1")
-      return true;
-    } else if(this.actualCredentials.username === 'user' && this.actualCredentials.password === 'user'){
-      sessionStorage.setItem("username", this.actualCredentials.username)
-      sessionStorage.setItem('tipo',"2")
+      sessionStorage.setItem('tipo',userInfo.idTipoUsuario+"")
       return true;
     } else {
       return false;

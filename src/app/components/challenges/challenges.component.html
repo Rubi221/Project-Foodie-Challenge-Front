@@ -1,97 +1,72 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
-  <div>
-    <h1 class="font-weight-bold text-center title">Retos</h1>
-  </div>
-  <div>
-    <button
-      class="btn btn-success btnC"
-      *ngIf="checkUser()"
-      [routerLink]="['create']"
-    >
+    <div>
+        <h1 class="font-weight-bold text-center title">Retos</h1>
+    </div>
+    <div>
+        <button class="btn btn-success btnC" *ngIf="checkUser()" [routerLink]="['create']">
       <mat-icon>queue</mat-icon>
       Crear Reto
     </button>
-  </div>
+    </div>
 
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div
-      class="col"
-      *ngFor="
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" *ngFor="
         let e of challenges
           | paginate
             : { itemsPerPage: tableSize, currentPage: page, totalItems: count }
-      "
-    >
-      <div>
-        <mat-card
-          [ngStyle]="
-            e.inscrito
-              ? { 'box-shadow': '20px 15px 50px rgba(60, 179, 113, 0.7)' }
-              : { 'box-shadow': '10px 10px 30px rgba(0, 0, 0, 0.5)' }
-          "
-        >
-          <a [routerLink]="[e.id]">
-            <mat-card-header>
-              <div mat-card-avatar class="header-image"></div>
-              <mat-card-title>{{ e.titulo }}</mat-card-title>
-              <mat-card-subtitle>{{ e.nombreChef }}</mat-card-subtitle>
-            </mat-card-header>
-            <img
-              src="http://placeimg.com/400/200/animals"
-              alt=""
-              class="card-img-top"
-            />
-            <mat-card-content>
-              <p>{{ e.contenido }}</p>
-              <small class="text-muted">Publicado:{{ e.fechaInicio }}</small>
-            </mat-card-content>
-            <mat-card-actions>
-              <button class="btn btn-danger btnC" mat-button>
+      ">
+            <div>
+                <mat-card [ngStyle]="">
+                    <a [routerLink]=" [e.id] ">
+                        <mat-card-header>
+                            <div mat-card-avatar class="header-image "></div>
+                            <mat-card-title>{{ e.titulo }}</mat-card-title>
+                            <mat-card-subtitle></mat-card-subtitle>
+                        </mat-card-header>
+                        <img src="http://placeimg.com/400/200/animals " alt=" " class="card-img-top " />
+                        <mat-card-content>
+                            <p>{{ e.contenido }}</p>
+                            <small class="text-muted ">Publicado:{{ e.fechaInicio }}</small>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button class="btn btn-danger btnC " mat-button>
                 <mat-icon>thumb_up</mat-icon>Like
               </button>
-            </mat-card-actions>
-          </a>
-        </mat-card>
+                        </mat-card-actions>
+                    </a>
+                </mat-card>
 
-        <!-- <div
-          class="card text-center h-100 retos"
-          [ngStyle]="
-            e.inscrito
-              ? { 'box-shadow': '20px 15px 50px rgba(60, 179, 113, 0.7)' }
-              : { 'box-shadow': '10px 10px 30px rgba(0, 0, 0, 0.5)' }
-          "
+                <!-- <div
+          class="card text-center h-100 retos "
+          [ngStyle]=" e.inscrito ? { 'box-shadow': '20px 15px 50px rgba(60, 179, 113, 0.7)' } : { 'box-shadow': '10px 10px 30px rgba(0, 0, 0, 0.5)' } "
         >
-          <a href="# " [routerLink]="[e.id]">
+          <a href="# " [routerLink]="[e.id] ">
             <img
-              src="http://placeimg.com/400/200/nature"
-              alt=""
-              class="card-img-top"
+              src="http://placeimg.com/400/200/nature "
+              alt=" "
+              class="card-img-top "
             />
-            <div class="card-body">
-              <h5 class="card-title">{{ e.titulo }}</h5>
-              <p class="card-text">{{ e.contenido }}</p>
+            <div class="card-body ">
+              <h5 class="card-title ">{{ e.titulo }}</h5>
+              <p class="card-text ">{{ e.contenido }}</p>
             </div>
-            <div class="card-footer">
-              <small class="text-muted">Publicado:{{ e.fechaInicio }}</small>
+            <div class="card-footer ">
+              <small class="text-muted ">Publicado:{{ e.fechaInicio }}</small>
             </div>
           </a>
         </div> -->
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div>
-    <button class="btn btn-light btnC">Crear Reto</button>
-  </div>
+    <div class="pag ">
+        <span></span>
+    </div>
 
-  <!--Including the pagination control.-->
-  <div class=" ">
-    <pagination-controls
-      previousLabel="Prev "
-      nextLabel="Next "
-      (pageChange)="onTableDataChange($event)"
-    >
-    </pagination-controls>
-  </div>
+    <!--Including the pagination control.-->
+    <div class=" ">
+        <pagination-controls previousLabel="Prev " nextLabel="Next " (pageChange)="onTableDataChange($event) ">
+        </pagination-controls>
+    </div>
 </div>

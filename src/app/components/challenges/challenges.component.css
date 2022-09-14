@@ -1,32 +1,42 @@
 .container {
-  border: solid red;
-  border-radius: 15px;
-  background-color: whitesmoke;
-  padding: 1%;
-  margin-top: 8% !important;
-  min-height: max-content;
-  max-width: 70%;
+    border: solid red;
+    border-radius: 15px;
+    background-color: whitesmoke;
+    padding: 1%;
+    margin-top: 8% !important;
+    min-height: max-content;
+    max-width: 70%;
 }
+
 .retos {
-  margin: 15px;
+    margin: 15px;
 }
+
 .header-image {
-  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-  background-size: cover;
+    background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+    background-size: cover;
 }
+
 .btnC {
-  margin: 5px;
-  display: flex;
+    margin: 5px;
+    display: flex;
 }
-a{
+
+a {
     text-decoration: none;
     color: black;
 }
+
 .title {
-  color: red;
+    color: red;
 }
 
 ::ng-deep .ngx-pagination .current {
-  background: red !important;
-  border-radius: 15px;
+    background: red !important;
+    border-radius: 15px;
+}
+
+.pag {
+    display: block;
+    padding-top: 2rem;
 }

@@ -24,6 +24,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ForoComponent } from './components/foro/foro.component';
 import {MatDividerModule} from '@angular/material/divider'; 
 import {MatProgressBarModule} from '@angular/material/progress-bar'; 
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatPaginatorModule,
     MatTabsModule,
     MatDividerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

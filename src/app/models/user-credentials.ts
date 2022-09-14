@@ -2,8 +2,7 @@ export class UserCredentials {
 
     constructor(
         public username: string,
-        public password: string,
-        public typeUser: number
+        public contrasena: string,
     ){}
 }
 

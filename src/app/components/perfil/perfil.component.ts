@@ -7,7 +7,7 @@ import { UserCredentials } from 'src/app/models/user-credentials';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
-  user: UserCredentials = new UserCredentials('','',1);
+  user: UserCredentials = new UserCredentials('','');
   nombre: String = "Rubi";
   constructor() { }
 
