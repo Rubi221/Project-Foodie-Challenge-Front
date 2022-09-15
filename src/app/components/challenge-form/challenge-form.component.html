@@ -34,12 +34,7 @@
                         </div>
 
                     </div>
-                    <div class="form-group row mb-1">
-                        <label for="dificultad" class="col-sm-2 col-form-label">Dificultad</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" required name="dificultad" />
-                        </div>
-                    </div>
+
 
                     <div class="form-group row mb-1">
                         <label for="fechaInicio" class="col-sm-2 col-form-label">Fecha Inicio</label>
@@ -65,12 +60,10 @@
               </select>
                         </div>
                     </div>
-
-
                     <div>
                         <button class="btn btn-succes" role="button" *ngIf="!(id != undefined); else elseBlock" (click)="crearChallenge()">
-              Crear
-            </button>
+                        Crear
+                      </button>
                         <ng-template #elseBlock>
                             <button class="btn btn-success" role="button">Editar</button>
                         </ng-template>
