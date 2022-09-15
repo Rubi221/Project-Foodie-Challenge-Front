@@ -1,13 +1,9 @@
-export class Comentario {
+export class CreateComentarioPubli {
 
-    public id!: number;
-    public idPadre!: number;
     public idUsuario!: number;
     public idPublicacion!: number;
-    public idReto!: number;
     public contenido!: String;
     public fecha!: String;
-    public nombreUsuario!: string;
 
     constructor(){
     }

@@ -5,6 +5,7 @@ export class EntregaReto {
     public calificacionFinal!: number;
     public video!: String;
     public AdjuntoImg!: String;
+    public nombreUsuario!: string;
 
     constructor(){
     }

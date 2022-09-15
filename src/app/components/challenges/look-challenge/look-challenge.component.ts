@@ -32,6 +32,9 @@ export class LookChallengeComponent implements OnInit {
   public esChef!: Boolean;
   public inscripcion!: InscripcionChallenge;
   public entregado!:boolean;
+  public categoria:string=""
+  public dificultad:string=""
+
 
   id: string = '';
   fechaInicio: String = '21/09/2022';
@@ -43,9 +46,14 @@ export class LookChallengeComponent implements OnInit {
     private entregaService: EntregasService,
     private detalleEntregaService: DetalleInscripcionService,
     private router: Router
-  ) { }
+  ) { 
+    
+
+  }
 
   ngOnInit(): void {
+
+    this.eligeCategoria()
 
     this.activatedRoute.params.subscribe((params) => {
       this.id = params['id'];
@@ -70,7 +78,28 @@ export class LookChallengeComponent implements OnInit {
               this.esChef = false;
             }
 
-            console.log(this.esChef)
+            
+    if(this.challenge.idCategoria===1){
+      this.categoria="Tradicional"
+    }else if(this.challenge.idCategoria===2){
+      this.categoria="Postres"
+    }else if(this.challenge.idCategoria===3){
+      this.categoria="Internacional"
+    }else if(this.challenge.idCategoria===4){
+      this.categoria="Brunch"
+    }else{
+      this.categoria="No indica"
+    }
+    if(this.challenge.dificultad===1){
+      this.dificultad="Facil"
+    }else if(this.challenge.dificultad===2){
+      this.dificultad="Intermedio"
+    }else if(this.challenge.dificultad===3){
+      this.dificultad="Experimentado"
+    }else{
+      this.dificultad="No indica"
+    }
+    
 
             if(this.challenge.idInscripcion!= null){
               this.detalleEntregaService.checkEntrega(this.challenge.idInscripcion).subscribe((response)=>{
@@ -92,9 +121,10 @@ export class LookChallengeComponent implements OnInit {
       }
     });
 
+  }
 
-
-
+  public eligeCategoria():void {
+    
   }
 
   public inscribeReto(): void {

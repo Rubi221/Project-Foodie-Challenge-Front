@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Publicacion } from '../models/publicacion';
@@ -15,8 +15,10 @@ export class PublicacionService {
 
   constructor(private http:HttpClient) { }
 
-  getOpenChallenges(): Observable<Publicacion[]> {
-    return this.http.get<Publicacion[]>(this.url, {headers:this.httpHeaders});
+  getOpenChallenges(idSeccion:number): Observable<Publicacion[]> {
+    let params = new HttpParams();
+    params = params.append('idSeccion', idSeccion);
+    return this.http.get<Publicacion[]>(this.url, {headers:this.httpHeaders, params:params});
   }
 
 }

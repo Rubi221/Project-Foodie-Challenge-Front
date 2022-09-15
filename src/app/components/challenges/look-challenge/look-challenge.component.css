@@ -1,40 +1,50 @@
 .container {
-  border-radius: 15px;
-  background-color: whitesmoke;
-  padding: 1%;
-  margin-top: 8% !important;
-  min-height: max-content;
-  max-width: 60%;
-  position: relative;
+    border-radius: 15px;
+    background-color: whitesmoke;
+    padding: 1%;
+    margin-top: 8% !important;
+    min-height: max-content;
+    max-width: 60%;
+    position: relative;
 }
+
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .title {
-  color: red;
+    color: red;
 }
+
 .header-image {
-  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-  background-size: cover;
+    background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+    background-size: cover;
 }
+
 .mat-card-header {
-  margin: 2% !important;
+    margin: 2% !important;
 }
+
 .btnC {
-  margin: 5px;
-  display: flex;
+    margin: 5px;
+    display: flex;
 }
+
 .btnT {
-  margin: 5px;
+    margin: 5px;
 }
+
 .checked {
-  color: orange;
+    color: orange;
 }
+
 .content {
-  text-align: justify !important;
+    margin-top: 1rem;
+    text-align: justify !important;
 }
+
 
 /* .container-cards {
   align-items: center;
@@ -43,9 +53,11 @@
   grid-auto-rows: 1fr;
   gap: 2rem;
 } */
+
 span {
-  display: block;
+    display: block;
 }
-.mat{
-  background-color: rgb(172, 172, 172);
+
+.mat {
+    background-color: rgb(172, 172, 172);
 }

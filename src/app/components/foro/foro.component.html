@@ -1,17 +1,15 @@
 <div class="container">
-  <div>
-    <mat-tab-group disableRipple mat-align-tabs="center">
-      <mat-tab label="SeccionForo1">
-        <div>
-          <button class="btn btn-success btnC" [routerLink]="['create']">
+    <div>
+        <mat-tab-group disableRipple mat-align-tabs="center">
+            <mat-tab label="SeccionForo1">
+                <div>
+                    <button class="btn btn-success btnC" [routerLink]="['create']">
             <mat-icon>queue</mat-icon>
             Crear Publicacion
           </button>
-        </div>
-        <mat-divider inset></mat-divider>
-        <div
-          class="col"
-          *ngFor="
+                </div>
+                <mat-divider inset></mat-divider>
+                <div class="col" *ngFor="
             let e of publicaciones
               | paginate
                 : {
@@ -19,97 +17,166 @@
                     currentPage: page,
                     totalItems: count
                   }
-          "
-        >
-          <div>
-            <mat-card>
-              <mat-card-header>
-                <div mat-card-avatar class="header-image"></div>
-                <mat-card-subtitle>nombre usuario</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <p>{{ e.contenido }}</p>
-                <small class="text-muted">Publicado:{{ e.fecha }}</small>
-              </mat-card-content>
+          ">
+                    <div>
+                        <mat-card>
+                            <mat-card-header>
+                                <div mat-card-avatar class="header-image"></div>
+                                <mat-card-subtitle>{{ e.nombreUsuario }}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>{{ e.contenido }}</p>
+                                <small class="text-muted">Publicado:{{ e.fecha }}</small>
+                            </mat-card-content>
 
-              <mat-card-actions>
-                <button class="btn btn-danger btnC" mat-button>
+                            <mat-card-actions>
+                                <button class="btn btn-danger btnC" mat-button>
                   <mat-icon>thumb_up</mat-icon>Like
                 </button>
-                <button
-                  type="button"
-                  class="btn btn-danger btnC"
-                  data-bs-toggle="modal"
-                  data-bs-target="#commentModal"
-                >
+                                <button type="button" class="btn btn-danger btnC" (click)="clickComentar(e.id)" data-bs-toggle="modal" data-bs-target="#commentModal">
                   <mat-icon>sms</mat-icon>Comentar
                 </button>
-              </mat-card-actions>
-              <mat-divider inset></mat-divider>
-            </mat-card>
-          </div>
-        </div>
-        <div class=" ">
-          <pagination-controls
-            previousLabel="Prev "
-            nextLabel="Next "
-            (pageChange)="onTableDataChange($event)"
-          >
-          </pagination-controls>
-        </div>
-      </mat-tab>
-      <mat-tab label="SeccionForo2">Content 2</mat-tab>
-      <mat-tab label="SeccionForo3">Content 3</mat-tab>
-    </mat-tab-group>
-  </div>
+                            </mat-card-actions>
+                            <mat-divider inset></mat-divider>
+                        </mat-card>
+                    </div>
+                </div>
+                <div class=" ">
+                    <pagination-controls previousLabel="Prev " nextLabel="Next " (pageChange)="onTableDataChange($event)">
+                    </pagination-controls>
+                </div>
+            </mat-tab>
+            <mat-tab label="SeccionForo2">Content 2
+                <div>
+                    <button class="btn btn-success btnC" [routerLink]="['create']">
+            <mat-icon>queue</mat-icon>
+            Crear Publicacion
+          </button>
+                </div>
+                <mat-divider inset></mat-divider>
+                <div class="col" *ngFor="
+            let e of publicaciones2
+              | paginate
+                : {
+                    itemsPerPage: tableSize,
+                    currentPage: page,
+                    totalItems: count
+                  }
+          ">
+                    <div>
+                        <mat-card>
+                            <mat-card-header>
+                                <div mat-card-avatar class="header-image"></div>
+                                <mat-card-subtitle>{{ e.nombreUsuario }}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>{{ e.contenido }}</p>
+                                <small class="text-muted">Publicado:{{ e.fecha }}</small>
+                            </mat-card-content>
+
+                            <mat-card-actions>
+                                <button class="btn btn-danger btnC" mat-button>
+                  <mat-icon>thumb_up</mat-icon>Like
+                </button>
+                                <button type="button" class="btn btn-danger btnC" (click)="clickComentar(e.id)" data-bs-toggle="modal" data-bs-target="#commentModal">
+                  <mat-icon>sms</mat-icon>Comentar
+                </button>
+                            </mat-card-actions>
+                            <mat-divider inset></mat-divider>
+                        </mat-card>
+                    </div>
+                </div>
+                <div class=" ">
+                    <pagination-controls previousLabel="Prev " nextLabel="Next " (pageChange)="onTableDataChange($event)">
+                    </pagination-controls>
+                </div>
+            </mat-tab>
+
+
+            <mat-tab label="SeccionForo3">Content 3
+                <div>
+                    <button class="btn btn-success btnC" [routerLink]="['create']">
+                  <mat-icon>queue</mat-icon>
+                  Crear Publicacion
+                </button>
+                </div>
+                <mat-divider inset></mat-divider>
+                <div class="col" *ngFor="
+                  let e of publicaciones3
+                    | paginate
+                      : {
+                          itemsPerPage: tableSize,
+                          currentPage: page,
+                          totalItems: count
+                        }
+                ">
+                    <div>
+                        <mat-card>
+                            <mat-card-header>
+                                <div mat-card-avatar class="header-image"></div>
+                                <mat-card-subtitle>{{ e.nombreUsuario }}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>{{ e.contenido }}</p>
+                                <small class="text-muted">Publicado:{{ e.fecha }}</small>
+                            </mat-card-content>
+
+                            <mat-card-actions>
+                                <button class="btn btn-danger btnC" mat-button>
+                        <mat-icon>thumb_up</mat-icon>Like
+                      </button>
+                                <button type="button" class="btn btn-danger btnC" (click)="clickComentar(e.id)" data-bs-toggle="modal" data-bs-target="#commentModal">
+                        <mat-icon>sms</mat-icon>Comentar
+                      </button>
+                            </mat-card-actions>
+                            <mat-divider inset></mat-divider>
+                        </mat-card>
+                    </div>
+                </div>
+                <div class=" ">
+                    <pagination-controls previousLabel="Prev " nextLabel="Next " (pageChange)="onTableDataChange($event)">
+                    </pagination-controls>
+                </div>
+            </mat-tab>
+
+        </mat-tab-group>
+    </div>
 </div>
 
-<div
-  class="modal fade"
-  id="commentModal"
-  tabindex="-1"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="font-weight-bold text-center title">Comentarios</h3>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <div class="col" *ngFor="let e of comentarios">
-          <div>
-            <mat-card>
-              <mat-card-header>
-                <div mat-card-avatar class="header-image"></div>
-                <mat-card-subtitle>nombre usuario</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <p>{{ e.contenido }}</p>
-                <small class="text-muted">Publicado:{{ e.fecha }}</small>
-              </mat-card-content>
+<div class="modal fade" id="commentModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="font-weight-bold text-center title">Comentarios</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col" *ngFor="let e of comentarios">
+                    <div>
+                        <mat-card>
+                            <mat-card-header>
+                                <div mat-card-avatar class="header-image"></div>
+                                <mat-card-subtitle>{{e.nombreUsuario}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>{{ e.contenido }}</p>
+                                <small class="text-muted">Publicado:{{ e.fecha }}</small>
+                            </mat-card-content>
 
-              <mat-card-actions>
-                <button class="btn btn-danger btnC" mat-button>
-                  <mat-icon>reply</mat-icon>Responder
-                </button>
-              </mat-card-actions>
-              <mat-divider inset></mat-divider>
-            </mat-card>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer input-group mb-3">
-        <input type="text" class="form-control" placeholder="comment" />
-        <button class="btn btn-danger btnS" type="button" id="button-addon2">
+                            <mat-card-actions>
+
+                            </mat-card-actions>
+                            <mat-divider inset></mat-divider>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer input-group mb-3">
+                <input type="text" class="form-control" placeholder="comment" [(ngModel)]="createComentario.contenido" />
+                <button class="btn btn-danger btnS" type="button" id="button-addon2" (click)="creaComentario()">
           <mat-icon>send</mat-icon>
         </button>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

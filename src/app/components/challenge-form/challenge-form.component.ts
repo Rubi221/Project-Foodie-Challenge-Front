@@ -49,7 +49,6 @@ export class ChallengeFormComponent implements OnInit {
   public crearChallenge(): void {
     this.fixDateFormat()
     this.challenge.idUsuario = parseInt(sessionStorage.getItem('idUsuario')!)
-    this.challenge.idCategoria = 1
     console.log(this.challenge)
     this.challengeService.createChallenge(this.challenge).subscribe((response) => {
       this.challenge = response;

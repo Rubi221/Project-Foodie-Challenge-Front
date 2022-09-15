@@ -15,20 +15,20 @@ export class EntregasComponent implements OnInit {
 
   public entregas: EntregaReto[] = [
 
-    {
-      id: 1,
-      idInscripcionReto: 1,
-      calificacionFinal: 3,
-      video:'',
-      AdjuntoImg: ''
-    },
-    {
-      id: 1,
-      idInscripcionReto: 1,
-      calificacionFinal: 5,
-      video:'',
-      AdjuntoImg: ''
-    },
+    // {
+    //   id: 1,
+    //   idInscripcionReto: 1,
+    //   calificacionFinal: 3,
+    //   video:'',
+    //   AdjuntoImg: ''
+    // },
+    // {
+    //   id: 1,
+    //   idInscripcionReto: 1,
+    //   calificacionFinal: 5,
+    //   video:'',
+    //   AdjuntoImg: ''
+    // },
   ];
 
   constructor() { }

@@ -14,26 +14,26 @@ export class ComentarioComponent implements OnInit {
   tableSizes = [3, 6, 9, 12];
 
   public comentarios: Comentario[] = [
-    {
-      id: 1,
-      contenido:
-        'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
-      idUsuario: 1,
-      idPadre: 1,
-      idPubliacion: 1,
-      idReto: 1,
-      fecha: '21/09/2022',
-    },
-    {
-      id: 2,
-      contenido:
-        'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
-      idUsuario: 1,
-      idPadre: 1,
-      idPubliacion: 1,
-      idReto: 1,
-      fecha: '21/09/2022',
-    },
+    // {
+    //   id: 1,
+    //   contenido:
+    //     'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
+    //   idUsuario: 1,
+    //   idPadre: 1,
+    //   idPubliacion: 1,
+    //   idReto: 1,
+    //   fecha: '21/09/2022',
+    // },
+    // {
+    //   id: 2,
+    //   contenido:
+    //     'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
+    //   idUsuario: 1,
+    //   idPadre: 1,
+    //   idPubliacion: 1,
+    //   idReto: 1,
+    //   fecha: '21/09/2022',
+    // },
   ];
 
   constructor() { }

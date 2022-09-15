@@ -8,6 +8,8 @@ export class Receta {
   public idTipoReceta!: number;
   public fecha!: String;
   public adjunto!: String;
+  public nombreUsuario!: String;
+  
 
   constructor() {
   }

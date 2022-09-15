@@ -12,6 +12,24 @@
                     <p class="content">{{ challenge.contenido }}</p>
                 </div>
 
+                <div>
+                    <p class="content">Categoria: {{categoria}}</p>
+                </div>
+
+                <div>
+                    <p class="content">Dificultad: {{dificultad}}</p>
+                </div>
+
+                <div>
+                    <p class="content">Video Explicativo del reto:</p>
+                    <!-- <iframe src="https://www.youtube.com/watch?v=BMdv3NMDXmY" frameborder="0"></iframe> -->
+                    <a href="{{challenge.video}}">Video!</a>
+                </div>
+
+                <div>
+                    <p class="content">Fecha final para la entrega: {{challenge.fechaFin}}</p>
+                </div>
+
                 <div *ngIf="!challenge.inscrito && !esChef">
                     <button (click)="inscribeReto()" class="btn btn-danger btnC">
             <mat-icon>playlist_add</mat-icon>INSCRIBIRSE
@@ -69,11 +87,11 @@
                             <mat-card class="mat">
                                 <mat-card-header>
                                     <div mat-card-avatar class="header-image"></div>
-                                    <mat-card-title>Usuario</mat-card-title>
+                                    <mat-card-title>{{e.nombreUsuario}}</mat-card-title>
                                     <mat-card-subtitle>Entrega</mat-card-subtitle>
                                 </mat-card-header>
                                 <mat-card-content>
-                                    <p>Video o</p>
+                                    <p><a href="e.video">Video de entrega</a></p>
                                     <img src="http://placeimg.com/400/200/animals " alt=" " class="card-img-top" />
                                     <p>Cailificacion: {{ e.calificacionFinal }}</p>
                                 </mat-card-content>

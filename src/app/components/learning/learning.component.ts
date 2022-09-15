@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Receta } from 'src/app/models/receta';
+import { LearningService } from 'src/app/services/learning.service';
 
 @Component({
   selector: 'app-learning',
@@ -11,36 +12,17 @@ export class LearningComponent implements OnInit {
   count = 0;
   tableSize = 3;
   tableSizes = [3, 6, 9, 12];
+  tipo!:number;
 
-  public recetas: Receta[] = [
-    {
-      id: 1,
-      titulo: 'Titulo 1',
-      contenido:
-        'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
-      idUsuario: 1,
-      idCategoria: 1,
-      idSubategoria: 1,
-      idTipoReceta: 1,
-      fecha: '21/09/2022',
-      adjunto: '',
-    },
-    {
-      id: 2,
-      titulo: 'Titulo 2',
-      contenido:
-        'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
-      idUsuario: 1,
-      idCategoria: 1,
-      idSubategoria: 1,
-      idTipoReceta: 1,
-      fecha: '21/09/2022',
-      adjunto: '',
-    },
-  ];
-  constructor() {}
+  public recetas: Receta[] = [];
+  constructor(private aprendizajeServide:LearningService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.aprendizajeServide.getAll().subscribe((response)=>{
+      this.recetas=response;
+    })
+    this.tipo=parseInt(sessionStorage.getItem('tipo')!)
+  }
 
   onTableDataChange(event: number) {
     this.page = event;
