@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Comentario } from 'src/app/models/comentario';
 import { Publicacion } from 'src/app/models/publicacion';
+import { PublicacionService } from 'src/app/services/publicacion.service';
 
 @Component({
   selector: 'app-foro',
@@ -37,27 +38,32 @@ export class ForoComponent implements OnInit {
   ];
 
   public publicaciones: Publicacion[] = [
-    {
-      id: 1,
-      idSeccionForo: 1,
-      contenido:
-        'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
-      fecha: '21/09/2022',
-      adjunto: '',
-    },
-    {
-      id: 2,
-      idSeccionForo: 2,
-      contenido:
-        'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
-      fecha: '21/09/2022',
-      adjunto: '',
-    },
+    // {
+    //   id: 1,
+    //   idSeccionForo: 1,
+    //   contenido:
+    //     'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
+    //   fecha: '21/09/2022',
+    //   adjunto: '',
+    // },
+    // {
+    //   id: 2,
+    //   idSeccionForo: 2,
+    //   contenido:
+    //     'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.',
+    //   fecha: '21/09/2022',
+    //   adjunto: '',
+    // },
   ];
   constructor(
+    public publicacionService:PublicacionService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.publicacionService.getOpenChallenges().subscribe((response)=>{
+      this.publicaciones=response;
+    })
+  }
 
   onTableDataChange(event: number) {
     this.page = event;

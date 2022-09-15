@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Challenge } from 'src/app/models/challenge';
 import { ChallengeInscrito } from 'src/app/models/challenge-inscrito';
 import { InscripcionChallenge } from 'src/app/models/inscripcion-challenge';
@@ -8,6 +8,9 @@ import { InscripcionchallengeService } from 'src/app/services/inscripcionchallen
 import swal from 'sweetalert2';
 import { EntregaReto } from 'src/app/models/entrega';
 import { EntregasService } from 'src/app/services/entregas.service';
+import { CreateEntregaReto } from 'src/app/models/create-entrega';
+import { DetalleInscripcionService } from 'src/app/services/detalle-inscripcion.service';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-look-challenge',
@@ -21,11 +24,14 @@ export class LookChallengeComponent implements OnInit {
   tableSizes = [3, 6, 9, 12];
 
   public entregas: EntregaReto[] = [];
+  public realizaEntrega: CreateEntregaReto = { idInscripcionReto: 0, calificacionFinal: 0, video: "", AdjuntoImg: "" };
+  public entrega!: EntregaReto;
 
   public challenge: ChallengeInscrito = new ChallengeInscrito();
   public madeChef!: Boolean;
   public esChef!: Boolean;
   public inscripcion!: InscripcionChallenge;
+  public entregado!:boolean;
 
   id: string = '';
   fechaInicio: String = '21/09/2022';
@@ -34,8 +40,10 @@ export class LookChallengeComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private challengeService: ChallengeService,
     private inscripcionService: InscripcionchallengeService,
-    private entregaService: EntregasService
-  ) {}
+    private entregaService: EntregasService,
+    private detalleEntregaService: DetalleInscripcionService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
 
@@ -56,14 +64,31 @@ export class LookChallengeComponent implements OnInit {
 
             console.log(this.challenge.idUsuario);
 
-            if (parseInt(sessionStorage.getItem('tipo')!) === 1) {
+            if (sessionStorage.getItem('tipo')! === '1') {
               this.esChef = true;
+            }else{
+              this.esChef = false;
             }
+
+            console.log(this.esChef)
+
+            if(this.challenge.idInscripcion!= null){
+              this.detalleEntregaService.checkEntrega(this.challenge.idInscripcion).subscribe((response)=>{
+                if(this.challenge.idInscripcion === response.idInscripcionReto){
+                  this.entregado=true;
+                }else{
+                  this.entregado=false;
+                }
+              })
+            }
+            
           });
 
-          this.entregaService.getEntregasById(parseInt(this.id)).subscribe((response) => {
-            this.entregas = response;
-          });
+        this.entregaService.getEntregasById(parseInt(this.id)).subscribe((response) => {
+          this.entregas = response;
+        });
+
+        
       }
     });
 
@@ -140,38 +165,47 @@ export class LookChallengeComponent implements OnInit {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          swal.fire(
-            'Excelente!',
-            'Tu entrega ha sido satisfactoria.',
-            'success'
-          );
-        }
-      });
-  }
+          this.realizaEntrega.idInscripcionReto=this.challenge.idInscripcion
+          console.log(this.realizaEntrega)
+          this.detalleEntregaService.createInscripcion(this.realizaEntrega).subscribe((response) => {
+            this.entrega = response;
+            if (this.realizaEntrega.idInscripcionReto === this.entrega.idInscripcionReto) {
+              swal.fire(
+                'Excelente!',
+                'Tu entrega ha sido satisfactoria.',
+                'success'
+              );
+              window.location.reload();
 
-  cancelarEntrega(): void {
-    swal
+            }
+          }
+      )}
+  });
+}
+
+cancelarEntrega(): void {
+  swal
       .fire({
-        title: 'Seguro deseas cancelar tu entrega?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, seguro!',
-        cancelButtonText: 'Cancelar',
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          swal.fire(
-            'Excelente!',
-            'Tu entrega ha sido cancelada.',
-            'success'
-          );
-        }
-      });
-  }
+    title: 'Seguro deseas cancelar tu entrega?',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, seguro!',
+    cancelButtonText: 'Cancelar',
+  })
+    .then((result) => {
+      if (result.isConfirmed) {
+        swal.fire(
+          'Excelente!',
+          'Tu entrega ha sido cancelada.',
+          'success'
+        );
+      }
+    });
+}
 
-  onTableDataChange(event: number) {
-    this.page = event;
-  }
+onTableDataChange(event: number) {
+  this.page = event;
+}
 }

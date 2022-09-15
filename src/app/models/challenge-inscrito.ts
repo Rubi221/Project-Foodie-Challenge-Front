@@ -15,6 +15,7 @@ export class ChallengeInscrito {
     public fechaFin!: String;
 
     public inscrito!:Boolean;
+    public idInscripcion !: number;
 
 
     constructor(){

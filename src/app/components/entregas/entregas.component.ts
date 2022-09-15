@@ -20,14 +20,14 @@ export class EntregasComponent implements OnInit {
       idInscripcionReto: 1,
       calificacionFinal: 3,
       video:'',
-      adjunto: ''
+      AdjuntoImg: ''
     },
     {
       id: 1,
       idInscripcionReto: 1,
       calificacionFinal: 5,
       video:'',
-      adjunto: ''
+      AdjuntoImg: ''
     },
   ];
 

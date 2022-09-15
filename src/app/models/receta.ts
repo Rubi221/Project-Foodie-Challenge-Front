@@ -9,5 +9,6 @@ export class Receta {
   public fecha!: String;
   public adjunto!: String;
 
-  constructor() {}
+  constructor() {
+  }
 }

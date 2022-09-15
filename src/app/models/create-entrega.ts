@@ -1,6 +1,5 @@
-export class EntregaReto {
+export class CreateEntregaReto {
 
-    public id!: number;
     public idInscripcionReto!: number;
     public calificacionFinal!: number;
     public video!: String;
