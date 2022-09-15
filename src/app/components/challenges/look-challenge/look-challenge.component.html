@@ -23,7 +23,12 @@
         </div>
 
         <div *ngIf="challenge.inscrito && !esChef">
-          <button (click)="enviaEntrega()" class="btn btn-danger btnC">
+          <button
+            type="button"
+            class="btn btn-danger btnC"
+            data-bs-toggle="modal"
+            data-bs-target="#realizarEntregaModal"
+          >
             <mat-icon>playlist_add</mat-icon>REALIZAR ENTREGA
           </button>
         </div>
@@ -96,7 +101,7 @@
                   />
                   <p>Cailificacion: {{ e.calificacionFinal }}</p>
                 </mat-card-content>
-                <mat-card-actions> 
+                <mat-card-actions>
                   <div>
                     <button class="btn btn-danger btnC">
                       <mat-icon>star</mat-icon>CALIFICAR ENTREGA
@@ -126,6 +131,79 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="realizarEntregaModal"
+  data-mdb-backdrop="static"
+  data-mdb-keyboard="false"
+  tabindex="-1"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="font-weight-bold text-center title">Realiza tu entrega a : (nombre Reto)</h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          
+
+          
+          <div class="form-group row mb-1">
+            <label for="video" class="col-sm-2 col-form-label">Video</label>
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                required
+                name="video"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row mb-1">
+            <label for="imagen" class="col-sm-2 col-form-label"
+              >Imagen</label
+            >
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                required
+                name="imagen"
+              />
+            </div>
+          </div>
+
+          <div>
+            <button
+              class="btn btn-success btnT"
+              role="button"
+              (click)="enviarEntrega()"
+            >
+              Enviar
+            </button>
+            <button
+              class="btn btn-danger btnT"
+              role="button"
+              (click)="cancelarEntrega()"
+            >
+              Cancelar
+            </button>
+          </div>
+        </form>
       </div>
       <div class="modal-footer"></div>
     </div>

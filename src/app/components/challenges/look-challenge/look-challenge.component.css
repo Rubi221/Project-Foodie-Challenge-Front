@@ -26,6 +26,9 @@
   margin: 5px;
   display: flex;
 }
+.btnT {
+  margin: 5px;
+}
 .checked {
   color: orange;
 }

@@ -127,7 +127,7 @@ export class LookChallengeComponent implements OnInit {
     }
   }
 
-  enviaEntrega(): void {
+  enviarEntrega(): void {
     swal
       .fire({
         title: 'Seguro deseas realizar tu entrega?',
@@ -143,6 +143,28 @@ export class LookChallengeComponent implements OnInit {
           swal.fire(
             'Excelente!',
             'Tu entrega ha sido satisfactoria.',
+            'success'
+          );
+        }
+      });
+  }
+
+  cancelarEntrega(): void {
+    swal
+      .fire({
+        title: 'Seguro deseas cancelar tu entrega?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, seguro!',
+        cancelButtonText: 'Cancelar',
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swal.fire(
+            'Excelente!',
+            'Tu entrega ha sido cancelada.',
             'success'
           );
         }
