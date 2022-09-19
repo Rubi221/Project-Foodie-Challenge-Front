@@ -17,9 +17,8 @@ export class MyChallengesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.challengeService.getOpenChallenges().subscribe(response=>{
+    this.challengeService.getMyChallenges(parseInt(sessionStorage.getItem('idUsuario')!)).subscribe(response=>{
       this.challenges = response;
     })
   }
-
 }

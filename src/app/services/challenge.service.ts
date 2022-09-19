@@ -21,6 +21,12 @@ export class ChallengeService {
     return this.http.get<Challenge[]>(this.url+'/abiertos', {headers:this.httpHeaders});
   }
 
+  getMyChallenges(idUsuario: number): Observable<Challenge[]> {
+    let params = new HttpParams();
+    params = params.append('idUsuario', idUsuario);
+    return this.http.get<Challenge[]>(this.url+'/misRetos', {headers:this.httpHeaders, params:params});
+  }
+
   getChallengeById(idReto: number, idUsuario: number):Observable<ChallengeInscrito>{
     
     let params = new HttpParams();
