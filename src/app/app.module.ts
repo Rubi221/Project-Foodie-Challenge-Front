@@ -26,11 +26,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ComentarioComponent } from './components/comentario/comentario.component';
 import { EntregasComponent } from './components/entregas/entregas.component'; 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { FormRecetaComponent } from './components/form-receta/form-receta.component';
 
 @NgModule({
   declarations: [
@@ -45,8 +45,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     RegisterComponent,
     PerfilComponent,
     ForoComponent,
-    ComentarioComponent,
     EntregasComponent,
+    FormRecetaComponent,
   ],
   imports: [
     BrowserModule,

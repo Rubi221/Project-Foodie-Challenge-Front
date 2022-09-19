@@ -10,38 +10,43 @@
       <input
         class="form-control"
         type="text"
-        placeholder="name"
+        placeholder="Nombre"
         [(ngModel)]="registerData.name"
-        name="name"
+        name="Nombre"
       />
       <input
         class="form-control"
         type="text"
-        placeholder="username"
+        placeholder="Nombre Usuario"
         [(ngModel)]="registerData.username"
-        name="username"
+        name="Nombre Usuario"
       />
       <input
         class="form-control"
         type="password"
-        placeholder="password"
+        placeholder="Contraseña"
         [(ngModel)]="registerData.password"
-        name="password"
+        name="Contraseña"
       />
       <input
         class="form-control"
-        type="text"
-        placeholder="email"
+        type="email"
+        placeholder="Email"
         [(ngModel)]="registerData.email"
-        name="email"
+        name="Email"
       />
       <input
         class="form-control"
         type="text"
-        placeholder="nationality"
+        placeholder="Nacionalidad"
         [(ngModel)]="registerData.nationality"
-        name="nationality"
+        name="Nacionalidad"
       />
+      <select class="form-select form-control" id="inputGroupSelect02">
+        <option selected>Tipo de Usuario ...</option>
+        <option value="1">Chef</option>
+        <option value="2">Miembro</option>
+      </select>
 
       <button class="btn btn-primary btnC" type="submit" role="button">
         Registrarse

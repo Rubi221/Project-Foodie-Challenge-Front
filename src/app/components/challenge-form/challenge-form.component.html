@@ -1,83 +1,131 @@
 <div class="container">
-    <div class="card">
-        <div class="card-header">
-            <div class="card-body">
-                <form>
-                    <div class="form-group row mb-1">
-                        <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" required name="titulo" [(ngModel)]="challenge.titulo" />
-                        </div>
-                    </div>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-body">
+        <form>
+          <div class="form-group row mb-1">
+            <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                required
+                name="titulo"
+                [(ngModel)]="challenge.titulo"
+              />
+            </div>
+          </div>
 
-                    <div class="form-group row mb-1">
-                        <label for="contenido" class="col-sm-2 col-form-label">Contenido</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" required name="contenido" [(ngModel)]="challenge.contenido" />
-                        </div>
-                    </div>
+          <div class="form-group row mb-1">
+            <label for="contenido" class="col-sm-2 col-form-label"
+              >Contenido</label
+            >
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                required
+                name="contenido"
+                [(ngModel)]="challenge.contenido"
+              />
+            </div>
+          </div>
 
-                    <div class="form-group row mb-1">
-                        <label for="video" class="col-sm-2 col-form-label">Video</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" required name="video" [(ngModel)]="challenge.video" />
-                        </div>
-                    </div>
-                    <div>
-                        <label for="fechaFin" class="col-sm-2 col-form-label">Selecciona Dificultad</label>
-                        <div class="col-sm-6">
-                            <select id="cars" name="Categorias" [(ngModel)]="challenge.dificultad">
-                <option value=1>Facil</option>
-                <option value=2>Intermedio</option>
-                <option value=3>Experimentado</option>
+          <div class="form-group row mb-1">
+            <label for="video" class="col-sm-2 col-form-label">Video</label>
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                required
+                name="video"
+                [(ngModel)]="challenge.video"
+              />
+            </div>
+          </div>
+          <div>
+            <label for="fechaFin" class="col-sm-2 col-form-label"
+              >Selecciona Dificultad</label
+            >
+            <div class="col-sm-6">
+              <select
+                id="cars"
+                name="Categorias"
+                [(ngModel)]="challenge.dificultad"
+              >
+                <option value="1">Facil</option>
+                <option value="2">Intermedio</option>
+                <option value="3">Experimentado</option>
               </select>
-                        </div>
+            </div>
+          </div>
 
-                    </div>
+          <div class="form-group row mb-1">
+            <label for="fechaInicio" class="col-sm-2 col-form-label"
+              >Fecha Inicio</label
+            >
+            <div class="col-sm-6">
+              <input
+                type="date"
+                name="begin"
+                value="challengeId.fechaInicio"
+                name="fechaInicio"
+                [(ngModel)]="challenge.fechaInicio"
+              />
+            </div>
+          </div>
 
-
-                    <div class="form-group row mb-1">
-                        <label for="fechaInicio" class="col-sm-2 col-form-label">Fecha Inicio</label>
-                        <div class="col-sm-6">
-                            <input type="date" name="begin" value="challengeId.fechaInicio" name="fechaInicio" [(ngModel)]="challenge.fechaInicio" />
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-1">
-                        <label for="fechaFin" class="col-sm-2 col-form-label">Fecha Fin</label>
-                        <div class="col-sm-6">
-                            <input type="date" name="fechaFin" value="challengeId.fechaFin" [(ngModel)]="challenge.fechaFin" />
-                        </div>
-                    </div>
-                    <div>
-                        <label for="fechaFin" class="col-sm-2 col-form-label">Selecciona Categoria</label>
-                        <div class="col-sm-6">
-                            <select id="cars" name="Categorias" [(ngModel)]="challenge.idCategoria">
+          <div class="form-group row mb-1">
+            <label for="fechaFin" class="col-sm-2 col-form-label"
+              >Fecha Fin</label
+            >
+            <div class="col-sm-6">
+              <input
+                type="date"
+                name="fechaFin"
+                value="challengeId.fechaFin"
+                [(ngModel)]="challenge.fechaFin"
+              />
+            </div>
+          </div>
+          <div>
+            <label for="fechaFin" class="col-sm-2 col-form-label"
+              >Selecciona Categoria</label
+            >
+            <div class="col-sm-6">
+              <select
+                id="cars"
+                name="Categorias"
+                [(ngModel)]="challenge.idCategoria"
+              >
                 <option value="1">Tradicional</option>
                 <option value="2">Postres</option>
                 <option value="3">Internacional</option>
                 <option value="4 ">Brunch</option>
               </select>
-                        </div>
-                        <div>
-                            <input type="file" (change)="getBase64($event)" name="" id="">
-                            <div *ngIf="previsualization">
-                                <img [src]="previsualization" alt="">
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div>
-                        <button class="btn btn-succes" role="button" *ngIf="!(id != undefined); else elseBlock" (click)="crearChallenge()">
-                        Crear
-                      </button>
-                        <ng-template #elseBlock>
-                            <button class="btn btn-success" role="button">Editar</button>
-                        </ng-template>
-                    </div>
-                </form>
             </div>
-        </div>
+            <div>
+              <input type="file" (change)="getBase64($event)" name="" id="" />
+              <div *ngIf="previsualization">
+                <img [src]="previsualization" alt="" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <button
+              class="btn btn-succes"
+              role="button"
+              *ngIf="!(id != undefined); else elseBlock"
+              (click)="crearChallenge()"
+            >
+              Crear
+            </button>
+            <ng-template #elseBlock>
+              <button class="btn btn-success" role="button">Editar</button>
+            </ng-template>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
