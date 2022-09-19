@@ -19,7 +19,7 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: '', redirectTo: '/register', pathMatch: 'full'
+    path: '', redirectTo: '/login', pathMatch: 'full'
   },
   {
     path: 'login', component: LoginComponent

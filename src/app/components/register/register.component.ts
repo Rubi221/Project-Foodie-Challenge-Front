@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert2'
 import { Router } from '@angular/router';
 import { RegisterData } from 'src/app/models/register-data';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -16,42 +17,19 @@ export class RegisterComponent implements OnInit {
     // constructor(private router: Router, private ) { }
   registerData: RegisterData = new RegisterData('','','','','',1);
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     if(sessionStorage.getItem('tipo')){
     }
   }
 
-  // public login(): void {
-
-  //   //aqui agregar logica de registro
-  //   if (this.validate()) {
-  //     swal.fire('Bienvenido', "", 'success');
-  //     setTimeout(() => {
-  //       this.router.navigate(['home/challenges']);
-  //     },
-  //     1000);
-  //   } else {
-  //     swal.fire('Valores invalidas', "", 'error');
-
-  //   }
-  // }
-
-  // private validate(): Boolean {
+  registro():any{
     
-  //   // if (this.actualCredentials.username === this.usuarioService.credentials.username && this.actualCredentials.password === this.usuarioService.credentials.password) {
-  //   if (this.actualCredentials.username === 'admin' && this.actualCredentials.password === 'admin') {
-  //     sessionStorage.setItem("username", this.actualCredentials.username)
-  //     sessionStorage.setItem('tipo',"1")
-  //     return true;
-  //   } else if(this.actualCredentials.username === 'user' && this.actualCredentials.password === 'user'){
-  //     sessionStorage.setItem("username", this.actualCredentials.username)
-  //     sessionStorage.setItem('tipo',"2")
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
+    this.userService.createUser(this.registerData).subscribe((response)=>{
+      console.log(response)
+    })
+  }
+
 
 }

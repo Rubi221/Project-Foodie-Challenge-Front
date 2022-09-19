@@ -1,253 +1,180 @@
 <div class="container">
-  <div>
     <div>
-      <div>
-        <h1 class="font-weight-bold text-center title">
-          {{ challenge.titulo }}
-        </h1>
-      </div>
+        <div>
+            <div>
+                <h1 class="font-weight-bold text-center title">
+                    {{ challenge.titulo }}
+                </h1>
+            </div>
 
-      <img [src]="challenge.adjunto" alt="" class="card-img-top" />
-    </div>
+            <img [src]="challenge.adjunto" alt="" class="card-img-top" />
+        </div>
 
-    <div class="retoContenido">
-      <div>
-        <p class="content">El reto consiste en:</p>
-        <p>{{ challenge.contenido }}</p>
-      </div>
+        <div class="retoContenido">
+            <div>
+                <p class="content">El reto consiste en:</p>
+                <p>{{ challenge.contenido }}</p>
+            </div>
 
-      <div class="divflex">
-        <p class="content">Categoria:</p>
-        <p>{{ categoria }}</p>
-      </div>
+            <div class="divflex">
+                <p class="content">Categoria:</p>
+                <p>{{ categoria }}</p>
+            </div>
 
-      <div class="divflex">
-        <p class="content">Dificultad:</p>
-        <p>{{ dificultad }}</p>
-      </div>
+            <div class="divflex">
+                <p class="content">Dificultad:</p>
+                <p>{{ dificultad }}</p>
+            </div>
 
-      <div>
-        <p class="content">Video Explicativo del reto:</p>
-        <iframe
-          width="420"
-          height="300"
-          src="https://www.youtube.com/embed/tgbNymZ7vqY"
-        >
-        </iframe>
+            <<<<<<< Updated upstream <div>
+                <p class="content">Video Explicativo del reto:</p>
+                <iframe width="420" height="300" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+        </iframe> =======
+                <div *ngIf="madeChef">
+                    <button [routerLink]="['../update/', id]" class="btn btn-danger btnC">
+            <mat-icon>create</mat-icon>EDITAR
+          </button>
+                    <button (click)="borrarReto()" class="btn btn-danger btnC">
+            <mat-icon>delete</mat-icon>BORRAR
+          </button>
+                </div>
+                >>>>>>> Stashed changes
 
-        <!-- <a href="{{ challenge.video }}">Video!</a> -->
-      </div>
+                <div class="divflex">
+                    <p class="content">Fecha final para la entrega:</p>
+                    <p>
+                        {{ challenge.fechaFin }}
+                    </p>
+                </div>
+        </div>
 
-      <div class="divflex">
-        <p class="content">Fecha final para la entrega:</p>
-        <p>
-          {{ challenge.fechaFin }}
-        </p>
-      </div>
-    </div>
-
-    <div *ngIf="!challenge.inscrito && !esChef">
-      <button (click)="inscribeReto()" class="btn btn-danger btnC">
+        <div *ngIf="!challenge.inscrito && !esChef">
+            <button (click)="inscribeReto()" class="btn btn-danger btnC">
         <mat-icon>playlist_add</mat-icon>INSCRIBIRSE
       </button>
-    </div>
+        </div>
 
-    <div *ngIf="challenge.inscrito && !esChef && !entregado">
-      <button
-        type="button"
-        class="btn btn-danger btnC"
-        data-bs-toggle="modal"
-        data-bs-target="#realizarEntregaModal"
-      >
+        <div *ngIf="challenge.inscrito && !esChef && !entregado">
+            <button type="button" class="btn btn-danger btnC" data-bs-toggle="modal" data-bs-target="#realizarEntregaModal">
         <mat-icon>playlist_add</mat-icon>REALIZAR ENTREGA
       </button>
-    </div>
+        </div>
 
-    <div *ngIf="challenge.inscrito && !esChef && entregado">
-      <button
-        type="button"
-        class="btn btn-danger btnC"
-        data-bs-toggle="modal"
-        data-bs-target="#realizarEntregaModal"
-        disabled
-      >
+        <div *ngIf="challenge.inscrito && !esChef && entregado">
+            <button type="button" class="btn btn-danger btnC" data-bs-toggle="modal" data-bs-target="#realizarEntregaModal" disabled>
         <mat-icon>playlist_add</mat-icon>YA REALIZASTE ESTA ENTREGA!!!
       </button>
-    </div>
+        </div>
 
-    <div>
-      <button
-        type="button"
-        class="btn btn-danger btnC"
-        data-bs-toggle="modal"
-        data-bs-target="#entregasModal"
-      >
+        <div>
+            <button type="button" class="btn btn-danger btnC" data-bs-toggle="modal" data-bs-target="#entregasModal">
         <mat-icon>visibility</mat-icon>VER ENTREGAS
       </button>
-    </div>
+        </div>
 
-    <div *ngIf="madeChef">
-      <button [routerLink]="['../update/', id]" class="btn btn-danger btnC">
+        <div *ngIf="madeChef">
+            <button [routerLink]="['../update/', id]" class="btn btn-danger btnC">
         <mat-icon>create</mat-icon>EDITAR
       </button>
-      <button class="btn btn-danger btnC">
+            <button (click)="borrarReto()" class="btn btn-danger btnC">
         <mat-icon>delete</mat-icon>BORRAR
       </button>
-    </div>
+        </div>
 
-    <div class="card-footer">
-      <small class="text-muted">Publicado: {{ fechaInicio }}</small>
+        <div class="card-footer">
+            <small class="text-muted">Publicado: {{ fechaInicio }}</small>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="modal fade" id="entregasModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="font-weight-bold text-center title">Entregas</h3>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="font-weight-bold text-center title">Entregas</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-      <div class="modal-body">
-        <div
-          id="carouselControls"
-          class="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div class="carousel-inner">
-            <div
-              class="carousel-item active"
-              *ngFor="let e of entregas; let index = index; let isFirst = first"
-              [ngClass]="{ active: isFirst }"
-            >
-              <mat-card class="mat">
-                <mat-card-header>
-                  <div mat-card-avatar class="header-image"></div>
-                  <mat-card-title>{{ e.nombreUsuario }}</mat-card-title>
-                  <mat-card-subtitle>Entrega</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                  <p><a href="e.video">Video de entrega</a></p>
-                  <img
-                    src="http://placeimg.com/400/200/animals "
-                    alt=" "
-                    class="card-img-top"
-                  />
-                  <p>Cailificacion: {{ e.calificacionFinal }}</p>
-                </mat-card-content>
-                <mat-card-actions>
-                  <div>
-                    <button class="btn btn-danger btnC">
+            <div class="modal-body">
+                <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" *ngFor="let e of entregas; let index = index; let isFirst = first" [ngClass]="{ active: isFirst }">
+                            <mat-card class="mat">
+                                <mat-card-header>
+                                    <div mat-card-avatar class="header-image"></div>
+                                    <mat-card-title>{{ e.nombreUsuario }}</mat-card-title>
+                                    <mat-card-subtitle>Entrega</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <p><a href="e.video">Video de entrega</a></p>
+                                    <img src="http://placeimg.com/400/200/animals " alt=" " class="card-img-top" />
+                                    <p>Cailificacion: {{ e.calificacionFinal }}</p>
+                                </mat-card-content>
+                                <mat-card-actions>
+                                    <div>
+                                        <button class="btn btn-danger btnC">
                       <mat-icon>star</mat-icon>CALIFICAR ENTREGA
                     </button>
-                  </div>
-                </mat-card-actions>
-              </mat-card>
-            </div>
-          </div>
+                                    </div>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+                    </div>
 
-          <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#carouselControls"
-            data-bs-slide="prev"
-          >
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
-          <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#carouselControls"
-            data-bs-slide="next"
-          >
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
         </div>
-      </div>
-      <div class="modal-footer"></div>
     </div>
-  </div>
 </div>
 
-<div
-  class="modal fade"
-  id="realizarEntregaModal"
-  data-mdb-backdrop="static"
-  data-mdb-keyboard="false"
-  tabindex="-1"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="font-weight-bold text-center title">
-          Realiza tu entrega a - {{ challenge.titulo }}
-        </h3>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="form-group row mb-1">
-            <label for="video" class="col-sm-2 col-form-label">Video</label>
-            <div class="col-sm-6">
-              <input
-                type="text"
-                class="form-control"
-                required
-                name="video"
-                [(ngModel)]="realizaEntrega.video"
-              />
+<div class="modal fade" id="realizarEntregaModal" data-mdb-backdrop="static" data-mdb-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="font-weight-bold text-center title">
+                    Realiza tu entrega a - {{ challenge.titulo }}
+                </h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-          </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row mb-1">
+                        <label for="video" class="col-sm-2 col-form-label">Video</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" required name="video" [(ngModel)]="realizaEntrega.video" />
+                        </div>
+                    </div>
 
-          <div class="form-group row mb-1">
-            <label for="imagen" class="col-sm-2 col-form-label">Imagen</label>
-            <div class="col-sm-6">
-              <input
-                type="file"
-                class="form-control"
-                (change)="getBase64($event)"
-                name=""
-                id=""
-              />
-              <div *ngIf="previsualization">
-                <img [src]="previsualization" alt="" />
-              </div>
-            </div>
-          </div>
+                    <div class="form-group row mb-1">
+                        <label for="imagen" class="col-sm-2 col-form-label">Imagen</label>
+                        <div class="col-sm-6">
+                            <input type="file" class="form-control" (change)="getBase64($event)" name="" id="" />
+                            <div *ngIf="previsualization">
+                                <img [src]="previsualization" alt="" />
+                            </div>
+                        </div>
+                    </div>
 
-          <div>
-            <button
-              class="btn btn-success btnT"
-              role="button"
-              (click)="enviarEntrega()"
-            >
+                    <div>
+                        <button class="btn btn-success btnT" role="button" (click)="enviarEntrega()">
               Enviar
             </button>
-            <button
-              class="btn btn-danger btnT"
-              role="button"
-              (click)="cancelarEntrega()"
-            >
+                        <button class="btn btn-danger btnT" role="button" (click)="cancelarEntrega()">
               Cancelar
             </button>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
     </div>
-  </div>
 </div>

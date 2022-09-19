@@ -1,25 +1,17 @@
 <div class="container">
-  <div class="card">
-    <div class="card-header">
-      <div class="card-body">
-        <form>
-          <div class="form-group row mb-1">
-            <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>
-            <div class="col-sm-6">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="titulo"
-                required
-                name="titulo"
-                [(ngModel)]="challenge.titulo"
-              />
-            </div>
-          </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="card-body">
+                <form>
+                    <div class="form-group row mb-1">
+                        <label for="titulo" class="col-sm-2 col-form-label">Titulo</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" placeholder="titulo" required name="titulo" [(ngModel)]="challenge.titulo" />
+                        </div>
+                    </div>
 
-          <div class="form-group row mb-1">
-            <label for="contenido" class="col-sm-2 col-form-label"
-              >Contenido</label
+                    <div class="form-group row mb-1">
+                        <label for="contenido" class="col-sm-2 col-form-label">Contenido</label
             >
             <div class="col-sm-6">
               <input
@@ -35,21 +27,13 @@
 
           <div class="form-group row mb-1">
             <label for="video" class="col-sm-2 col-form-label">Video</label>
-            <div class="col-sm-6">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="url del video"
-                required
-                name="video"
-                [(ngModel)]="challenge.video"
-              />
-            </div>
-          </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" placeholder="url del video" required name="video" [(ngModel)]="challenge.video" />
+                        </div>
+                    </div>
 
-          <div class="form-group row mb-1">
-            <label for="dificultad" class="col-sm-2 col-form-label"
-              >Selecciona Dificultad</label
+                    <div class="form-group row mb-1">
+                        <label for="dificultad" class="col-sm-2 col-form-label">Selecciona Dificultad</label
             >
             <div class="col-sm-6">
               <select
@@ -115,36 +99,25 @@
 
           <div class="form-group row mb-1">
             <label for="imagen" class="col-sm-2 col-form-label">Imagen</label>
-            <div class="col-sm-6">
-              <input
-                type="file"
-                class="form-control"
-                (change)="getBase64($event)"
-                name=""
-                id=""
-              />
-              <div *ngIf="previsualization">
-                <img [src]="previsualization" alt="" />
-              </div>
-            </div>
-          </div>
+                        <div class="col-sm-6">
+                            <input type="file" class="form-control" (change)="getBase64($event)" name="" id="" />
+                            <div *ngIf="previsualization">
+                                <img [src]="previsualization" alt="" class="previsualization" />
+                            </div>
+                        </div>
+                    </div>
 
-          <div>
-            <button
-              class="btn btn-success btnC"
-              role="button"
-              *ngIf="!(id != undefined); else elseBlock"
-              (click)="crearChallenge()"
-            >
+                    <div>
+                        <button class="btn btn-success btnC" role="button" *ngIf="!(id != undefined); else elseBlock" (click)="crearChallenge()">
               <mat-icon>queue</mat-icon>
               Crear
             </button>
-            <ng-template #elseBlock>
-              <button class="btn btn-success" role="button">Editar</button>
-            </ng-template>
-          </div>
-        </form>
-      </div>
+                        <ng-template #elseBlock>
+                            <button (click)="updateChallenge()" class="btn btn-success" role="button">Editar</button>
+                        </ng-template>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

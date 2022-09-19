@@ -6,3 +6,7 @@
     min-height: max-content;
     max-width: 70%;
 }
+
+.previsualization {
+    max-height: 200px;
+}
