@@ -1,25 +1,35 @@
 <div class="login-page">
-    <div class="form">
-        <form class="login-form" (submit)="login()" appearance="fill" fxFlexFill>
-            <div>
-                <img src="../../../favicon.ico" alt="FoddieChallenge" class="img" />
-            </div>
-            <div>
-                <h1 class="font-weight-bold text-center title">{{ title }}</h1>
-            </div>
-            <input class="form-control" type="text" placeholder="username" [(ngModel)]="actualCredentials.username" name="username" />
-            <input class="form-control" type="password" placeholder="password" [(ngModel)]="actualCredentials.contrasena" name="password" />
+  <div class="form">
+    <form class="login-form" (submit)="login()" appearance="fill" fxFlexFill>
+      <div>
+        <img src="../../../favicon.ico" alt="FoddieChallenge" class="img" />
+      </div>
+      <div>
+        <h1 class="font-weight-bold text-center title">{{ title }}</h1>
+      </div>
 
-            <button class="btn btn-primary" type="submit" role="button">Login</button>
+      <input
+        class="form-control"
+        type="text"
+        placeholder="username"
+        [(ngModel)]="actualCredentials.username"
+        name="username"
+      />
 
-            <div>
-                <p>¿Aún no tienes una cuenta? Registrate aqui:</p>
-                <a class="nav-link" [routerLink]="['/register']">Registrarse</a>
-            </div>
+      <input
+        class="form-control"
+        type="password"
+        placeholder="password"
+        [(ngModel)]="actualCredentials.contrasena"
+        name="password"
+      />
 
-            <!-- <input type="text" placeholder="username" />
-            <input type="password" placeholder="password" />
-            <button type="submit" role="button">login</button> -->
-        </form>
-    </div>
+      <button class="btn btn-primary" type="submit" role="button">Login</button>
+
+      <div>
+        <p>¿Aún no tienes una cuenta? Registrate aqui:</p>
+        <a class="nav-link" [routerLink]="['/register']">Registrarse</a>
+      </div>
+    </form>
+  </div>
 </div>
