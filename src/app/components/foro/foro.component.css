@@ -14,10 +14,17 @@
 }
 .btnC {
   margin: 5px;
-  align-self: center !important;
+  display: flex;
 }
 .btnS {
-  align-self: center !important;
+  display: flex;
+}
+.marg{
+  margin: 5px;
+}
+.crear{
+  background-color:rgb(196, 196, 196);
+  padding: 2%;
 }
 
 ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
@@ -44,8 +51,6 @@
 }
 .cont{
   width: 100%;
-}
-.mb-3{
 }
 .title {
   color: red;

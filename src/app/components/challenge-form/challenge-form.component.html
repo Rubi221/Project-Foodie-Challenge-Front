@@ -111,15 +111,24 @@
                 <option value="4 ">Brunch</option>
               </select>
             </div>
+          </div>
 
-            <div>
-              <label for="imagen" class="col-sm-2 col-form-label">Imagen</label>
-              <input type="file" (change)="getBase64($event)" name="" id="" />
+          <div class="form-group row mb-1">
+            <label for="imagen" class="col-sm-2 col-form-label">Imagen</label>
+            <div class="col-sm-6">
+              <input
+                type="file"
+                class="form-control"
+                (change)="getBase64($event)"
+                name=""
+                id=""
+              />
               <div *ngIf="previsualization">
                 <img [src]="previsualization" alt="" />
               </div>
             </div>
           </div>
+
           <div>
             <button
               class="btn btn-success btnC"
