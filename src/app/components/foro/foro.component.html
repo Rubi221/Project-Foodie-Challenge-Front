@@ -1,47 +1,48 @@
 <div class="container">
   <div>
     <mat-tab-group disableRipple mat-align-tabs="center">
-      <mat-tab label="SeccionForo1">
-        <div class="crear">
-          <div>
-            <button
-              class="btn btn-success btnC"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#createField"
-              aria-expanded="false"
-              aria-controls="createField"
-            >
-              Subir Publicación
-            </button>
-          </div>
-
-          <div class="collapse" id="createField">
-            <mat-divider inset></mat-divider>
-            <div class="input-group marg">
-              <span class="input-group-text">Crear Publicacion</span>
-              <textarea
-                class="form-control"
-                placeholder="Escribe una publicacion..."
-              ></textarea>
-            </div>
-            <div class="input-group mb-1 marg">
-              <input type="file" class="form-control" />
-            </div>
+      <div *ngFor="let s of secciones">
+        <mat-tab label="{{s.nombre}}"> 
+          <div class="crear">
             <div>
-              <button class="btn btn-danger btnC">
-                Publicar <mat-icon>upload</mat-icon>
+              <button
+                class="btn btn-success btnC"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#createField"
+                aria-expanded="false"
+                aria-controls="createField"
+              >
+                Subir Publicación
               </button>
             </div>
+            <ng-content select="selector"></ng-content>
+  
+            <div class="collapse" id="createField">
+              <mat-divider inset></mat-divider>
+              <div class="input-group marg">
+                <span class="input-group-text">Crear Publicacion</span>
+                <textarea
+                  class="form-control"
+                  placeholder="Escribe una publicacion..."
+                ></textarea>
+              </div>
+              <div class="input-group mb-1 marg">
+                <input type="file" class="form-control" />
+              </div>
+              <div>
+                <button class="btn btn-danger btnC">
+                  Publicar <mat-icon>upload</mat-icon>
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <mat-divider inset></mat-divider>
+          <mat-divider inset></mat-divider>
 
         <div
           class="col"
           *ngFor="
-            let e of publicaciones
+            let e of publicaciones[s.id]
               | paginate
                 : {
                     itemsPerPage: tableSize,
@@ -84,172 +85,8 @@
           >
           </pagination-controls>
         </div>
-      </mat-tab>
-      <mat-tab label="SeccionForo2">
-        <div class="crear">
-          <div>
-            <button
-              class="btn btn-success btnC"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#createField"
-              aria-expanded="false"
-              aria-controls="createField"
-            >
-              Subir Publicación
-            </button>
-          </div>
-
-          <div class="collapse" id="createField">
-            <mat-divider inset></mat-divider>
-            <div class="input-group marg">
-              <span class="input-group-text">Crear Publicacion</span>
-              <textarea
-                class="form-control"
-                placeholder="Escribe una publicacion..."
-              ></textarea>
-            </div>
-            <div class="input-group mb-1 marg">
-              <input type="file" class="form-control" />
-            </div>
-            <div>
-              <button class="btn btn-danger btnC">
-                Publicar <mat-icon>upload</mat-icon>
-              </button>
-            </div>
-          </div>
-        </div>
-        <mat-divider inset></mat-divider>
-        <div
-          class="col"
-          *ngFor="
-            let e of publicaciones2
-              | paginate
-                : {
-                    itemsPerPage: tableSize,
-                    currentPage: page,
-                    totalItems: count
-                  }
-          "
-        >
-          <div>
-            <mat-card>
-              <mat-card-header>
-                <div mat-card-avatar class="header-image"></div>
-                <mat-card-subtitle>{{ e.nombreUsuario }}</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <p>{{ e.contenido }}</p>
-                <small class="text-muted">Publicado:{{ e.fecha }}</small>
-              </mat-card-content>
-
-              <mat-card-actions>
-                <button
-                  type="button"
-                  class="btn btn-danger btnC"
-                  (click)="clickComentar(e.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#commentModal"
-                >
-                  <mat-icon>sms</mat-icon>Comentar
-                </button>
-              </mat-card-actions>
-              <mat-divider inset></mat-divider>
-            </mat-card>
-          </div>
-        </div>
-        <div class=" ">
-          <pagination-controls
-            previousLabel="Prev "
-            nextLabel="Next "
-            (pageChange)="onTableDataChange($event)"
-          >
-          </pagination-controls>
-        </div>
-      </mat-tab>
-
-      <mat-tab label="SeccionForo3">
-        <div class="crear">
-          <div>
-            <button
-              class="btn btn-success btnC"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#createField"
-              aria-expanded="false"
-              aria-controls="createField"
-            >
-              Subir Publicación
-            </button>
-          </div>
-
-          <div class="collapse" id="createField">
-            <mat-divider inset></mat-divider>
-            <div class="input-group marg">
-              <span class="input-group-text">Crear Publicacion</span>
-              <textarea
-                class="form-control"
-                placeholder="Escribe una publicacion..."
-              ></textarea>
-            </div>
-            <div class="input-group mb-1 marg">
-              <input type="file" class="form-control" />
-            </div>
-            <div>
-              <button class="btn btn-danger btnC">
-                Publicar <mat-icon>upload</mat-icon>
-              </button>
-            </div>
-          </div>
-        </div>
-        <mat-divider inset></mat-divider>
-        <div
-          class="col"
-          *ngFor="
-            let e of publicaciones3
-              | paginate
-                : {
-                    itemsPerPage: tableSize,
-                    currentPage: page,
-                    totalItems: count
-                  }
-          "
-        >
-          <div>
-            <mat-card>
-              <mat-card-header>
-                <div mat-card-avatar class="header-image"></div>
-                <mat-card-subtitle>{{ e.nombreUsuario }}</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <p>{{ e.contenido }}</p>
-                <small class="text-muted">Publicado:{{ e.fecha }}</small>
-              </mat-card-content>
-
-              <mat-card-actions>
-                <button
-                  type="button"
-                  class="btn btn-danger btnC"
-                  (click)="clickComentar(e.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#commentModal"
-                >
-                  <mat-icon>sms</mat-icon>Comentar
-                </button>
-              </mat-card-actions>
-              <mat-divider inset></mat-divider>
-            </mat-card>
-          </div>
-        </div>
-        <div class=" ">
-          <pagination-controls
-            previousLabel="Prev "
-            nextLabel="Next "
-            (pageChange)="onTableDataChange($event)"
-          >
-          </pagination-controls>
-        </div>
-      </mat-tab>
+        </mat-tab>
+      </div>
     </mat-tab-group>
   </div>
 </div>

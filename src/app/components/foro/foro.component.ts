@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Comentario } from 'src/app/models/comentario';
 import { CreateComentarioPubli } from 'src/app/models/create-comentario-publi';
 import { Publicacion } from 'src/app/models/publicacion';
+import { SeccionForo } from 'src/app/models/seccionForo';
 import { ComentariosService } from 'src/app/services/comentarios.service';
 import { PublicacionService } from 'src/app/services/publicacion.service';
+import { SeccionForoService } from 'src/app/services/seccionForo.service';
 
 @Component({
   selector: 'app-foro',
@@ -15,6 +17,7 @@ export class ForoComponent implements OnInit {
   count = 0;
   tableSize = 6;
   tableSizes = [3, 6, 9, 12];
+  secciones: SeccionForo[] = [];
 
   public comentarios: Comentario[] = [];
   public createComentario: CreateComentarioPubli = {
@@ -24,12 +27,14 @@ export class ForoComponent implements OnInit {
     fecha: '',
   };
 
-  public publicaciones: Publicacion[] = [];
+  public publicaciones: Publicacion[][]= [];
   public publicaciones2: Publicacion[] = [];
   public publicaciones3: Publicacion[] = [];
+
   constructor(
     public publicacionService: PublicacionService,
-    public comentarioService: ComentariosService
+    public comentarioService: ComentariosService,
+    public seccionService: SeccionForoService
   ) {
     var date = new Date();
     var current_date =
@@ -37,17 +42,16 @@ export class ForoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.publicacionService.getAllPublicacion(1).subscribe((response) => {
-      this.publicaciones = response;
+    this.seccionService.getAllSeccion().subscribe((response) => {
+      this.secciones = response;
       console.log(response);
-    });
-    this.publicacionService.getAllPublicacion(2).subscribe((response) => {
-      this.publicaciones2 = response;
-      console.log(response);
-    });
-    this.publicacionService.getAllPublicacion(3).subscribe((response) => {
-      this.publicaciones3 = response;
-      console.log(response);
+
+      for(let e of this.secciones){
+        this.publicacionService.getAllPublicacion(e.id).subscribe((response) => {
+          this.publicaciones[e.id] = response;
+          console.log(response);
+        });
+      }
     });
   }
 
