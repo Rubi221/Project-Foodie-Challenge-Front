@@ -59,6 +59,14 @@
                 <option value="4 ">Brunch</option>
               </select>
                         </div>
+                        <div>
+                            <input type="file" (change)="getBase64($event)" name="" id="">
+                            <div *ngIf="previsualization">
+                                <img [src]="previsualization" alt="">
+
+                            </div>
+
+                        </div>
                     </div>
                     <div>
                         <button class="btn btn-succes" role="button" *ngIf="!(id != undefined); else elseBlock" (click)="crearChallenge()">

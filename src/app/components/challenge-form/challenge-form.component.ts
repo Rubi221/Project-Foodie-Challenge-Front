@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Challenge } from 'src/app/models/challenge';
 import { CreateChallenge } from 'src/app/models/create-challenge';
@@ -18,7 +19,7 @@ export class ChallengeFormComponent implements OnInit {
 
   id: string = "";
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private challengeService: ChallengeService) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private challengeService: ChallengeService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     console.log(this.challenge)
@@ -70,5 +71,36 @@ export class ChallengeFormComponent implements OnInit {
     this.challenge.fechaInicio = fechaInicio.substring(8, 10) + "-" + fechaInicio.substring(5, 7) + "-" + fechaInicio.substring(0, 4)
     var fechaFin = this.challenge.fechaFin
     this.challenge.fechaFin = fechaFin.substring(8, 10) + "-" + fechaFin.substring(5, 7) + "-" + fechaFin.substring(0, 4)
+  }
+
+  public archivos:any=[];
+
+  public previsualization : any;
+
+  public capturarFile(event: any):any{
+    const archivoCapturado = event.target.files
+    this.archivos.push(archivoCapturado)
+    console.log(this.previsualization)
+    this.getBase64(event)
+
+    
+
+  }
+
+
+  public getBase64(event:any) {
+    let me = this;
+    let file = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.previsualization=reader.result
+      console.log(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+ }
+
 }
-}
+
