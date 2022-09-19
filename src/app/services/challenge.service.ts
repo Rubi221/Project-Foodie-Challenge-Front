@@ -43,4 +43,17 @@ export class ChallengeService {
 
   }
 
+  updateChallenge(challenge:Challenge):Observable<Challenge>{
+    
+    return this.http.put<Challenge>(this.url,challenge,{headers:this.httpHeaders});
+
+  }
+
+  deleteChallenge(id:number):any{
+    let params = new HttpParams();
+    params = params.append('Id', id);
+    return this.http.delete<any>(this.url,{headers:this.httpHeaders, params:params});
+
+  }
+
 }

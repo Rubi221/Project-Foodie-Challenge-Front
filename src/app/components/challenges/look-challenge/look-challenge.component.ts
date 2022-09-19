@@ -218,20 +218,24 @@ export class LookChallengeComponent implements OnInit {
   cancelarEntrega(): void {
     swal
       .fire({
-        title: 'Seguro deseas cancelar tu entrega?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, seguro!',
-        cancelButtonText: 'Cancelar',
-      })
-      .then((result) => {
-        if (result.isConfirmed) {
-          swal.fire('Excelente!', 'Tu entrega ha sido cancelada.', 'success');
-        }
-      });
-  }
+    title: 'Seguro deseas cancelar tu entrega?',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, seguro!',
+    cancelButtonText: 'Cancelar',
+  })
+    .then((result) => {
+      if (result.isConfirmed) {
+        swal.fire(
+          'Excelente!',
+          'Tu entrega ha sido cancelada.',
+          'success'
+        );
+      }
+    });
+}
 
   onTableDataChange(event: number) {
     this.page = event;

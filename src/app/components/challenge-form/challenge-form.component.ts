@@ -81,6 +81,37 @@ export class ChallengeFormComponent implements OnInit {
     );
   }
 
+  challengeUpdate!:Challenge;
+
+  public updateChallenge(): void {
+    this.fixDateFormat();
+    this.challenge.idUsuario = parseInt(sessionStorage.getItem('idUsuario')!);
+    
+    this.challengeUpdate={id:parseInt(this.id),titulo:this.challenge.titulo,contenido:this.challenge.contenido,dificultad:this.challenge.dificultad,
+    video:this.challenge.video,adjunto:this.challenge.adjunto,idUsuario:this.challenge.idUsuario, nombreChef:"", idCategoria:this.challenge.idCategoria, 
+    nombreCategoria:"", fechaInicio: this.challenge.fechaInicio, fechaFin: this.challenge.fechaFin};
+
+    console.log(this.challengeUpdate)
+
+    this.challengeService.updateChallenge(this.challengeUpdate).subscribe(
+      (response) => {
+        this.challenge = response;
+        if (response.titulo === this.challengeUpdate.titulo) {
+          swal.fire('ACtualizado con Exito', '', 'success');
+          setTimeout(() => {
+            this.router.navigate(['home/challenges']);
+          }, 1000);
+        } else {
+          swal.fire('Sucedio Algo!', '', 'error');
+        }
+      },
+      (err) => {
+        swal.fire('Sucedio Algo!', '', 'error');
+      }
+    );
+  }
+
+
   public fixDateFormat(): void {
     var fechaInicio = this.challenge.fechaInicio;
     this.challenge.fechaInicio =
@@ -116,6 +147,7 @@ export class ChallengeFormComponent implements OnInit {
     reader.readAsDataURL(file);
     reader.onload = () => {
       this.previsualization = reader.result;
+      this.challenge.adjunto=this.previsualization;
       console.log(reader.result);
     };
     reader.onerror = function (error) {
