@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { InscripcionChallenge } from '../models/inscripcion-challenge';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InscripcionchallengeService {
 
-  url:string="http://localhost:8080/api/inscripcionReto";
+  url:string = `${environment.urlBack}/inscripcionReto`;
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*'});
 

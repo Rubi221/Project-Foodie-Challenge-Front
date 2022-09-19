@@ -4,14 +4,15 @@ import { Observable } from 'rxjs';
 import { Challenge } from '../models/challenge';
 import { ChallengeInscrito } from '../models/challenge-inscrito';
 import { CreateChallenge } from '../models/create-challenge';
-import { User } from '../models/user';
+import { environment } from 'src/environments/environment.prod';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChallengeService {
 
-  url:string="http://localhost:8080/api/reto";
+  url:string = `${environment.urlBack}/reto`;
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*'});
 

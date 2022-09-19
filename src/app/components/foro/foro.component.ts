@@ -37,15 +37,15 @@ export class ForoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.publicacionService.getOpenChallenges(1).subscribe((response) => {
+    this.publicacionService.getAllPublicacion(1).subscribe((response) => {
       this.publicaciones = response;
       console.log(response);
     });
-    this.publicacionService.getOpenChallenges(2).subscribe((response) => {
+    this.publicacionService.getAllPublicacion(2).subscribe((response) => {
       this.publicaciones2 = response;
       console.log(response);
     });
-    this.publicacionService.getOpenChallenges(3).subscribe((response) => {
+    this.publicacionService.getAllPublicacion(3).subscribe((response) => {
       this.publicaciones3 = response;
       console.log(response);
     });

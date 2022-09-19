@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { RegisterData } from '../models/register-data';
 import { User } from '../models/user';
 import { UserCredentials } from '../models/user-credentials';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class UserService {
 
   private user: User = new User();
   
-  url:string="http://localhost:8080/api/usuario";
+  url:string = `${environment.urlBack}/usuario`;
 
   constructor(private http: HttpClient) { }
 

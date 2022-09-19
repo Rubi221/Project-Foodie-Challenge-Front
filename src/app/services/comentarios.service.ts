@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { Comentario } from '../models/comentario';
 import { CreateComentarioPubli } from '../models/create-comentario-publi';
 import { CreateComentarioReto } from '../models/create-comentario-reto';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComentariosService {
 
-  url:string="http://localhost:8080/api/comentario";
+  url:string = `${environment.urlBack}/comentario`;
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*'});
 

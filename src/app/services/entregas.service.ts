@@ -2,14 +2,14 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EntregaReto } from '../models/entrega';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EntregasService {
 
-
-  url:string="http://localhost:8080/api/detalleInscripcion";
+  url:string = `${environment.urlBack}/detalleInscripcion`;
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*'});
 
