@@ -16,13 +16,13 @@ export class ComentariosService {
 
   constructor(private http:HttpClient) { }
 
-  createChallengeReto(challenge: CreateComentarioReto):Observable<Comentario>{
+  createCommentReto(challenge: CreateComentarioReto):Observable<Comentario>{
     
     return this.http.post<Comentario>(this.url,challenge,{headers:this.httpHeaders});
 
   }
 
-  createChallengePubli(challenge: CreateComentarioPubli):Observable<Comentario>{
+  createCommentPubli(challenge: CreateComentarioPubli):Observable<Comentario>{
     
     return this.http.post<Comentario>(this.url,challenge,{headers:this.httpHeaders});
 
@@ -32,6 +32,14 @@ export class ComentariosService {
 
     let params = new HttpParams();
     params = params.append('idPublicacion', idPublicacion);
+    return this.http.get<Comentario[]>(this.url+'/allByPublish', {headers:this.httpHeaders, params:params});
+
+  }
+
+  getCommentsReto(idReto:number):Observable<Comentario[]>{
+
+    let params = new HttpParams();
+    params = params.append('idReto', idReto);
     return this.http.get<Comentario[]>(this.url+'/allByPublish', {headers:this.httpHeaders, params:params});
 
   }

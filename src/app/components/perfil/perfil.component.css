@@ -12,10 +12,11 @@
 }
 .img {
   max-width: 30%;
+  margin-top: 5%;
 }
 .imgP {
   max-width: 90%;
-  border-radius: 100px;
+  border-radius: 70px;
 }
 .content {
   min-width: 70%;
@@ -25,5 +26,24 @@
   display: flex;
 }
 .but{
-    margin-top: 10%;
+    margin-top: 5%;
+}
+.field{
+  display: flex;
+}
+.cont{
+  font-weight: bold;
+}
+.previsualization {
+  max-height: 200px;
+  margin: 7%;
+}
+.pad{
+  padding: 3%;
+}
+form{
+  padding: 4%;
+}
+.mar{
+  max-width: 85% ;
 }

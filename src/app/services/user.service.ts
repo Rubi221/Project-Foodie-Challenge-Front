@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RegisterData } from '../models/register-data';
@@ -26,5 +26,10 @@ export class UserService {
     return this.http.post<any>(this.url,data,{headers:this.httpHeaders});
   }
 
+  getUser(idUsuario: number):Observable<User>{
+    let params = new HttpParams();
+    params = params.append('idUsuario', idUsuario);
+    return this.http.get<any>(this.url + "/findById",{headers:this.httpHeaders, params:params});
+  }
    
 }

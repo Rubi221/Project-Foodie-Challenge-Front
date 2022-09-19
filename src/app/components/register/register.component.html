@@ -1,31 +1,69 @@
 <div class="register-page">
-    <div class="form">
-        <form class="login-form" appearance="fill" fxFlexFill>
-            <div>
-                <img src="../../../favicon.ico" alt="Logo" class="img" />
-            </div>
-            <div>
-                <h1 class="font-weight-bold text-center title">{{ title }}</h1>
-            </div>
-            <input class="form-control" type="text" placeholder="Nombre" [(ngModel)]="registerData.nombre" name="Nombre" />
-            <input class="form-control" type="text" placeholder="Nombre Usuario" [(ngModel)]="registerData.username" name="Nombre Usuario" />
-            <input class="form-control" type="password" placeholder="Contraseña" [(ngModel)]="registerData.contrasena" name="Contraseña" />
-            <input class="form-control" type="email" placeholder="Email" [(ngModel)]="registerData.correo" name="Email" />
-            <input class="form-control" type="text" placeholder="Nacionalidad" [(ngModel)]="registerData.nacionalidad" name="Nacionalidad" />
-            <select class="form-select form-control" [(ngModel)]="registerData.idTipoUsuario">
+  <div class="form">
+    <form class="login-form" appearance="fill" fxFlexFill>
+      <div>
+        <img src="../../../favicon.ico" alt="Logo" class="img" />
+      </div>
+      <div>
+        <h1 class="font-weight-bold text-center title">{{ title }}</h1>
+      </div>
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Nombre"
+        [(ngModel)]="registerData.nombre"
+        name="Nombre"
+      />
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Nombre Usuario"
+        [(ngModel)]="registerData.username"
+        name="Nombre Usuario"
+      />
+      <input
+        class="form-control"
+        type="password"
+        placeholder="Contraseña"
+        [(ngModel)]="registerData.contrasena"
+        name="Contraseña"
+      />
+      <input
+        class="form-control"
+        type="email"
+        placeholder="Email"
+        [(ngModel)]="registerData.correo"
+        name="Email"
+      />
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Nacionalidad"
+        [(ngModel)]="registerData.nacionalidad"
+        name="Nacionalidad"
+      />
+      <select
+        class="form-select form-control"
+        [(ngModel)]="registerData.idTipoUsuario"
+      >
         <option selected>Tipo de Usuario ...</option>
         <option value="1">Chef</option>
         <option value="2">Miembro</option>
       </select>
 
-            <button class="btn btn-primary btnC" (click)="registro()" type="submit" role="button">
+      <button
+        class="btn btn-primary btnC"
+        (click)="registro()"
+        type="submit"
+        role="button"
+      >
         Registrarse
       </button>
 
-            <div>
-                <p>¿Ya tienes una cuenta? Inicia sesión aqui:</p>
-                <a class="nav-link" [routerLink]="['/login']">Inicia Sesión</a>
-            </div>
-        </form>
-    </div>
+      <div>
+        <p>¿Ya tienes una cuenta? Inicia sesión aqui:</p>
+        <a class="nav-link" [routerLink]="['/login']">Inicia Sesión</a>
+      </div>
+    </form>
+  </div>
 </div>

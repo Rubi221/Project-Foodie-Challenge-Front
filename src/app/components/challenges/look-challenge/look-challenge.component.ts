@@ -11,6 +11,9 @@ import { EntregasService } from 'src/app/services/entregas.service';
 import { CreateEntregaReto } from 'src/app/models/create-entrega';
 import { DetalleInscripcionService } from 'src/app/services/detalle-inscripcion.service';
 import { ThisReceiver } from '@angular/compiler';
+import { CreateComentarioReto } from 'src/app/models/create-comentario-reto';
+import { Comentario } from 'src/app/models/comentario';
+import { ComentariosService } from 'src/app/services/comentarios.service';
 
 @Component({
   selector: 'app-look-challenge',
@@ -18,11 +21,6 @@ import { ThisReceiver } from '@angular/compiler';
   styleUrls: ['./look-challenge.component.css'],
 })
 export class LookChallengeComponent implements OnInit {
-  page = 1;
-  count = 0;
-  tableSize = 6;
-  tableSizes = [3, 6, 9, 12];
-
   public entregas: EntregaReto[] = [];
   public realizaEntrega: CreateEntregaReto = {
     idInscripcionReto: 0,
@@ -37,11 +35,17 @@ export class LookChallengeComponent implements OnInit {
   public esChef!: Boolean;
   public inscripcion!: InscripcionChallenge;
   public entregado!: boolean;
-  public categoria: string = '';
-  public dificultad: string = '';
+  public categoria: String = '';
+  public dificultad: String = '';
+  public createComentario: CreateComentarioReto = {
+    idUsuario: 0,
+    idReto: 0,
+    contenido: '',
+    fecha: '',
+  };
+  public comentarios: Comentario[] = [];
 
   id: string = '';
-  fechaInicio: String = '21/09/2022';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -49,7 +53,8 @@ export class LookChallengeComponent implements OnInit {
     private inscripcionService: InscripcionchallengeService,
     private entregaService: EntregasService,
     private detalleEntregaService: DetalleInscripcionService,
-    private router: Router
+    private router: Router,
+    public comentarioService: ComentariosService
   ) {}
 
   ngOnInit(): void {
@@ -68,27 +73,30 @@ export class LookChallengeComponent implements OnInit {
 
             this.validaChef();
 
-            console.log(this.challenge);
-
-            console.log(this.challenge.idUsuario);
-
             if (sessionStorage.getItem('tipo')! === '1') {
               this.esChef = true;
             } else {
               this.esChef = false;
             }
 
-            if (this.challenge.idCategoria === 1) {
-              this.categoria = 'Tradicional';
-            } else if (this.challenge.idCategoria === 2) {
-              this.categoria = 'Postres';
-            } else if (this.challenge.idCategoria === 3) {
-              this.categoria = 'Internacional';
-            } else if (this.challenge.idCategoria === 4) {
-              this.categoria = 'Brunch';
-            } else {
+            if(this.challenge.nombreCategoria != null ){
+              this.categoria = this.challenge.nombreCategoria
+            }else{
               this.categoria = 'No indica';
             }
+            
+            // if (this.challenge.idCategoria === 1) {
+            //   this.categoria = 'Tradicional';
+            // } else if (this.challenge.idCategoria === 2) {
+            //   this.categoria = 'Postres';
+            // } else if (this.challenge.idCategoria === 3) {
+            //   this.categoria = 'Internacional';
+            // } else if (this.challenge.idCategoria === 4) {
+            //   this.categoria = 'Brunch';
+            // } else {
+            //   this.categoria = 'No indica';
+            // }
+
             if (this.challenge.dificultad === 1) {
               this.dificultad = 'Facil';
             } else if (this.challenge.dificultad === 2) {
@@ -103,9 +111,8 @@ export class LookChallengeComponent implements OnInit {
               this.detalleEntregaService
                 .checkEntrega(this.challenge.idInscripcion)
                 .subscribe((response) => {
-                  if (
-                    this.challenge.idInscripcion === response.idInscripcionReto
-                  ) {
+                  if (response.idInscripcionReto != null)
+                  {
                     this.entregado = true;
                   } else {
                     this.entregado = false;
@@ -218,28 +225,49 @@ export class LookChallengeComponent implements OnInit {
   cancelarEntrega(): void {
     swal
       .fire({
-    title: 'Seguro deseas cancelar tu entrega?',
-    icon: 'question',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Si, seguro!',
-    cancelButtonText: 'Cancelar',
-  })
-    .then((result) => {
-      if (result.isConfirmed) {
-        swal.fire(
-          'Excelente!',
-          'Tu entrega ha sido cancelada.',
-          'success'
-        );
-      }
-    });
-}
-
-  onTableDataChange(event: number) {
-    this.page = event;
+        title: 'Seguro deseas cancelar tu entrega?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, seguro!',
+        cancelButtonText: 'Cancelar',
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swal.fire('Excelente!', 'Tu entrega ha sido cancelada.', 'success');
+        }
+      });
   }
+
+  clickComentar(idR: number): void {
+    var date = new Date();
+    var current_date =
+      date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    this.createComentario.fecha = current_date;
+    this.createComentario.idReto = idR;
+    this.createComentario.idUsuario = parseInt(
+      sessionStorage.getItem('idUsuario')!
+    );
+    console.log(this.createComentario);
+
+    this.comentarioService.getCommentsReto(idR).subscribe((response) => {
+      this.comentarios = response;
+    });
+  }
+
+  creaComentario(): void {
+    this.comentarioService
+      .createCommentReto(this.createComentario)
+      .subscribe((response) => {
+        console.log(response);
+        if (this.createComentario.idUsuario === response.idUsuario) {
+          window.location.reload();
+        }
+      });
+  }
+
+  borrarReto(): void {}
   public archivos: any = [];
 
   public previsualization: any;
