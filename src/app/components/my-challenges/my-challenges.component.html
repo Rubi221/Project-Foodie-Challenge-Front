@@ -1,0 +1,19 @@
+<div class="container">
+  <div>
+    <h1 class="font-weight-bold text-center title">Mis retos</h1>
+  </div>
+
+  <div class="row row-cols-1">
+    <div class="col" *ngFor="let e of challenges">
+      <div>
+        <div class="card">
+          <h5 class="card-header title">{{ e.titulo }}</h5>
+          <div class="card-body">
+            <p class="card-text">Vigente hasta:{{ e.fechaFin }}</p>
+            <a [routerLink]="[e.id]">Ver Reto</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

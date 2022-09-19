@@ -30,6 +30,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { FormRecetaComponent } from './components/form-receta/form-receta.component';
+import { MyChallengesComponent } from './components/my-challenges/my-challenges.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { FormRecetaComponent } from './components/form-receta/form-receta.compon
     PerfilComponent,
     ForoComponent,
     FormRecetaComponent,
+    MyChallengesComponent,
   ],
   imports: [
     BrowserModule,

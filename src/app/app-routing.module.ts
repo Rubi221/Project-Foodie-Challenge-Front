@@ -8,6 +8,7 @@ import { ForoComponent } from './components/foro/foro.component';
 import { HomeComponent } from './components/home/home.component';
 import { LearningComponent } from './components/learning/learning.component';
 import { LoginComponent } from './components/login/login.component';
+import { MyChallengesComponent } from './components/my-challenges/my-challenges.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -52,10 +53,16 @@ const routes: Routes = [
         path: 'challenges/create', component: ChallengeFormComponent
       },
       {
+        path: 'myChallenges', component: MyChallengesComponent
+      },
+      {
         path: 'challenges/update/:id', component: ChallengeFormComponent
       },
       { 
         path: 'challenges/:id', component: LookChallengeComponent 
+      },
+      { 
+        path: 'myChallenges/:id', component: LookChallengeComponent 
       },
       {
         path: 'learning', component: LearningComponent

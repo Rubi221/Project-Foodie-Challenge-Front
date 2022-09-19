@@ -24,17 +24,21 @@ export class LookChallengeComponent implements OnInit {
   tableSizes = [3, 6, 9, 12];
 
   public entregas: EntregaReto[] = [];
-  public realizaEntrega: CreateEntregaReto = { idInscripcionReto: 0, calificacionFinal: 0, video: "", AdjuntoImg: "" };
+  public realizaEntrega: CreateEntregaReto = {
+    idInscripcionReto: 0,
+    calificacionFinal: 0,
+    video: '',
+    AdjuntoImg: '',
+  };
   public entrega!: EntregaReto;
 
   public challenge: ChallengeInscrito = new ChallengeInscrito();
   public madeChef!: Boolean;
   public esChef!: Boolean;
   public inscripcion!: InscripcionChallenge;
-  public entregado!:boolean;
-  public categoria:string=""
-  public dificultad:string=""
-
+  public entregado!: boolean;
+  public categoria: string = '';
+  public dificultad: string = '';
 
   id: string = '';
   fechaInicio: String = '21/09/2022';
@@ -46,14 +50,10 @@ export class LookChallengeComponent implements OnInit {
     private entregaService: EntregasService,
     private detalleEntregaService: DetalleInscripcionService,
     private router: Router
-  ) { 
-    
-
-  }
+  ) {}
 
   ngOnInit(): void {
-
-    this.eligeCategoria()
+    this.eligeCategoria();
 
     this.activatedRoute.params.subscribe((params) => {
       this.id = params['id'];
@@ -74,58 +74,56 @@ export class LookChallengeComponent implements OnInit {
 
             if (sessionStorage.getItem('tipo')! === '1') {
               this.esChef = true;
-            }else{
+            } else {
               this.esChef = false;
             }
 
-            
-    if(this.challenge.idCategoria===1){
-      this.categoria="Tradicional"
-    }else if(this.challenge.idCategoria===2){
-      this.categoria="Postres"
-    }else if(this.challenge.idCategoria===3){
-      this.categoria="Internacional"
-    }else if(this.challenge.idCategoria===4){
-      this.categoria="Brunch"
-    }else{
-      this.categoria="No indica"
-    }
-    if(this.challenge.dificultad===1){
-      this.dificultad="Facil"
-    }else if(this.challenge.dificultad===2){
-      this.dificultad="Intermedio"
-    }else if(this.challenge.dificultad===3){
-      this.dificultad="Experimentado"
-    }else{
-      this.dificultad="No indica"
-    }
-    
-
-            if(this.challenge.idInscripcion!= null){
-              this.detalleEntregaService.checkEntrega(this.challenge.idInscripcion).subscribe((response)=>{
-                if(this.challenge.idInscripcion === response.idInscripcionReto){
-                  this.entregado=true;
-                }else{
-                  this.entregado=false;
-                }
-              })
+            if (this.challenge.idCategoria === 1) {
+              this.categoria = 'Tradicional';
+            } else if (this.challenge.idCategoria === 2) {
+              this.categoria = 'Postres';
+            } else if (this.challenge.idCategoria === 3) {
+              this.categoria = 'Internacional';
+            } else if (this.challenge.idCategoria === 4) {
+              this.categoria = 'Brunch';
+            } else {
+              this.categoria = 'No indica';
             }
-            
+            if (this.challenge.dificultad === 1) {
+              this.dificultad = 'Facil';
+            } else if (this.challenge.dificultad === 2) {
+              this.dificultad = 'Intermedio';
+            } else if (this.challenge.dificultad === 3) {
+              this.dificultad = 'Experimentado';
+            } else {
+              this.dificultad = 'No indica';
+            }
+
+            if (this.challenge.idInscripcion != null) {
+              this.detalleEntregaService
+                .checkEntrega(this.challenge.idInscripcion)
+                .subscribe((response) => {
+                  if (
+                    this.challenge.idInscripcion === response.idInscripcionReto
+                  ) {
+                    this.entregado = true;
+                  } else {
+                    this.entregado = false;
+                  }
+                });
+            }
           });
 
-        this.entregaService.getEntregasById(parseInt(this.id)).subscribe((response) => {
-          this.entregas = response;
-        });
-
-        
+        this.entregaService
+          .getEntregasById(parseInt(this.id))
+          .subscribe((response) => {
+            this.entregas = response;
+          });
       }
     });
-
   }
 
-  public eligeCategoria():void {
-    
-  }
+  public eligeCategoria(): void {}
 
   public inscribeReto(): void {
     swal
@@ -195,47 +193,71 @@ export class LookChallengeComponent implements OnInit {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          this.realizaEntrega.idInscripcionReto=this.challenge.idInscripcion
-          console.log(this.realizaEntrega)
-          this.detalleEntregaService.createInscripcion(this.realizaEntrega).subscribe((response) => {
-            this.entrega = response;
-            if (this.realizaEntrega.idInscripcionReto === this.entrega.idInscripcionReto) {
-              swal.fire(
-                'Excelente!',
-                'Tu entrega ha sido satisfactoria.',
-                'success'
-              );
-              window.location.reload();
+          this.realizaEntrega.idInscripcionReto = this.challenge.idInscripcion;
+          console.log(this.realizaEntrega);
+          this.detalleEntregaService
+            .createInscripcion(this.realizaEntrega)
+            .subscribe((response) => {
+              this.entrega = response;
+              if (
+                this.realizaEntrega.idInscripcionReto ===
+                this.entrega.idInscripcionReto
+              ) {
+                swal.fire(
+                  'Excelente!',
+                  'Tu entrega ha sido satisfactoria.',
+                  'success'
+                );
+                window.location.reload();
+              }
+            });
+        }
+      });
+  }
 
-            }
-          }
-      )}
-  });
-}
-
-cancelarEntrega(): void {
-  swal
+  cancelarEntrega(): void {
+    swal
       .fire({
-    title: 'Seguro deseas cancelar tu entrega?',
-    icon: 'question',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Si, seguro!',
-    cancelButtonText: 'Cancelar',
-  })
-    .then((result) => {
-      if (result.isConfirmed) {
-        swal.fire(
-          'Excelente!',
-          'Tu entrega ha sido cancelada.',
-          'success'
-        );
-      }
-    });
-}
+        title: 'Seguro deseas cancelar tu entrega?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, seguro!',
+        cancelButtonText: 'Cancelar',
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swal.fire('Excelente!', 'Tu entrega ha sido cancelada.', 'success');
+        }
+      });
+  }
 
-onTableDataChange(event: number) {
-  this.page = event;
-}
+  onTableDataChange(event: number) {
+    this.page = event;
+  }
+  public archivos: any = [];
+
+  public previsualization: any;
+
+  public capturarFile(event: any): any {
+    const archivoCapturado = event.target.files;
+    this.archivos.push(archivoCapturado);
+    console.log(this.previsualization);
+    this.getBase64(event);
+  }
+
+  public getBase64(event: any) {
+    let me = this;
+    let file = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.previsualization = reader.result;
+      console.log(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+  }
 }
