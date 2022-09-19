@@ -9,6 +9,7 @@
               <input
                 type="text"
                 class="form-control"
+                placeholder="titulo"
                 required
                 name="titulo"
                 [(ngModel)]="challenge.titulo"
@@ -24,6 +25,7 @@
               <input
                 type="text"
                 class="form-control"
+                placeholder="contenido"
                 required
                 name="contenido"
                 [(ngModel)]="challenge.contenido"
@@ -37,20 +39,23 @@
               <input
                 type="text"
                 class="form-control"
+                placeholder="url del video"
                 required
                 name="video"
                 [(ngModel)]="challenge.video"
               />
             </div>
           </div>
-          <div>
-            <label for="fechaFin" class="col-sm-2 col-form-label"
+
+          <div class="form-group row mb-1">
+            <label for="dificultad" class="col-sm-2 col-form-label"
               >Selecciona Dificultad</label
             >
             <div class="col-sm-6">
               <select
+                class="form-select"
                 id="cars"
-                name="Categorias"
+                name="Dificultad"
                 [(ngModel)]="challenge.dificultad"
               >
                 <option value="1">Facil</option>
@@ -88,12 +93,14 @@
               />
             </div>
           </div>
-          <div>
-            <label for="fechaFin" class="col-sm-2 col-form-label"
+
+          <div class="form-group row mb-1">
+            <label for="Categoria" class="col-sm-2 col-form-label"
               >Selecciona Categoria</label
             >
             <div class="col-sm-6">
               <select
+                class="form-select"
                 id="cars"
                 name="Categorias"
                 [(ngModel)]="challenge.idCategoria"
@@ -104,7 +111,9 @@
                 <option value="4 ">Brunch</option>
               </select>
             </div>
+
             <div>
+              <label for="imagen" class="col-sm-2 col-form-label">Imagen</label>
               <input type="file" (change)="getBase64($event)" name="" id="" />
               <div *ngIf="previsualization">
                 <img [src]="previsualization" alt="" />
@@ -113,11 +122,12 @@
           </div>
           <div>
             <button
-              class="btn btn-succes"
+              class="btn btn-success btnC"
               role="button"
               *ngIf="!(id != undefined); else elseBlock"
               (click)="crearChallenge()"
             >
+              <mat-icon>queue</mat-icon>
               Crear
             </button>
             <ng-template #elseBlock>
