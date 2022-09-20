@@ -32,5 +32,10 @@ export class UserService {
     params = params.append('idUsuario', idUsuario);
     return this.http.get<any>(this.url + "/findById",{headers:this.httpHeaders, params:params});
   }
+
+  updateUser():Observable<any>{
+    return this.http.get<any>(this.url + "/findById",{headers:this.httpHeaders});
+
+  }
    
 }
