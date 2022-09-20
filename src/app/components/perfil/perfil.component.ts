@@ -21,10 +21,7 @@ export class PerfilComponent implements OnInit {
       .getUser(parseInt(sessionStorage.getItem('idUsuario')!))
       .subscribe((response) => {
         this.user = response;
-        if(this.user.foto == null){
-          this.user.foto = "https://images.pexels.com/photos/35666/cooking-baby-only-kitchen.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          this.previsualization = this.user.foto
-        }
+        this.previsualization = this.user.foto
       });
 
     if (sessionStorage.getItem('tipo')! === '1') {
