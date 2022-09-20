@@ -19,9 +19,6 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: '', redirectTo: '/login', pathMatch: 'full'
-  },
-  {
     path: 'login', component: LoginComponent
   },
   {
@@ -35,13 +32,7 @@ const routes: Routes = [
         path: 'foro', component: ForoComponent
       },
       {
-        path: '', redirectTo: '/foro', pathMatch: 'full'
-      },
-      {
         path: 'perfil', component: PerfilComponent
-      },
-      {
-        path: '', redirectTo: '/perfil', pathMatch: 'full'
       },
       {
         path: '', component: HomeComponent
