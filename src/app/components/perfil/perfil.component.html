@@ -1,115 +1,75 @@
 <div class="container">
-  <div class="field pad" *ngIf="!editMode">
-    <div class="img">
-      <img *ngIf="user.foto != null" [src]="user.foto" class="imgP" />
-      <img
-        *ngIf="user.foto == null"
-        src="https://images.pexels.com/photos/35666/cooking-baby-only-kitchen.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-        class="imgP"
-      />
-    </div>
-    <div class="content">
-      <div>
-        <h1 class="title">{{ user.nombre }}</h1>
-      </div>
+    <div class="field pad" *ngIf="!editMode">
+        <div class="img">
+            <img *ngIf="user.foto != null" [src]="user.foto" class="imgP" />
+            <img *ngIf="user.foto == null" src="https://images.pexels.com/photos/35666/cooking-baby-only-kitchen.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="imgP" />
+        </div>
+        <div class="content">
+            <div>
+                <h1 class="title">{{ user.nombre }}</h1>
+            </div>
 
-      <div>
-        <div class="field">
-          <h5 class="cont">Nombre de Usuario:</h5>
-          <p>{{ user.username }}</p>
-        </div>
-        <div class="field">
-          <h5 class="cont">Nacionalidad:</h5>
-          <p>{{ user.nacionalidad }}</p>
-        </div>
-        <div class="field">
-          <h5 class="cont">Correo:</h5>
-          <p>{{ user.correo }}</p>
-        </div>
-        <div class="field">
-          <h5 class="cont">Tipo de Usuario:</h5>
-          <p>{{ user.nombreTipoUsuario }}</p>
-        </div>
-        <div class="field" *ngIf="esChef">
-          <h5 class="cont">Especialidad:</h5>
-          <p>{{ user.especialidad }}</p>
-        </div>
-        <div class="field" *ngIf="!esChef">
-          <h5 class="cont">Nivel de Actividad:</h5>
-          <p>{{ user.nivelActividad }}</p>
-        </div>
-      </div>
+            <div>
+                <div class="field">
+                    <h5 class="cont">Nombre de Usuario:</h5>
+                    <p>{{ user.username }}</p>
+                </div>
+                <div class="field">
+                    <h5 class="cont">Nacionalidad:</h5>
+                    <p>{{ user.nacionalidad }}</p>
+                </div>
+                <div class="field">
+                    <h5 class="cont">Correo:</h5>
+                    <p>{{ user.correo }}</p>
+                </div>
+                <div class="field">
+                    <h5 class="cont">Tipo de Usuario:</h5>
+                    <p>{{ user.nombreTipoUsuario }}</p>
+                </div>
+                <div class="field" *ngIf="esChef">
+                    <h5 class="cont">Especialidad:</h5>
+                    <p>{{ user.especialidad }}</p>
+                </div>
+                <div class="field" *ngIf="!esChef">
+                    <h5 class="cont">Nivel de Actividad:</h5>
+                    <p>{{ user.nivelActividad }}</p>
+                </div>
+            </div>
 
-      <div class="but">
-        <button class="btn btn-danger btnC" (click)="editUser()">
+            <div class="but">
+                <button class="btn btn-danger btnC" (click)="editMode=true">
           <mat-icon>create</mat-icon>EDITAR PERFIL
         </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="field pad" *ngIf="editMode">
-    <div class="img">
-      <input
-        type="file"
-        class="form-control mar"
-        (change)="getBase64($event)"
-        name=""
-        id=""
-      />
-      <img [src]="previsualization" class="previsualization imgP" />
+            </div>
+        </div>
     </div>
 
-    <div class="content">
-      <div>
-        <h1 class="title">Edita tus datos</h1>
-      </div>
+    <div class="field pad" *ngIf="editMode">
+        <div class="img">
+            <input type="file" class="form-control mar" (change)="capturarFile($event)" name="" id="" />
+            <img [src]="previsualization" class="previsualization imgP" />
+        </div>
 
-      <form appearance="fill" fxFlexFill>
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Nombre"
-          [(ngModel)]="user.nombre"
-          name="Nombre"
-        />
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Nombre Usuario"
-          [(ngModel)]="user.username"
-          name="Nombre Usuario"
-        />
-        <input
-          class="form-control"
-          type="password"
-          placeholder="Contraseña"
-          [(ngModel)]="user.contrasena"
-          name="Contraseña"
-        />
-        <input
-          class="form-control"
-          type="email"
-          placeholder="Email"
-          [(ngModel)]="user.correo"
-          name="Email"
-        />
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Nacionalidad"
-          [(ngModel)]="user.nacionalidad"
-          name="Nacionalidad"
-        />
-        <div class="but">
-          <button class="btn btn-success btnC">
+        <div class="content">
+            <div>
+                <h1 class="title">Edita tus datos</h1>
+            </div>
+
+            <form appearance="fill" fxFlexFill>
+                <input class="form-control" type="text" placeholder="Nombre" [(ngModel)]="user.nombre" name="Nombre" />
+                <input class="form-control" type="text" placeholder="Nombre Usuario" [(ngModel)]="user.username" name="Nombre Usuario" />
+                <input class="form-control" type="password" placeholder="Contraseña" [(ngModel)]="user.contrasena" name="Contraseña" />
+                <input class="form-control" type="email" placeholder="Email" [(ngModel)]="user.correo" name="Email" />
+                <input class="form-control" type="text" placeholder="Nacionalidad" [(ngModel)]="user.nacionalidad" name="Nacionalidad" />
+                <div class="but">
+                    <button class="btn btn-success btnC" (click)="editUser()">
             Guardar<mat-icon>check</mat-icon>
           </button>
-          <button class="btn btn-danger btnC" (click)="closeEditUser()">
+                    <button class="btn btn-danger btnC" (click)="closeEditUser()">
             Cancelar<mat-icon>close</mat-icon>
           </button>
+                </div>
+            </form>
         </div>
-      </form>
     </div>
-  </div>
 </div>

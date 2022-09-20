@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { UserCredentials } from 'src/app/models/user-credentials';
 import { UserService } from 'src/app/services/user.service';
+import { Storage, ref, uploadBytes, UploadTask, UploadTaskSnapshot, getDownloadURL } from '@angular/fire/storage';
+
 
 @Component({
   selector: 'app-perfil',
@@ -14,7 +16,10 @@ export class PerfilComponent implements OnInit {
   public editMode: Boolean = false;
   public archivos: any = [];
   public previsualization: any;
-  constructor(private userService: UserService) {}
+  archivoCapturado: any;
+  enlaceImage: any;
+  constructor(private userService: UserService,    private storage: Storage
+    ) {}
 
   ngOnInit(): void {
     this.userService
@@ -33,6 +38,10 @@ export class PerfilComponent implements OnInit {
 
   editUser() {
     this.editMode = true;
+
+    this.userService.updateUser(this.user).subscribe((response)=>{
+      console.log(response)
+    })
   }
 
   closeEditUser() {
@@ -42,12 +51,21 @@ export class PerfilComponent implements OnInit {
   
 
   public capturarFile(event: any): any {
-    const archivoCapturado = event.target.files;
-    this.archivos.push(archivoCapturado);
-    console.log(this.previsualization);
-    this.getBase64(event);
-  }
+    this.archivoCapturado = event.target.files[0];
+    const imgRef = ref(this.storage, 'images/' + this.archivoCapturado.name)
+    uploadBytes(imgRef, this.archivoCapturado).then(x => {
+      getDownloadURL(imgRef)
+        .then((url) => {
+          this.enlaceImage = url;
+          this.user.foto = url
+          console.log(url)
+        }).catch(error => console.log(error))
+    } )
 
+    this.getBase64(event);
+
+  }
+  
   public getBase64(event: any) {
     let me = this;
     let file = event.target.files[0];
@@ -55,8 +73,7 @@ export class PerfilComponent implements OnInit {
     reader.readAsDataURL(file);
     reader.onload = () => {
       this.previsualization = reader.result;
-      this.user.foto=this.previsualization;
-      console.log(reader.result);
+      // console.log(reader.result);
     };
     reader.onerror = function (error) {
       console.log('Error: ', error);
