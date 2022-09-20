@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Storage, ref, uploadBytes, UploadTask, UploadTaskSnapshot } from '@angular/fire/storage';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { getDownloadURL } from '@firebase/storage';
 import { Challenge } from 'src/app/models/challenge';
 import { CreateChallenge } from 'src/app/models/create-challenge';
 import { ChallengeService } from 'src/app/services/challenge.service';
@@ -24,6 +26,8 @@ export class ChallengeFormComponent implements OnInit {
     fechaFin: '',
   };
   challengeId: Challenge = new Challenge();
+  archivoCapturado:any;
+  enlaceImage:any;
 
   id: string = '';
 
@@ -31,8 +35,9 @@ export class ChallengeFormComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private challengeService: ChallengeService,
-    private sanitizer: DomSanitizer
-  ) {}
+    private sanitizer: DomSanitizer,
+    private storage: Storage
+  ) { }
 
   ngOnInit(): void {
     console.log(this.challenge);
@@ -59,10 +64,14 @@ export class ChallengeFormComponent implements OnInit {
     });
   }
 
-  public crearChallenge(): void {
+  async crearChallenge(){
     this.fixDateFormat();
     this.challenge.idUsuario = parseInt(sessionStorage.getItem('idUsuario')!);
-    console.log(this.challenge);
+    this.challenge.adjunto = this.enlaceImage
+  
+    
+    console.log(this.enlaceImage)
+
     this.challengeService.createChallenge(this.challenge).subscribe(
       (response) => {
         this.challenge = response;
@@ -81,15 +90,19 @@ export class ChallengeFormComponent implements OnInit {
     );
   }
 
-  challengeUpdate!:Challenge;
+  challengeUpdate!: Challenge;
 
   public updateChallenge(): void {
     this.fixDateFormat();
     this.challenge.idUsuario = parseInt(sessionStorage.getItem('idUsuario')!);
-    
-    this.challengeUpdate={id:parseInt(this.id),titulo:this.challenge.titulo,contenido:this.challenge.contenido,dificultad:this.challenge.dificultad,
-    video:this.challenge.video,adjunto:this.challenge.adjunto,idUsuario:this.challenge.idUsuario, nombreChef:"", idCategoria:this.challenge.idCategoria, 
-    nombreCategoria:"", fechaInicio: this.challenge.fechaInicio, fechaFin: this.challenge.fechaFin};
+
+    this.challengeUpdate = {
+      id: parseInt(this.id), titulo: this.challenge.titulo, contenido: this.challenge.contenido, dificultad: this.challenge.dificultad,
+      video: this.challenge.video, adjunto: this.challenge.adjunto, idUsuario: this.challenge.idUsuario, nombreChef: "", idCategoria: this.challenge.idCategoria,
+      nombreCategoria: "", fechaInicio: this.challenge.fechaInicio, fechaFin: this.challenge.fechaFin
+    };
+
+    // this.challengeUpdate.adjunto = this.enviaImagen()    
 
     console.log(this.challengeUpdate)
 
@@ -134,11 +147,22 @@ export class ChallengeFormComponent implements OnInit {
   public previsualization: any;
 
   public capturarFile(event: any): any {
-    const archivoCapturado = event.target.files;
-    this.archivos.push(archivoCapturado);
-    console.log(this.previsualization);
-    this.getBase64(event);
+    this.archivoCapturado = event.target.files[0];
+    const imgRef = ref(this.storage, 'images/' + this.archivoCapturado.nombre)
+    uploadBytes(imgRef, this.archivoCapturado).then(x => {
+      getDownloadURL(imgRef)
+        .then((url) => {
+          this.enlaceImage = url;
+          
+        }).catch(error => console.log(error))
+    } )
   }
+
+  link:string=""
+  async enviaImagen(){
+   
+  }
+
 
   public getBase64(event: any) {
     let me = this;
@@ -147,7 +171,7 @@ export class ChallengeFormComponent implements OnInit {
     reader.readAsDataURL(file);
     reader.onload = () => {
       this.previsualization = reader.result;
-      this.challenge.adjunto=this.previsualization;
+      this.challenge.adjunto = this.previsualization;
       console.log(reader.result);
     };
     reader.onerror = function (error) {

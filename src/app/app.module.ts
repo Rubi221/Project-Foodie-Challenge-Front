@@ -32,6 +32,9 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { FormRecetaComponent } from './components/form-receta/form-receta.component';
 import { MyChallengesComponent } from './components/my-challenges/my-challenges.component';
 import {MatSliderModule} from '@angular/material/slider'; 
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,9 @@ import {MatSliderModule} from '@angular/material/slider';
     MatSidenavModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSliderModule
+    MatSliderModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
   ],
   providers: [],
   bootstrap: [AppComponent],

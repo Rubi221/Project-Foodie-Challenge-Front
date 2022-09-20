@@ -42,4 +42,8 @@ export class ChallengesComponent implements OnInit {
       return false;
     }
   }
+  
+  
+
+
 }
