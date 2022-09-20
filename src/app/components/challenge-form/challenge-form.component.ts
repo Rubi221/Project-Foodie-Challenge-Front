@@ -148,7 +148,8 @@ export class ChallengeFormComponent implements OnInit {
 
   public capturarFile(event: any): any {
     this.archivoCapturado = event.target.files[0];
-    const imgRef = ref(this.storage, 'images/' + this.archivoCapturado.nombre)
+    console.log(this.archivoCapturado)
+    const imgRef = ref(this.storage, 'images/' + this.archivoCapturado.name)
     uploadBytes(imgRef, this.archivoCapturado).then(x => {
       getDownloadURL(imgRef)
         .then((url) => {
