@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Receta } from '../models/receta';
 import { environment } from 'src/environments/environment.prod';
+import { CreateReceta } from '../models/create-receta';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,10 @@ export class LearningService {
 
   getAll(): Observable<Receta[]> {
     return this.http.get<Receta[]>(this.url +'/all', {headers:this.httpHeaders});
+  }
+
+  create(receta: CreateReceta): Observable<Receta>{
+    return this.http.post<Receta>(this.url,receta,{headers:this.httpHeaders})
   }
 
 }
