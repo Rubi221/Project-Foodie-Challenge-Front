@@ -31,7 +31,7 @@ export class LookChallengeComponent implements OnInit {
   value = 0;
 
   public calificaEntrega:CalificaEntrega={
-    idInscripcionReto:0,
+    idDetalle:0,
     idUsuario:0,
     puntaje:1
   }
@@ -267,7 +267,7 @@ export class LookChallengeComponent implements OnInit {
   }
 
   enviaCalificacion(idEntrega:number, puntaje:number){
-    this.calificaEntrega.idInscripcionReto=idEntrega
+    this.calificaEntrega.idDetalle=idEntrega
     this.calificaEntrega.idUsuario=parseInt(sessionStorage.getItem('idUsuario')!)
     this.calificaEntrega.puntaje = puntaje
     console.log(this.calificaEntrega)

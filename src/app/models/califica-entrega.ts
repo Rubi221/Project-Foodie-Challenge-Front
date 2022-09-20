@@ -1,6 +1,6 @@
 export class CalificaEntrega {
 
-    public idInscripcionReto!: number;
+    public idDetalle!: number;
     public idUsuario!: number;
     public puntaje!: number;
 

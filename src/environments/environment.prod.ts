@@ -9,5 +9,7 @@ export const environment = {
     messagingSenderId: '503355077660',
   },
   production: true,
-  urlBack: "http://foodiechallengeback-env.eba-ficxjbnp.us-east-1.elasticbeanstalk.com/api",
+
+  // urlBack: "http://foodiechallengeback-env.eba-ficxjbnp.us-east-1.elasticbeanstalk.com/api",
+  urlBack: "http://localhost:8080/api",
 };
