@@ -32,7 +32,13 @@ const routes: Routes = [
         path: 'foro', component: ForoComponent
       },
       {
+        path: '', redirectTo: '/foro', pathMatch: 'full'
+      },
+      {
         path: 'perfil', component: PerfilComponent
+      },
+      {
+        path: '', redirectTo: '/perfil', pathMatch: 'full'
       },
       {
         path: '', component: HomeComponent
