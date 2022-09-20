@@ -21,6 +21,12 @@ import { ComentariosService } from 'src/app/services/comentarios.service';
   styleUrls: ['./look-challenge.component.css'],
 })
 export class LookChallengeComponent implements OnInit {
+  max = 5;
+  min = 0;
+  step = 1;
+  thumbLabel = true;
+  value = 0;
+
   public entregas: EntregaReto[] = [];
   public realizaEntrega: CreateEntregaReto = {
     idInscripcionReto: 0,
@@ -29,6 +35,7 @@ export class LookChallengeComponent implements OnInit {
     AdjuntoImg: '',
   };
   public entrega!: EntregaReto;
+  stars: number[] = [1, 2, 3, 4, 5];
 
   public challenge: ChallengeInscrito = new ChallengeInscrito();
   public madeChef!: Boolean;
@@ -84,18 +91,6 @@ export class LookChallengeComponent implements OnInit {
             }else{
               this.categoria = 'No indica';
             }
-            
-            // if (this.challenge.idCategoria === 1) {
-            //   this.categoria = 'Tradicional';
-            // } else if (this.challenge.idCategoria === 2) {
-            //   this.categoria = 'Postres';
-            // } else if (this.challenge.idCategoria === 3) {
-            //   this.categoria = 'Internacional';
-            // } else if (this.challenge.idCategoria === 4) {
-            //   this.categoria = 'Brunch';
-            // } else {
-            //   this.categoria = 'No indica';
-            // }
 
             if (this.challenge.dificultad === 1) {
               this.dificultad = 'Facil';

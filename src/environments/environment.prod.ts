@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  urlBack: "http://localhost:8080/api",
+  urlBack: "http://foodiechallengeback-env.eba-ficxjbnp.us-east-1.elasticbeanstalk.com/api",
 };

@@ -31,6 +31,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { FormRecetaComponent } from './components/form-receta/form-receta.component';
 import { MyChallengesComponent } from './components/my-challenges/my-challenges.component';
+import {MatSliderModule} from '@angular/material/slider'; 
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { MyChallengesComponent } from './components/my-challenges/my-challenges.
     MatDialogModule,
     MatSidenavModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent],

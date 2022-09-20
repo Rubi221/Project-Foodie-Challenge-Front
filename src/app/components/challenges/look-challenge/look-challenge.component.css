@@ -1,52 +1,69 @@
 .container {
-    border-radius: 15px;
-    background-color: whitesmoke;
-    padding: 3%;
-    margin-top: 8% !important;
-    min-height: max-content;
-    max-width: 60%;
-    position: relative;
+  border-radius: 15px;
+  background-color: whitesmoke;
+  padding: 3%;
+  margin-top: 8% !important;
+  min-height: max-content;
+  max-width: 60%;
+  position: relative;
 }
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .title {
-    color: red;
+  color: red;
 }
 .header-image {
-    background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-    background-size: cover;
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
 }
 .mat-card-header {
-    margin: 2% !important;
+  margin: 2% !important;
 }
 .btnC {
-    margin: 5px;
-    display: flex;
+  margin: 5px;
+  display: flex;
 }
 .btnT {
-    margin: 5px;
+  margin: 5px;
 }
 .checked {
-    color: orange;
+  color: orange;
 }
 .content {
-    text-align: justify !important;
-    font-weight: bold;
+  text-align: justify !important;
+  font-weight: bold;
 }
 span {
-    display: block;
+  display: block;
 }
 .mat {
-    background-color: rgb(172, 172, 172);
+  background-color: rgb(172, 172, 172);
 }
-.divflex{
-    display: flex;
-    text-align: justify !important;
+.divflex {
+  display: flex;
+  text-align: justify !important;
 }
-.retoContenido{
-    padding: 3%;
-    border-color: solid black !important;
+.retoContenido {
+  padding: 3%;
+  border-color: solid black !important;
+}
+
+::ng-deep .mat-slider {
+  max-width: 300px;
+  width: 100%;
+}
+::ng-deep .mat-accent .mat-slider-track-fill {
+  background-color: rgb(255, 174, 0) !important;
+}
+
+::ng-deep .mat-slider-thumb-label {
+  background-color: red !important;
+  color: white;
+}
+
+::ng-deep .mat-slider-thumb {
+  background-color: red !important;
 }

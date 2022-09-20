@@ -34,14 +34,6 @@
           src="https://www.youtube.com/embed/tgbNymZ7vqY"
         >
         </iframe>
-        <div *ngIf="madeChef">
-          <button [routerLink]="['../update/', id]" class="btn btn-danger btnC">
-            <mat-icon>create</mat-icon>EDITAR
-          </button>
-          <button (click)="borrarReto()" class="btn btn-danger btnC">
-            <mat-icon>delete</mat-icon>BORRAR
-          </button>
-        </div>
 
         <div class="divflex">
           <p class="content">Fecha final para la entrega:</p>
@@ -162,11 +154,41 @@
                     />
                     <p>Cailificacion: {{ e.calificacionFinal }}</p>
                   </mat-card-content>
+
                   <mat-card-actions>
                     <div>
-                      <button class="btn btn-danger btnC">
+                      <button
+                        class="btn btn-danger btnC"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#calificationZone"
+                        aria-expanded="false"
+                        aria-controls="calificationZone"
+                      >
                         <mat-icon>star</mat-icon>CALIFICAR ENTREGA
                       </button>
+
+                      <div class="collapse" id="calificationZone">
+                        <div class="card card-body">
+                          <div class="example-label-container">
+                            <label id="example-name-label" class="content title"
+                              >Calificación: .</label
+                            >
+                            <label>{{ value }}</label>
+                          </div>
+                          <mat-slider
+                            thumbLabel
+                            step="1"
+                            min="0"
+                            max="5"
+                            aria-label="units"
+                            [(ngModel)]="value"
+                          ></mat-slider>
+                          <button class="btn btn-success btnC" type="button">
+                            Enviar Calificación<mat-icon>send</mat-icon>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </mat-card-actions>
                 </mat-card>
