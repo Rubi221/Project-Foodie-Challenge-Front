@@ -33,9 +33,8 @@ export class UserService {
     return this.http.get<any>(this.url + "/findById",{headers:this.httpHeaders, params:params});
   }
 
-  updateUser():Observable<any>{
-    return this.http.get<any>(this.url + "/findById",{headers:this.httpHeaders});
-
+  updateUser(user: User):Observable<any>{
+    return this.http.put<any>(this.url,user,{headers:this.httpHeaders});
   }
    
 }
