@@ -14,6 +14,8 @@ import { ThisReceiver } from '@angular/compiler';
 import { CreateComentarioReto } from 'src/app/models/create-comentario-reto';
 import { Comentario } from 'src/app/models/comentario';
 import { ComentariosService } from 'src/app/services/comentarios.service';
+import { Storage, ref, uploadBytes, UploadTask, UploadTaskSnapshot, getDownloadURL } from '@angular/fire/storage';
+
 
 @Component({
   selector: 'app-look-challenge',
@@ -53,6 +55,8 @@ export class LookChallengeComponent implements OnInit {
   public comentarios: Comentario[] = [];
 
   id: string = '';
+  archivoCapturado: any;
+  enlaceImage: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -61,7 +65,8 @@ export class LookChallengeComponent implements OnInit {
     private entregaService: EntregasService,
     private detalleEntregaService: DetalleInscripcionService,
     private router: Router,
-    public comentarioService: ComentariosService
+    public comentarioService: ComentariosService,
+    private storage:Storage
   ) {}
 
   ngOnInit(): void {
@@ -183,6 +188,7 @@ export class LookChallengeComponent implements OnInit {
   }
 
   enviarEntrega(): void {
+    console.log(this.realizaEntrega)
     swal
       .fire({
         title: 'Seguro deseas realizar tu entrega?',
@@ -268,11 +274,20 @@ export class LookChallengeComponent implements OnInit {
   public previsualization: any;
 
   public capturarFile(event: any): any {
-    const archivoCapturado = event.target.files;
-    this.archivos.push(archivoCapturado);
-    console.log(this.previsualization);
+    this.archivoCapturado = event.target.files[0];
+    const imgRef = ref(this.storage, 'images/' + this.archivoCapturado.name)
+    uploadBytes(imgRef, this.archivoCapturado).then(x => {
+      getDownloadURL(imgRef)
+        .then((url) => {
+          this.enlaceImage = url;
+          this.realizaEntrega.AdjuntoImg = url
+        }).catch(error => console.log(error))
+    } )
+
     this.getBase64(event);
+
   }
+  
 
   public getBase64(event: any) {
     let me = this;
