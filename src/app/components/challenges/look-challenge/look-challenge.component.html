@@ -1,48 +1,61 @@
 <div class="container">
   <div>
-    <div>
-      <div>
-        <h1 class="font-weight-bold text-center title">
-          {{ challenge.titulo }}
-        </h1>
-      </div>
-
-      <img [src]="challenge.adjunto" alt="" class="card-img-top" />
+    <h1 class="font-weight-bold text-center title">
+      {{ challenge.titulo }}
+    </h1>
+  </div>
+  <div>
+    <div class="co">
+      <div mat-card-avatar class="header-image"></div>
+      <p class="chef">Chef: {{ challenge.nombreChef }}</p>
     </div>
 
-    <div class="retoContenido">
-      <div>
+    <div class="img-cont">
+      <img [src]="challenge.adjunto" class="card-img-top" />
+      <div class="cont borde">
         <p class="content">El reto consiste en:</p>
         <p>{{ challenge.contenido }}</p>
       </div>
+    </div>
+  </div>
 
-      <div class="divflex">
+  <div class="retoContenido">
+    <div class="divflex">
+      <div class="cat">
+        <mat-icon class="icon">circle</mat-icon>
         <p class="content">Categoria:</p>
         <p>{{ categoria }}</p>
       </div>
 
-      <div class="divflex">
+      <div class="cat">
+        <mat-icon class="icon">circle</mat-icon>
         <p class="content">Dificultad:</p>
         <p>{{ dificultad }}</p>
       </div>
+    </div>
 
-      <div>
-        <p class="content">Video Explicativo del reto:</p>
-        <iframe
-          width="420"
-          height="300"
-          src="https://www.youtube.com/embed/tgbNymZ7vqY"
-        >
-        </iframe>
+    <div>
+      <p class="content">Video Explicativo del reto:</p>
+      <iframe
+        width="300"
+        height="200"
+        src="https://www.youtube.com/embed/tgbNymZ7vqY"
+      >
+      </iframe>
 
-        <div class="divflex">
-          <p class="content">Fecha final para la entrega:</p>
-          <p>
-            {{ challenge.fechaFin }}
-          </p>
-        </div>
+      <div class="divflex">
+        <p class="content">Fecha final para la entrega:</p>
+        <p>
+          {{ challenge.fechaFin }}
+        </p>
       </div>
+    </div>
 
+    <div class="card-footer">
+      <small class="text-muted">Abierto el: {{ challenge.fechaInicio }}</small>
+    </div>
+
+    <div class="buttons">
       <div *ngIf="!challenge.inscrito && !esChef">
         <button (click)="inscribeReto()" class="btn btn-danger btnC">
           <mat-icon>playlist_add</mat-icon>INSCRIBIRSE
@@ -99,13 +112,12 @@
         <button [routerLink]="['../update/', id]" class="btn btn-danger btnC">
           <mat-icon>create</mat-icon>EDITAR
         </button>
+      </div>
+
+      <div *ngIf="madeChef">
         <button (click)="borrarReto()" class="btn btn-danger btnC">
           <mat-icon>delete</mat-icon>BORRAR
         </button>
-      </div>
-
-      <div class="card-footer">
-        <small class="text-muted">Publicado: {{ challenge.fechaInicio }}</small>
       </div>
     </div>
   </div>

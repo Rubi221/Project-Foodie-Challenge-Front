@@ -4,7 +4,7 @@
   padding: 3%;
   margin-top: 8% !important;
   min-height: max-content;
-  max-width: 60%;
+  max-width: 70%;
   position: relative;
 }
 .card {
@@ -12,12 +12,47 @@
   flex-direction: column;
   align-items: center;
 }
+.img-cont{
+  display: flex;
+  border-radius: 15px;
+  border-color: black !important;
+}
+.borde{
+  border-color: black !important;
+}
+.cat{
+  padding-right:7%;
+  display: flex;
+}
+p{
+  align-self:baseline;
+}
+.icon{
+  color: rgb(151, 2, 2);
+}
+.co{
+  display: flex;
+  margin-left: 3% !important;
+}
+.cont{
+  padding: 2%;
+}
 .title {
   color: red;
+}
+.chef{
+  font-size: larger !important;
+  padding-left: 2%;
+  padding-bottom: 1%;
 }
 .header-image {
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
+}
+::ng-deep .card-img, .card-img-bottom, .card-img-top {
+  width: 70% !important;
+  padding-left: 3%;
+  border-color: black !important;
 }
 .mat-card-header {
   margin: 2% !important;
@@ -29,12 +64,16 @@
 .btnT {
   margin: 5px;
 }
+.buttons{
+  display: flex;
+}
 .checked {
   color: orange;
 }
 .content {
   text-align: justify !important;
   font-weight: bold;
+  font-size: larger !important;
 }
 span {
   display: block;
