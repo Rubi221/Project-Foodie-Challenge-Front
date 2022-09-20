@@ -68,9 +68,18 @@
               <mat-card-header>
                 <mat-card-title class="titu">{{ e.titulo }}</mat-card-title>
               </mat-card-header>
-              <img [src]="e.adjunto" alt=" " class="card-img-top" />
-
               <mat-card-content>
+                <img
+                  *ngIf="e.adjunto != null"
+                  [src]="e.adjunto"
+                  alt=" "
+                  class="card-img-top"
+                />
+                <img
+                  *ngIf="e.adjunto == null"
+                  src="https://images.pexels.com/photos/8515597/pexels-photo-8515597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  class="card-img-top"
+                />
                 <p>{{ e.contenido }}</p>
                 <small class="text-muted">Publicado:{{ e.fechaInicio }}</small>
               </mat-card-content>

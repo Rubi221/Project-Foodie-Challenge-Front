@@ -1,21 +1,32 @@
 <div class="container">
-  <div>
-    <h1 class="font-weight-bold text-center title">
-      {{ challenge.titulo }}
-    </h1>
-  </div>
-  <div>
-    <div class="co">
-      <div mat-card-avatar class="header-image"></div>
-      <p class="chef">Chef: {{ challenge.nombreChef }}</p>
-    </div>
+  <div class="reto">
+    <div class="prim">
+      <div class="co">
+        <div mat-card-avatar class="header-image"></div>
+        <p class="chef">Chef: {{ challenge.nombreChef }}</p>
+      </div>
 
-    <div class="img-cont">
       <div class="cont borde">
         <p class="content">El reto consiste en:</p>
         <p>{{ challenge.contenido }}</p>
       </div>
-      <img [src]="challenge.adjunto" class="card-img-top" />
+    </div>
+    <div class="sec">
+      <h1 class="font-weight-bold text-center title">
+        {{ challenge.titulo }}
+      </h1>
+
+      <img
+        *ngIf="challenge.adjunto != null"
+        [src]="challenge.adjunto"
+        alt=" "
+        class="card-img-top"
+      />
+      <img
+        *ngIf="challenge.adjunto == null"
+        src="https://images.pexels.com/photos/8515597/pexels-photo-8515597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        class="card-img-top"
+      />
     </div>
   </div>
 
