@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EntregaReto } from '../models/entrega';
 import { environment } from 'src/environments/environment.prod';
+import { CalificaEntrega } from '../models/califica-entrega';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ import { environment } from 'src/environments/environment.prod';
 export class EntregasService {
 
   url:string = `${environment.urlBack}/detalleInscripcion`;
+
+  url2:string = `${environment.urlBack}/puntajeIns`;
 
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin':'*'});
 
@@ -21,6 +24,11 @@ export class EntregasService {
     params = params.append('idReto', idReto);
 
     return this.http.get<EntregaReto[]>(this.url+'/allEntregasByReto',{headers:this.httpHeaders, params:params});
+
+  }
+
+  calificaEntrega(calificacion:CalificaEntrega):Observable<any>{
+    return this.http.post<any>(this.url2,calificacion,{headers:this.httpHeaders});
 
   }
 

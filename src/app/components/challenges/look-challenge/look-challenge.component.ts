@@ -15,6 +15,7 @@ import { CreateComentarioReto } from 'src/app/models/create-comentario-reto';
 import { Comentario } from 'src/app/models/comentario';
 import { ComentariosService } from 'src/app/services/comentarios.service';
 import { Storage, ref, uploadBytes, UploadTask, UploadTaskSnapshot, getDownloadURL } from '@angular/fire/storage';
+import { CalificaEntrega } from 'src/app/models/califica-entrega';
 
 
 @Component({
@@ -28,6 +29,12 @@ export class LookChallengeComponent implements OnInit {
   step = 1;
   thumbLabel = true;
   value = 0;
+
+  public calificaEntrega:CalificaEntrega={
+    idInscripcionReto:0,
+    idUsuario:0,
+    puntaje:1
+  }
 
   public entregas: EntregaReto[] = [];
   public realizaEntrega: CreateEntregaReto = {
@@ -221,6 +228,58 @@ export class LookChallengeComponent implements OnInit {
             });
         }
       });
+  }
+
+  calificarEntrega(){
+    console.log(this.realizaEntrega)
+    swal
+      .fire({
+        title: 'Seguro deseas realizar tu entrega?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, seguro!',
+        cancelButtonText: 'Cancelar',
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.realizaEntrega.idInscripcionReto = this.challenge.idInscripcion;
+          console.log(this.realizaEntrega);
+          this.detalleEntregaService
+            .createInscripcion(this.realizaEntrega)
+            .subscribe((response) => {
+              this.entrega = response;
+              if (
+                this.realizaEntrega.idInscripcionReto ===
+                this.entrega.idInscripcionReto
+              ) {
+                swal.fire(
+                  'Excelente!',
+                  'Tu entrega ha sido satisfactoria.',
+                  'success'
+                );
+                window.location.reload();
+              }
+            });
+        }
+      });
+  }
+
+  enviaCalificacion(idEntrega:number, puntaje:number){
+    this.calificaEntrega.idInscripcionReto=idEntrega
+    this.calificaEntrega.idUsuario=parseInt(sessionStorage.getItem('idUsuario')!)
+    this.calificaEntrega.puntaje = puntaje
+    console.log(this.calificaEntrega)
+    this.entregaService.calificaEntrega(this.calificaEntrega).subscribe((response)=>{
+      console.log(response)
+      swal.fire('Creado con Exito', '', 'success');
+      setTimeout(() => {
+        this.router.navigate(['home/learning']);
+      }, 1000);
+      window.location.reload();
+
+    })
   }
 
   cancelarEntrega(): void {

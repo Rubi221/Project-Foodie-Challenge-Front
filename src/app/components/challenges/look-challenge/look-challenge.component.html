@@ -138,7 +138,7 @@
                             <label>{{ value }}</label>
                                                     </div>
                                                     <mat-slider thumbLabel step="1" min="0" max="5" aria-label="units" [(ngModel)]="value"></mat-slider>
-                                                    <button class="btn btn-success btnC" type="button">
+                                                    <button class="btn btn-success btnC" type="button" (click)="enviaCalificacion( e.id, value)">
                             Enviar Calificación<mat-icon>send</mat-icon>
                           </button>
                                                 </div>
