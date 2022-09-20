@@ -16,6 +16,7 @@ export class ChallengesComponent implements OnInit {
   tableSizes = [3, 6, 9, 12];
 
   public challenges: Challenge[] = [];
+  public challengesActual: Challenge[] = [];
 
   constructor(private challengeService: ChallengeService) {
   }
@@ -23,6 +24,7 @@ export class ChallengesComponent implements OnInit {
   ngOnInit(): void {
     this.challengeService.getOpenChallenges().subscribe(response=>{
       this.challenges = response;
+      this.challengesActual = this.challenges
     })
   }
 
@@ -44,6 +46,45 @@ export class ChallengesComponent implements OnInit {
   }
   
   
+  muestraPostres(){
+    this.challengesActual = []
+    this.challenges.forEach(element => {
+      if(element.idCategoria===2){
+        this.challengesActual.push(element)
+      }
+      
+    });
+  }
+
+  muestraTradicional(){
+    this.challengesActual = []
+    this.challenges.forEach(element => {
+      if(element.idCategoria===1){
+        this.challengesActual.push(element)
+      }
+      
+    });
+  }
+
+  muestraInternacional(){
+    this.challengesActual = []
+    this.challenges.forEach(element => {
+      if(element.idCategoria===3){
+        this.challengesActual.push(element)
+      }
+      
+    });
+  }
+
+  muestraBrunch(){
+    this.challengesActual = []
+    this.challenges.forEach(element => {
+      if(element.idCategoria===4){
+        this.challengesActual.push(element)
+      }
+      
+    });
+  }
 
 
 }

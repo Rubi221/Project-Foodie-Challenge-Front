@@ -1,107 +1,78 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
-  <mat-drawer-container autosize>
-    <mat-drawer #drawer mode="side">
-      <div>
-        <h3 class="font-weight-bold text-center title">Categorias</h3>
-      </div>
-      <div class="list-group">
-        <button
-          type="button"
-          class="list-group-item list-group-item-action"
-          aria-current="true"
-        >
+    <mat-drawer-container autosize>
+        <mat-drawer #drawer mode="side">
+            <div>
+                <h3 class="font-weight-bold text-center title">Categorias</h3>
+            </div>
+            <div class="list-group">
+                <button type="button" class="list-group-item list-group-item-action" aria-current="true" (click)="muestraTradicional()">
           Tradicional
         </button>
-        <button type="button" class="list-group-item list-group-item-action">
+                <button type="button" class="list-group-item list-group-item-action" (click)="muestraInternacional()">
           Internacional
         </button>
-        <button type="button" class="list-group-item list-group-item-action">
+                <button type="button" class="list-group-item list-group-item-action" (click)="muestraBrunch()">
           Brunch
         </button>
-        <button type="button" class="list-group-item list-group-item-action">
+                <button type="button" class="list-group-item list-group-item-action" (click)="muestraPostres()">
           Postres
         </button>
-      </div>
-    </mat-drawer>
+            </div>
+        </mat-drawer>
 
-    <div>
-      <h1 class="font-weight-bold text-center title">Retos (Categoria)</h1>
-    </div>
+        <div>
+            <h1 class="font-weight-bold text-center title">Retos (Categoria)</h1>
+        </div>
 
-    <div class="btns">
-      <button
-        class="btn btn-light btnC"
-        type="button"
-        mat-button
-        (click)="drawer.toggle()"
-      >
+        <div class="btns">
+            <button class="btn btn-light btnC" type="button" mat-button (click)="drawer.toggle()">
         <mat-icon>fast_rewind</mat-icon>
         Ver Categorias
       </button>
-      <button
-        class="btn btn-success btnC"
-        *ngIf="checkUser()"
-        [routerLink]="['create']"
-      >
+            <button class="btn btn-success btnC" *ngIf="checkUser()" [routerLink]="['create']">
         <mat-icon>queue</mat-icon>
         Crear Reto
       </button>
-    </div>
+        </div>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div
-        class="col"
-        *ngFor="
-          let e of challenges
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" *ngFor="
+          let e of challengesActual
             | paginate
               : {
                   itemsPerPage: tableSize,
                   currentPage: page,
                   totalItems: count
                 }
-        "
-      >
-        <div>
-          <mat-card [ngStyle]="">
-            <a [routerLink]="[e.id]">
-              <mat-card-header>
-                <mat-card-title class="titu">{{ e.titulo }}</mat-card-title>
-              </mat-card-header>
-              <mat-card-content>
-                <img
-                  *ngIf="e.adjunto != null"
-                  [src]="e.adjunto"
-                  alt=" "
-                  class="card-img-top"
-                />
-                <img
-                  *ngIf="e.adjunto == null"
-                  src="https://images.pexels.com/photos/8515597/pexels-photo-8515597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                  class="card-img-top"
-                />
-                <p>{{ e.contenido }}</p>
-                <small class="text-muted">Publicado:{{ e.fechaInicio }}</small>
-              </mat-card-content>
-              <mat-card-actions> </mat-card-actions>
-            </a>
-          </mat-card>
+        ">
+                <div>
+                    <mat-card [ngStyle]="">
+                        <a [routerLink]="[e.id]">
+                            <mat-card-header>
+                                <mat-card-title class="titu">{{ e.titulo }}</mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <img *ngIf="e.adjunto != null" [src]="e.adjunto" alt=" " class="card-img-top" />
+                                <img *ngIf="e.adjunto == null" src="https://images.pexels.com/photos/8515597/pexels-photo-8515597.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img-top" />
+                                <p>{{ e.contenido }}</p>
+                                <small class="text-muted">Publicado:{{ e.fechaInicio }}</small>
+                            </mat-card-content>
+                            <mat-card-actions> </mat-card-actions>
+                        </a>
+                    </mat-card>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <div class="pag">
-      <span></span>
-    </div>
+        <div class="pag">
+            <span></span>
+        </div>
 
-    <!--Including the pagination control.-->
-    <div class=" ">
-      <pagination-controls
-        previousLabel="Prev "
-        nextLabel="Next "
-        (pageChange)="onTableDataChange($event)"
-      >
-      </pagination-controls>
-    </div>
-  </mat-drawer-container>
+        <!--Including the pagination control.-->
+        <div class=" ">
+            <pagination-controls previousLabel="Prev " nextLabel="Next " (pageChange)="onTableDataChange($event)">
+            </pagination-controls>
+        </div>
+    </mat-drawer-container>
 </div>
