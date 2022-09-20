@@ -27,3 +27,10 @@
 ::ng-deep .mat-divider.mat-divider-inset {
   margin: 1% !important;
 }
+small{
+  padding-left: 2%;
+}
+
+.img{
+  width: 20% !important;
+}
