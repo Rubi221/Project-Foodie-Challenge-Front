@@ -94,6 +94,8 @@ export class ChallengeFormComponent implements OnInit {
 
   public updateChallenge(): void {
     this.fixDateFormat();
+    this.challenge.adjunto = this.enlaceImage
+
     this.challenge.idUsuario = parseInt(sessionStorage.getItem('idUsuario')!);
 
     this.challengeUpdate = {

@@ -1,47 +1,35 @@
 <div class="container">
-  <div>
-    <mat-tab-group disableRipple mat-align-tabs="center">
-      <div *ngFor="let s of secciones">
-        <mat-tab label="{{s.nombre}}"> 
-          <div class="crear">
-            <div>
-              <button
-                class="btn btn-success btnC"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#createField"
-                aria-expanded="false"
-                aria-controls="createField"
-              >
+    <div>
+        <mat-tab-group disableRipple mat-align-tabs="center">
+            <div *ngFor="let s of secciones">
+                <mat-tab label="{{s.nombre}}">
+                    <div class="crear">
+                        <div>
+                            <button class="btn btn-success btnC" type="button" data-bs-toggle="collapse" data-bs-target="#createField" aria-expanded="false" aria-controls="createField">
                 Subir Publicación
               </button>
-            </div>
-            <ng-content select="selector"></ng-content>
-  
-            <div class="collapse" id="createField">
-              <mat-divider inset></mat-divider>
-              <div class="input-group marg">
-                <span class="input-group-text">Crear Publicacion</span>
-                <textarea
-                  class="form-control"
-                  placeholder="Escribe una publicacion..."
-                ></textarea>
-              </div>
-              <div class="input-group mb-1 marg">
-                <input type="file" class="form-control" />
-              </div>
-              <div>
-                <button class="btn btn-danger btnC">
+                        </div>
+                        <ng-content select="selector"></ng-content>
+
+                        <div class="collapse" id="createField">
+                            <mat-divider inset></mat-divider>
+                            <div class="input-group marg">
+                                <span class="input-group-text">Crear Publicacion</span>
+                                <textarea class="form-control" placeholder="Escribe una publicacion..." [(ngModel)]="createPublicacion.contenido"></textarea>
+                            </div>
+                            <div class="input-group mb-1 marg">
+                                <input type="file" class="form-control" (change)="capturarFile($event)" />
+                            </div>
+                            <div>
+                                <button class="btn btn-danger btnC" (click)="publicar(s.id)">
                   Publicar <mat-icon>upload</mat-icon>
                 </button>
-              </div>
-            </div>
-          </div>
-          <mat-divider inset></mat-divider>
+                            </div>
+                        </div>
+                    </div>
+                    <mat-divider inset></mat-divider>
 
-        <div
-          class="col"
-          *ngFor="
+                    <div class="col" *ngFor="
             let e of publicaciones[s.id]
               | paginate
                 : {
@@ -49,95 +37,69 @@
                     currentPage: page,
                     totalItems: count
                   }
-          "
-        >
-          <div>
-            <mat-card>
-              <mat-card-header>
-                <div mat-card-avatar class="header-image"></div>
-                <mat-card-subtitle>{{ e.nombreUsuario }}</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <p>{{ e.contenido }}</p>
-                <small class="text-muted">Publicado:{{ e.fecha }}</small>
-              </mat-card-content>
+          ">
+                        <div>
+                            <mat-card>
+                                <mat-card-header>
+                                    <div mat-card-avatar class="header-image"></div>
+                                    <mat-card-subtitle>{{ e.nombreUsuario }}</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <p>{{ e.contenido }}</p>
+                                    <small class="text-muted">Publicado:{{ e.fecha }}</small>
+                                </mat-card-content>
 
-              <mat-card-actions>
-                <button
-                  type="button"
-                  class="btn btn-danger btnC"
-                  (click)="clickComentar(e.id)"
-                  data-bs-toggle="modal"
-                  data-bs-target="#commentModal"
-                >
+                                <mat-card-actions>
+                                    <button type="button" class="btn btn-danger btnC" (click)="clickComentar(e.id)" data-bs-toggle="modal" data-bs-target="#commentModal">
                   <mat-icon>sms</mat-icon>Comentar
                 </button>
-              </mat-card-actions>
-              <mat-divider inset></mat-divider>
-            </mat-card>
-          </div>
-        </div>
-        <div class=" ">
-          <pagination-controls
-            previousLabel="Prev "
-            nextLabel="Next "
-            (pageChange)="onTableDataChange($event)"
-          >
-          </pagination-controls>
-        </div>
-        </mat-tab>
-      </div>
-    </mat-tab-group>
-  </div>
+                                </mat-card-actions>
+                                <mat-divider inset></mat-divider>
+                            </mat-card>
+                        </div>
+                    </div>
+                    <div class=" ">
+                        <pagination-controls previousLabel="Prev " nextLabel="Next " (pageChange)="onTableDataChange($event)">
+                        </pagination-controls>
+                    </div>
+                </mat-tab>
+            </div>
+        </mat-tab-group>
+    </div>
 </div>
 
 <div class="modal fade" id="commentModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="font-weight-bold text-center title">Comentarios</h3>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <div class="col" *ngFor="let e of comentarios">
-          <div>
-            <mat-card>
-              <mat-card-header>
-                <div mat-card-avatar class="header-image"></div>
-                <mat-card-subtitle>{{ e.nombreUsuario }}</mat-card-subtitle>
-              </mat-card-header>
-              <mat-card-content>
-                <p>{{ e.contenido }}</p>
-                <small class="text-muted">Publicado:{{ e.fecha }}</small>
-              </mat-card-content>
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="font-weight-bold text-center title">Comentarios</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col" *ngFor="let e of comentarios">
+                    <div>
+                        <mat-card>
+                            <mat-card-header>
+                                <div mat-card-avatar class="header-image"></div>
+                                <mat-card-subtitle>{{ e.nombreUsuario }}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <p>{{ e.contenido }}</p>
+                                <small class="text-muted">Publicado:{{ e.fecha }}</small>
+                            </mat-card-content>
 
-              <mat-card-actions> </mat-card-actions>
-              <mat-divider inset></mat-divider>
-            </mat-card>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="comment"
-          [(ngModel)]="createComentario.contenido"
-        />
-        <button
-          class="btn btn-danger btnS"
-          type="button"
-          id="button-addon2"
-          (click)="creaComentario()"
-        >
+                            <mat-card-actions> </mat-card-actions>
+                            <mat-divider inset></mat-divider>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer input-group mb-3">
+                <input type="text" class="form-control" placeholder="comment" [(ngModel)]="createComentario.contenido" />
+                <button class="btn btn-danger btnS" type="button" id="button-addon2" (click)="creaComentario()">
           <mat-icon>send</mat-icon>
         </button>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

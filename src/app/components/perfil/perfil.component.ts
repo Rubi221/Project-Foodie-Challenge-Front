@@ -3,6 +3,8 @@ import { User } from 'src/app/models/user';
 import { UserCredentials } from 'src/app/models/user-credentials';
 import { UserService } from 'src/app/services/user.service';
 import { Storage, ref, uploadBytes, UploadTask, UploadTaskSnapshot, getDownloadURL } from '@angular/fire/storage';
+import swal from 'sweetalert2';
+
 
 
 @Component({
@@ -41,6 +43,11 @@ export class PerfilComponent implements OnInit {
 
     this.userService.updateUser(this.user).subscribe((response)=>{
       console.log(response)
+      swal.fire('Actualizado con Exito', '', 'success');
+      setTimeout(() => {
+      }, 1000);
+      window.location.reload();
+
     })
   }
 
