@@ -32,4 +32,16 @@ export class EntregasService {
 
   }
 
+  
+
+  validaCalifica(idInsc: number, idUsuario:number):Observable<boolean>{
+    
+    let params = new HttpParams();
+    params = params.append('idUsuario', idUsuario);
+    params = params.append('idDetalle', idInsc);
+
+    return this.http.get<boolean>(this.url+'/validateCalifica',{headers:this.httpHeaders, params:params});
+
+  }
+
 }

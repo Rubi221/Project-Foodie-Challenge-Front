@@ -64,6 +64,7 @@ export class LookChallengeComponent implements OnInit {
   id: string = '';
   archivoCapturado: any;
   enlaceImage: any;
+  seMuestra:boolean = true
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -361,4 +362,12 @@ export class LookChallengeComponent implements OnInit {
       console.log('Error: ', error);
     };
   }
+
+  checkCalificacion(idCalificacion:number):any{
+    this.entregaService.validaCalifica(idCalificacion,parseInt(sessionStorage.getItem('idUsuario')!)).subscribe((response)=>{
+      this.seMuestra=response
+      console.log(response)
+    })
+  }
+
 }
