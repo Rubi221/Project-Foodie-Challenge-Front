@@ -7,6 +7,7 @@ export class Receta {
   public fecha!: String;
   public adjunto!: String;
   public nombreUsuario!: String;
+  public fotoUsuario!: String;
   
   constructor() {
   }

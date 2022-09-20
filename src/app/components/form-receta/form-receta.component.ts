@@ -19,6 +19,7 @@ export class FormRecetaComponent implements OnInit {
     idCategoria: 0,
     fecha: '',
     nombreUsuario: '',
+    fotoUsuario: '',
   };
 
   id: string = '';
