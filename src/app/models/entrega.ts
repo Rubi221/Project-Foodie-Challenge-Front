@@ -4,8 +4,9 @@ export class EntregaReto {
     public idInscripcionReto!: number;
     public calificacionFinal!: number;
     public video!: String;
-    public AdjuntoImg!: String;
+    public adjunto!: String;
     public nombreUsuario!: string;
+    public calificado!: boolean;
 
     constructor(){
     }

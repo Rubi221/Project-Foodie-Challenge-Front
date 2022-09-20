@@ -40,7 +40,7 @@ export class EntregasService {
     params = params.append('idUsuario', idUsuario);
     params = params.append('idDetalle', idInsc);
 
-    return this.http.get<boolean>(this.url+'/validateCalifica',{headers:this.httpHeaders, params:params});
+    return this.http.get<boolean>(this.url2+'/validateCalifica',{headers:this.httpHeaders, params:params});
 
   }
 

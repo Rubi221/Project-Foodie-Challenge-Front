@@ -51,11 +51,10 @@ p{
   background-image: url("https://images.pexels.com/photos/35666/cooking-baby-only-kitchen.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-size: cover;
 }
-/* ::ng-deep .card-img, .card-img-bottom, .card-img-top {
-  width: 70% !important;
-  padding-left: 3%;
-  border-color: black !important;
-} */
+.cal{
+  font-size: larger !important;
+  font-weight: bold;
+}
 .mat-card-header {
   margin: 2% !important;
 }
@@ -82,6 +81,7 @@ span {
 }
 .mat {
   background-color: rgb(172, 172, 172);
+  border-color: transparent;
 }
 .divflex {
   display: flex;
@@ -95,9 +95,10 @@ span {
 ::ng-deep .mat-slider {
   max-width: 300px;
   width: 100%;
+  background-color: rgb(172, 172, 172); ;
 }
 ::ng-deep .mat-accent .mat-slider-track-fill {
-  background-color: rgb(255, 174, 0) !important;
+  background-color: red !important;
 }
 
 ::ng-deep .mat-slider-thumb-label {

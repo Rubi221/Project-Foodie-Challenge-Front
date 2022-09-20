@@ -14,9 +14,15 @@ import { ThisReceiver } from '@angular/compiler';
 import { CreateComentarioReto } from 'src/app/models/create-comentario-reto';
 import { Comentario } from 'src/app/models/comentario';
 import { ComentariosService } from 'src/app/services/comentarios.service';
-import { Storage, ref, uploadBytes, UploadTask, UploadTaskSnapshot, getDownloadURL } from '@angular/fire/storage';
+import {
+  Storage,
+  ref,
+  uploadBytes,
+  UploadTask,
+  UploadTaskSnapshot,
+  getDownloadURL,
+} from '@angular/fire/storage';
 import { CalificaEntrega } from 'src/app/models/califica-entrega';
-
 
 @Component({
   selector: 'app-look-challenge',
@@ -30,11 +36,11 @@ export class LookChallengeComponent implements OnInit {
   thumbLabel = true;
   value = 0;
 
-  public calificaEntrega:CalificaEntrega={
-    idDetalle:0,
-    idUsuario:0,
-    puntaje:1
-  }
+  public calificaEntrega: CalificaEntrega = {
+    idDetalle: 0,
+    idUsuario: 0,
+    puntaje: 1,
+  };
 
   public entregas: EntregaReto[] = [];
   public realizaEntrega: CreateEntregaReto = {
@@ -44,7 +50,6 @@ export class LookChallengeComponent implements OnInit {
     AdjuntoImg: '',
   };
   public entrega!: EntregaReto;
-  stars: number[] = [1, 2, 3, 4, 5];
 
   public challenge: ChallengeInscrito = new ChallengeInscrito();
   public madeChef!: Boolean;
@@ -64,7 +69,8 @@ export class LookChallengeComponent implements OnInit {
   id: string = '';
   archivoCapturado: any;
   enlaceImage: any;
-  seMuestra:boolean = true
+  calificado: boolean = false;
+  show: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -74,7 +80,7 @@ export class LookChallengeComponent implements OnInit {
     private detalleEntregaService: DetalleInscripcionService,
     private router: Router,
     public comentarioService: ComentariosService,
-    private storage:Storage
+    private storage: Storage
   ) {}
 
   ngOnInit(): void {
@@ -99,9 +105,9 @@ export class LookChallengeComponent implements OnInit {
               this.esChef = false;
             }
 
-            if(this.challenge.nombreCategoria != null ){
-              this.categoria = this.challenge.nombreCategoria
-            }else{
+            if (this.challenge.nombreCategoria != null) {
+              this.categoria = this.challenge.nombreCategoria;
+            } else {
               this.categoria = 'No indica';
             }
 
@@ -119,8 +125,7 @@ export class LookChallengeComponent implements OnInit {
               this.detalleEntregaService
                 .checkEntrega(this.challenge.idInscripcion)
                 .subscribe((response) => {
-                  if (response.idInscripcionReto != null)
-                  {
+                  if (response.idInscripcionReto != null) {
                     this.entregado = true;
                   } else {
                     this.entregado = false;
@@ -196,7 +201,7 @@ export class LookChallengeComponent implements OnInit {
   }
 
   enviarEntrega(): void {
-    console.log(this.realizaEntrega)
+    console.log(this.realizaEntrega);
     swal
       .fire({
         title: 'Seguro deseas realizar tu entrega?',
@@ -231,8 +236,8 @@ export class LookChallengeComponent implements OnInit {
       });
   }
 
-  calificarEntrega(){
-    console.log(this.realizaEntrega)
+  calificarEntrega() {
+    console.log(this.realizaEntrega);
     swal
       .fire({
         title: 'Seguro deseas realizar tu entrega?',
@@ -267,20 +272,23 @@ export class LookChallengeComponent implements OnInit {
       });
   }
 
-  enviaCalificacion(idEntrega:number, puntaje:number){
-    this.calificaEntrega.idDetalle=idEntrega
-    this.calificaEntrega.idUsuario=parseInt(sessionStorage.getItem('idUsuario')!)
-    this.calificaEntrega.puntaje = puntaje
-    console.log(this.calificaEntrega)
-    this.entregaService.calificaEntrega(this.calificaEntrega).subscribe((response)=>{
-      console.log(response)
-      swal.fire('Creado con Exito', '', 'success');
-      setTimeout(() => {
-        this.router.navigate(['home/learning']);
-      }, 1000);
-      window.location.reload();
-
-    })
+  enviaCalificacion(idEntrega: number, puntaje: number) {
+    this.calificaEntrega.idDetalle = idEntrega;
+    this.calificaEntrega.idUsuario = parseInt(
+      sessionStorage.getItem('idUsuario')!
+    );
+    this.calificaEntrega.puntaje = puntaje;
+    console.log(this.calificaEntrega);
+    this.entregaService
+      .calificaEntrega(this.calificaEntrega)
+      .subscribe((response) => {
+        console.log(response);
+        swal.fire('Creado con Exito', '', 'success');
+        setTimeout(() => {
+          this.router.navigate(['home/learning']);
+        }, 1000);
+        window.location.reload();
+      });
   }
 
   cancelarEntrega(): void {
@@ -335,19 +343,18 @@ export class LookChallengeComponent implements OnInit {
 
   public capturarFile(event: any): any {
     this.archivoCapturado = event.target.files[0];
-    const imgRef = ref(this.storage, 'images/' + this.archivoCapturado.name)
-    uploadBytes(imgRef, this.archivoCapturado).then(x => {
+    const imgRef = ref(this.storage, 'images/' + this.archivoCapturado.name);
+    uploadBytes(imgRef, this.archivoCapturado).then((x) => {
       getDownloadURL(imgRef)
         .then((url) => {
           this.enlaceImage = url;
-          this.realizaEntrega.AdjuntoImg = url
-        }).catch(error => console.log(error))
-    } )
+          this.realizaEntrega.AdjuntoImg = url;
+        })
+        .catch((error) => console.log(error));
+    });
 
     this.getBase64(event);
-
   }
-  
 
   public getBase64(event: any) {
     let me = this;
@@ -363,11 +370,20 @@ export class LookChallengeComponent implements OnInit {
     };
   }
 
-  checkCalificacion(idCalificacion:number):any{
-    this.entregaService.validaCalifica(idCalificacion,parseInt(sessionStorage.getItem('idUsuario')!)).subscribe((response)=>{
-      this.seMuestra=response
-      console.log(response)
-    })
+  checkCalificacion(idCalificacion: number): any {
+    this.entregaService
+      .validaCalifica(
+        idCalificacion,
+        parseInt(sessionStorage.getItem('idUsuario')!)
+      )
+      .subscribe((response) => {
+        this.calificado = response;
+        this.show = true;
+        console.log(response);
+      });
   }
 
+  changeShow(){
+    this.show = false;
+  }
 }
